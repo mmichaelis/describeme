@@ -21,12 +21,12 @@ import org.slf4j.Logger;
 import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static java.util.stream.Collectors.joining;
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**
@@ -44,9 +44,10 @@ final class RootDescriber extends AbstractDescriber {
 
   static {
     DESCRIBER_SERVICE_LOADER = ServiceLoader.load(Describer.class);
-    LOG.info("Registered describers:\n\t{}", StreamSupport.stream(DESCRIBER_SERVICE_LOADER.spliterator(), false).map(
-        obj -> obj.getClass().getName()).collect(
-        Collectors.joining(",\n\t")));
+    LOG.info("Registered describers:\n\t{}",
+             StreamSupport.stream(DESCRIBER_SERVICE_LOADER.spliterator(), false)
+                 .map(obj -> obj.getClass().getName())
+                 .collect(joining(",\n\t")));
   }
 
   @Nonnull
@@ -76,7 +77,8 @@ final class RootDescriber extends AbstractDescriber {
 
   @Override
   protected void internalDescribeTo(@Nonnull Appendable appendable, @Nullable Object value,
-                                    int maxCount, @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+                                    int maxCount,
+                                    @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
     ((InternalDescriber) describerFor(value))
         .describeTo(appendable, value, maxCount, recursiveConsumer);
   }

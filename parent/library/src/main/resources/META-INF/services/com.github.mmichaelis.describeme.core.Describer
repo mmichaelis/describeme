@@ -24,4 +24,3 @@ com.github.mmichaelis.describeme.library.ArrayDescriber
 com.github.mmichaelis.describeme.library.NumberDescriber
 com.github.mmichaelis.describeme.library.StringDescriber
 com.github.mmichaelis.describeme.library.CharacterDescriber
-com.github.mmichaelis.describeme.library.ClassDescriber

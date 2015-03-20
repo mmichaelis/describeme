@@ -74,7 +74,7 @@ public class DescribeTest {
             {1.23456789123456789f, "1.235"},
             {1.23456789123456789d, "1.235"},
             {1.234e2, "123.4"},
-            {SOME_OBJECT, "java.lang.Ob..."},
+            {SOME_OBJECT, String.valueOf(SOME_OBJECT)},
             {SOME_OBJECT_ARRAY, "[]"},
             {new Integer[]{1, 2}, "[1, 2]"},
             // Deep Test
@@ -101,6 +101,8 @@ public class DescribeTest {
             // rather than the length of Strings.
             {SOME_OBJECT.getClass(), String.valueOf(SOME_OBJECT.getClass())},
             {SOME_OBJECT_ARRAY.getClass(), String.valueOf(SOME_OBJECT_ARRAY.getClass())},
+            {SomeEnum.class, String.valueOf(SomeEnum.class)},
+            {SomeEnum.values(), "[A_ENUM, B_ENUM]"},
         }
     );
   }
@@ -132,5 +134,10 @@ public class DescribeTest {
         }
       }
     }
+  }
+
+  private enum SomeEnum {
+    A_ENUM,
+    B_ENUM
   }
 }

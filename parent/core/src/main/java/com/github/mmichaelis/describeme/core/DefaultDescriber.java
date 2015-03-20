@@ -21,7 +21,6 @@ import java.util.function.BiConsumer;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import static com.github.mmichaelis.describeme.core.DescriberProperties.ELLIPSIS;
 import static java.lang.String.valueOf;
 import static java.util.Arrays.deepToString;
 
@@ -44,14 +43,12 @@ public final class DefaultDescriber extends AbstractDescriber {
                                     @Nullable Object value,
                                     int maxCount,
                                     @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+    // No truncation applied here. The idea is that for some values you do not want to have
+    // truncation at all. And the ideal solution of this default implementation is that you
+    // can just use the default rather than implementing your own Describer.
     String stringValue =
         isArray(value) ? deepToString((Object[]) value) : valueOf(value);
-    int stringLength = stringValue.length();
-    if ((maxCount <= DescriberProperties.UNLIMITED) || (stringLength < maxCount)) {
-      AppendableUtil.silentAppend(appendable, stringValue);
-    } else {
-      AppendableUtil.silentAppend(appendable, stringValue.substring(0, maxCount), ELLIPSIS);
-    }
+    AppendableUtil.silentAppend(appendable, stringValue);
   }
 
 }
