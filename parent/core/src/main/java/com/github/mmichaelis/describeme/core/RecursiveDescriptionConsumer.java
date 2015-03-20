@@ -18,6 +18,8 @@ package com.github.mmichaelis.describeme.core;
 
 import com.google.common.base.MoreObjects;
 
+import org.slf4j.Logger;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.function.BiConsumer;
@@ -25,11 +27,14 @@ import java.util.function.BiConsumer;
 import javax.annotation.Nonnull;
 
 import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
+import static org.slf4j.LoggerFactory.getLogger;
 
 /**
  * @since $$SINCE:2015-03-19$$
  */
 class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
+
+  private static final Logger LOG = getLogger(RecursiveDescriptionConsumer.class);
 
   private static final int DEJA_VU_INITIAL_CAPACITY = 16;
   @Nonnull
@@ -41,7 +46,7 @@ class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
 
   RecursiveDescriptionConsumer(@Nonnull Appendable appendable, int maxDepth, int maxCount) {
     this.appendable = appendable;
-    this.maxDepth = maxDepth;
+    this.maxDepth = DescriberProperties.MAX_DEPTH_FORCE ? DescriberProperties.MAX_DEPTH : maxDepth;
     this.maxCount = maxCount;
   }
 
@@ -49,21 +54,29 @@ class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
   @Override
   public void accept(Object me, Object other) {
     if (isMaxDepthReached()) {
-      silentAppend(appendable, DescriberProperties.ELLIPSIS);
+      silentAppend(appendable, DescriberProperties.RECURSION_PLACEHOLDER);
       return;
     }
-    remember(me);
-    down();
     try {
-      if (dejaVu.contains(other)) {
-        silentAppend(appendable, DescriberProperties.ELLIPSIS);
-      } else {
-        Describe.describeTo(appendable, other, maxCount, this);
+      remember(me);
+      down();
+      try {
+        if (dejaVu.contains(other)) {
+          silentAppend(appendable, DescriberProperties.RECURSION_PLACEHOLDER);
+        } else {
+          Describe.describeTo(appendable, other, maxCount, this);
+        }
+      } finally {
+        up();
+        forget(me);
       }
-    } finally {
-      up();
-      forget(me);
+    } catch (StackOverflowError e) {
+      LOG.error(
+          "Unable to evaluate description of object at depth {}. Please either increase JVM stacksize with -Xss or limit recursion depth with property {} (current value: {}).",
+          currentDepth, DescriberProperties.P_DESCRIBE_MAX_DEPTH, DescriberProperties.MAX_DEPTH);
+      throw e;
     }
+
   }
 
   @Override
@@ -86,9 +99,7 @@ class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
   }
 
   private void down() {
-    if (maxDepth > DescriberProperties.UNLIMITED) {
-      currentDepth++;
-    }
+    currentDepth++;
   }
 
   private void up() {

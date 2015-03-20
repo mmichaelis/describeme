@@ -44,10 +44,12 @@ final class RootDescriber extends AbstractDescriber {
 
   static {
     DESCRIBER_SERVICE_LOADER = ServiceLoader.load(Describer.class);
-    LOG.info("Registered describers:\n\t{}",
-             StreamSupport.stream(DESCRIBER_SERVICE_LOADER.spliterator(), false)
-                 .map(obj -> obj.getClass().getName())
-                 .collect(joining(",\n\t")));
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("Registered describers:\n\t{}",
+                StreamSupport.stream(DESCRIBER_SERVICE_LOADER.spliterator(), false)
+                    .map(obj -> obj.getClass().getName())
+                    .collect(joining(",\n\t")));
+    }
   }
 
   @Nonnull
@@ -66,7 +68,10 @@ final class RootDescriber extends AbstractDescriber {
   @Nonnull
   private static Describer describerFor(@Nullable Object object) {
     Describer describer = getDescriberFor(object).orElse(FALLBACK_DESCRIBER);
-    LOG.debug("Provided describer for {}: {}", object, describer);
+    if (LOG.isTraceEnabled()) {
+      LOG.trace("Provided describer for class {}: {}",
+                Optional.ofNullable(object).map(Object::getClass).orElse(null), describer);
+    }
     return describer;
   }
 

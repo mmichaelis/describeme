@@ -48,6 +48,7 @@ public final class Describe {
     rootDescriber().describeTo(appendable, value, maxCount, recursiveDescriptionConsumer);
   }
 
+  @SuppressWarnings("StringBufferWithoutInitialCapacity")
   @Nonnull
   public static String describe(@Nullable Object value, int maxDepth, int maxCount) {
     StringBuilder sb = new StringBuilder();
@@ -55,4 +56,13 @@ public final class Describe {
     return sb.toString();
   }
 
+  @Nonnull
+  public static String describe(@Nullable Object value) {
+    return describe(value, DescriberProperties.MAX_COUNT);
+  }
+
+  public static String describe(Object value, int maxCount) {
+    int maxDepth = DescriberProperties.MAX_DEPTH;
+    return describe(value, maxDepth, maxCount);
+  }
 }
