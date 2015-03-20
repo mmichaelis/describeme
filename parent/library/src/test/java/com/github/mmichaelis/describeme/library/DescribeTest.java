@@ -42,6 +42,7 @@ import static org.junit.Assert.assertThat;
 public class DescribeTest {
 
   private static final Object SOME_OBJECT = new Object();
+  private static final Object[] SOME_OBJECT_ARRAY = new Object[]{};
   private static final Consumer<String> SOME_CONSUMER = (Consumer<String>) s -> {
   };
   private final Object toDescribe;
@@ -74,7 +75,7 @@ public class DescribeTest {
             {1.23456789123456789d, "1.235"},
             {1.234e2, "123.4"},
             {SOME_OBJECT, "java.lang.Ob..."},
-            {new Object[]{}, "[]"},
+            {SOME_OBJECT_ARRAY, "[]"},
             {new Integer[]{1, 2}, "[1, 2]"},
             // Deep Test
             {new Object[]{1, new Object[]{2, new Object[]{3, new Integer[]{4}}}}, "[1, [2, [3, [...]]]]"},
@@ -85,7 +86,7 @@ public class DescribeTest {
             {Arrays.asList(1, "Test").iterator(), "[1, \"Test\"]"},
             {Arrays.asList(1, "Test").stream(), "[1, \"Test\"]"},
             // Can we do better for consumers?
-            {SOME_CONSUMER, "com.github.m..."},
+            {SOME_CONSUMER, String.valueOf(SOME_CONSUMER)},
             // Lambdas can format themselves being Formattable
             {(ToStringInterface) () -> "Lorem Ipsum Dolor", "Lorem Ipsum ..."},
             {new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13},
@@ -96,7 +97,10 @@ public class DescribeTest {
              "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"},
             {Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).iterator(),
              "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"},
-            {DescribeTest.class, "class com.gi..."},
+            // No truncation to apply here. It is mainly meant for length of elements
+            // rather than the length of Strings.
+            {SOME_OBJECT.getClass(), String.valueOf(SOME_OBJECT.getClass())},
+            {SOME_OBJECT_ARRAY.getClass(), String.valueOf(SOME_OBJECT_ARRAY.getClass())},
         }
     );
   }
