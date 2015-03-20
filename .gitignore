@@ -57,3 +57,19 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# =========================
+# IDEs
+# =========================
+
+# IntelliJ Idea
+# =========================
+
+# see https://intellij-support.jetbrains.com/entries/23393067
+# https://www.jetbrains.com/pycharm/help/managing-projects-under-version-control.html
+
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+dataSources.ids
+datasources.xml
