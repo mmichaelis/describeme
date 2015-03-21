@@ -12,8 +12,17 @@ DescribeMe uses Java's Service Loader (see [Creating Extensible Applications][ja
 you happen to have your very own classes which you need to describe you can simple define your
 own *Describers* and list them in a provider configuration file.
 
+## CI
+
+Currently different hosted CI systems are under test which are:
+
+* [Travis CI][travis-ci.org]
+* [Shippable][shippable.com]
+
 ## History
 
 <!-- Links -->
 
 [java-spi]: <https://docs.oracle.com/javase/tutorial/ext/basics/spi.html> "Creating Extensible Applications (The Java™ Tutorials > The Extension Mechanism > Creating and Using Extensions)"
+[travis-ci.org]: <https://travis-ci.org/repositories> "Travis CI - Free Hosted Continuous Integration Platform for the Open Source Community"
+[shippable.com]: <http://www.shippable.com/> "Shippable - Continuous integration, evolved."
