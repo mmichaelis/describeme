@@ -26,8 +26,8 @@
   <version>1.0.0-SNAPSHOT</version>
   <inceptionYear>2015</inceptionYear>
   <scm>
-    <connection>git@github.com:mmichaelis/describeme.git</connection>
-    <developerConnection>git@github.com:mmichaelis/describeme.git</developerConnection>
+    <connection>scm:git@github.com:mmichaelis/describeme.git</connection>
+    <developerConnection>scm:git@github.com:mmichaelis/describeme.git</developerConnection>
     <tag>HEAD</tag>
     <url>https://github.com/mmichaelis/describeme</url>
   </scm>
@@ -92,6 +92,7 @@
     <local.site.deploy.url>file://${user.home}/target/describeme/site</local.site.deploy.url>
     <generated.sources.root>${project.build.directory}/generated-sources</generated.sources.root>
     <dependency.fail.onwarning>true</dependency.fail.onwarning>
+    <checkstyle.config.location>google_checks.xml</checkstyle.config.location>
   </properties>
 
   <build>
@@ -136,7 +137,7 @@
               -->
               <groupId>org.apache.maven.doxia</groupId>
               <artifactId>doxia-module-markdown</artifactId>
-              <version>1.3</version>
+              <version>1.6</version>
             </dependency>
           </dependencies>
           <executions>
@@ -179,9 +180,9 @@
           <version>2.15</version>
           <dependencies>
             <dependency>
-              <groupId>${project.groupId}</groupId>
-              <artifactId>describeme-build-tools</artifactId>
-              <version>${project.version}</version>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>6.4.1</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -189,13 +190,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-pmd-plugin</artifactId>
           <version>3.4</version>
-          <dependencies>
-            <dependency>
-              <groupId>${project.groupId}</groupId>
-              <artifactId>describeme-build-tools</artifactId>
-              <version>${project.version}</version>
-            </dependency>
-          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -311,6 +305,20 @@ DecribeMe tries to avoid having any of the following dependencies:
           <artifactId>maven-resources-plugin</artifactId>
           <version>2.7</version>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>3.0.0</version>
+          <configuration>
+            <effort>Max</effort>
+            <threshold>Low</threshold>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.8</version>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -318,6 +326,10 @@ DecribeMe tries to avoid having any of the following dependencies:
         <!-- Make it available in IDE -->
         <groupId>com.google.code.sortpom</groupId>
         <artifactId>maven-sortpom-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -329,4 +341,37 @@ DecribeMe tries to avoid having any of the following dependencies:
       </plugin>
     </plugins>
   </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.1</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>dependency-updates-report</report>
+              <report>plugin-updates-report</report>
+              <report>property-updates-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>

@@ -51,4 +51,13 @@
     </dependencies>
   </dependencyManagement>
 
+  <build>
+    <extensions>
+      <extension>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>describeme-build-tools</artifactId>
+        <version>${project.version}</version>
+      </extension>
+    </extensions>
+  </build>
 </project>
