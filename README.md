@@ -1,3 +1,14 @@
+[![Build Status][travisci-badge]][travisci]
+[![Versions][versioneye-badge]][versioneye]
+
+<!--
+[![][travis img]][travis]
+[![][coverage img]][coverage]
+[![][mavenbadge img]][mavenbadge]
+[![][versioneye img]][versioneye]
+[![][sonar img]][sonar]
+-->
+
 # DescribeMe
 
 DescribeMe's goal is to provide an easy to use API to describe values in any message like in
@@ -42,3 +53,7 @@ This software is licensed under the terms in the file [LICENSE.md][license] in t
 
 [license]: <LICENSE.md> "Apache License, Version 2.0"
 [license-badge]: <https://img.shields.io/badge/license-Apache%20License%2C%20Version%202.0-lightgrey.svg> "Apache License, Version 2.0"
+[versioneye]: <https://www.versioneye.com/user/projects/550dd711bc1c12efc3000022<
+[versioneye-badge]: <https://www.versioneye.com/user/projects/550dd711bc1c12efc3000022/badge.svg>
+[travisci]: <https://travis-ci.org/mmichaelis/describeme>
+[travisci-badge]: <https://travis-ci.org/mmichaelis/describeme.svg?branch=master>
