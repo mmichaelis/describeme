@@ -7,4 +7,4 @@ install: mvn clean verify site -Dlinkcheck.skip=true -Dmaven.javadoc.skip=true
              -Dpmd.skip=true -Dfindbugs.skip=true
 
 after_success:
-  - mvn -Ptravis clean test jacoco:report coveralls:report
+  - mvn -Ptravis clean test org.jacoco:jacoco-maven-plugin:report org.eluder.coveralls:coveralls-maven-plugin:report
