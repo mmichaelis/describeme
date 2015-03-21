@@ -16,8 +16,8 @@ own *Describers* and list them in a provider configuration file.
 
 Currently different hosted CI systems are under test which are:
 
-* [Travis CI][travis-ci.org]
-* [Shippable][shippable.com]
+* [Travis CI][travis-ci.org]: [![Build Status](https://travis-ci.org/mmichaelis/describeme.svg?branch=master)](https://travis-ci.org/mmichaelis/describeme)
+* [Shippable][shippable.com]: [![Build Status](https://api.shippable.com/projects/550d3de65ab6cc1352a6e3b4/badge?branchName=master)](https://app.shippable.com/projects/550d3de65ab6cc1352a6e3b4/builds/latest)
 
 ## History
 
