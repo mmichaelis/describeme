@@ -38,12 +38,17 @@ This software is licensed under the terms in the file [LICENSE.md][license] in t
 
     for providing out-of-the-box badges like the license badge
 
+* [checkstyle][]
+
+    for giving a chance to look up nice README.md badges
+
 <!-- Links -->
 
 [java-spi]: <https://docs.oracle.com/javase/tutorial/ext/basics/spi.html> "Creating Extensible Applications (The Java™ Tutorials > The Extension Mechanism > Creating and Using Extensions)"
 [travis-ci.org]: <https://travis-ci.org/repositories> "Travis CI - Free Hosted Continuous Integration Platform for the Open Source Community"
 [shippable.com]: <http://www.shippable.com/> "Shippable - Continuous integration, evolved."
 [shields.io]: <http://shields.io/> "Shields.io: Quality metadata badges for open source projects"
+[checkstyle]: <http://checkstyle.sourceforge.net/>
 
 <!-- Badges -->
 
