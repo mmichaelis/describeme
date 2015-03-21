@@ -94,6 +94,8 @@
     <dependency.fail.onwarning>true</dependency.fail.onwarning>
     <checkstyle.config.location>google_checks.xml</checkstyle.config.location>
     <maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
+    <coveralls-maven-plugin.repoToken>rEeJT2SxinEhlpkh8ymkqHWrEJS7w1H7f
+    </coveralls-maven-plugin.repoToken>
   </properties>
 
   <build>
@@ -403,7 +405,7 @@ DecribeMe tries to avoid having any of the following dependencies:
             <artifactId>coveralls-maven-plugin</artifactId>
             <version>3.1.0</version>
             <configuration>
-              <repoToken>rEeJT2SxinEhlpkh8ymkqHWrEJS7w1H7f</repoToken>
+              <repoToken>${coveralls-maven-plugin.repoToken}</repoToken>
             </configuration>
           </plugin>
         </plugins>
