@@ -1,6 +1,7 @@
 [![Travis-CI: Build Status][travisci-badge]][travisci]
 [![coveralls.io: Coverage Status][coverage-badge]][coverage]
 [![VersionEye: Versions][versioneye-badge]][versioneye]
+[![Java Version][java-badge]][java]
 
 <!--
 [![][mavenbadge img]][mavenbadge]
@@ -57,3 +58,6 @@ This software is licensed under the terms in the file [LICENSE.md][license] in t
 [travisci-badge]: <https://travis-ci.org/mmichaelis/describeme.svg?branch=master>
 [coverage]: <https://coveralls.io/r/mmichaelis/describeme>
 [coverage-badge]: <https://coveralls.io/repos/mmichaelis/describeme/badge.svg>
+[java]: <http://www.oracle.com/technetwork/java/javase/downloads/index.html>
+[java-badge]: <https://img.shields.io/badge/java-8-blue.svg>
+
