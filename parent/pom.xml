@@ -52,6 +52,7 @@
     </dependencies>
   </dependencyManagement>
 
+<!--
   <build>
     <extensions>
       <extension>
@@ -61,6 +62,7 @@
       </extension>
     </extensions>
   </build>
+-->
 
   <reporting>
     <plugins>
