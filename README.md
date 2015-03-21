@@ -2,12 +2,8 @@
 [![coveralls.io: Coverage Status][coverage-badge]][coverage]
 [![VersionEye: Versions][versioneye-badge]][versioneye]
 [![Maven Central][mavencentral-badge]][mavencentral]
+[![][license-badge]][license]
 [![Java Version][java-badge]][java]
-
-<!--
-[![][mavenbadge img]][mavenbadge]
-[![][sonar img]][sonar]
--->
 
 # DescribeMe
 
@@ -53,7 +49,7 @@ This software is licensed under the terms in the file [LICENSE.md][license] in t
 
 [license]: <LICENSE.md> "Apache License, Version 2.0"
 [license-badge]: <https://img.shields.io/badge/license-Apache%20License%2C%20Version%202.0-lightgrey.svg> "Apache License, Version 2.0"
-[versioneye]: <https://www.versioneye.com/user/projects/550dd711bc1c12efc3000022<
+[versioneye]: <https://www.versioneye.com/user/projects/550dd711bc1c12efc3000022>
 [versioneye-badge]: <https://www.versioneye.com/user/projects/550dd711bc1c12efc3000022/badge.svg>
 [travisci]: <https://travis-ci.org/mmichaelis/describeme>
 [travisci-badge]: <https://travis-ci.org/mmichaelis/describeme.svg?branch=master>
@@ -61,5 +57,5 @@ This software is licensed under the terms in the file [LICENSE.md][license] in t
 [coverage-badge]: <https://coveralls.io/repos/mmichaelis/describeme/badge.svg>
 [java]: <http://www.oracle.com/technetwork/java/javase/downloads/index.html>
 [java-badge]: <https://img.shields.io/badge/java-8-blue.svg>
-[mavencentral]:http://search.maven.org/#search|gav|1|g%3A%22com.github.mmichaelis.describeme%22%20AND%20a%3A%22describeme%22
-[mavencentral-badge]:https://maven-badges.herokuapp.com/maven-central/com.github.mmichaelis.describeme/describeme/badge.svg
+[mavencentral]: <http://search.maven.org/#search|gav|1|g%3A%22com.github.mmichaelis.describeme%22%20AND%20a%3A%22describeme%22>
+[mavencentral-badge]: <https://maven-badges.herokuapp.com/maven-central/com.github.mmichaelis.describeme/describeme/badge.svg>
