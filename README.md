@@ -1,6 +1,6 @@
-[![Build Status][travisci-badge]][travisci]
-[![Coverage Status][coverage-badge]][coverage]
-[![Versions][versioneye-badge]][versioneye]
+[![Travis-CI: Build Status][travisci-badge]][travisci]
+[![coveralls.io: Coverage Status][coverage-badge]][coverage]
+[![VersionEye: Versions][versioneye-badge]][versioneye]
 
 <!--
 [![][mavenbadge img]][mavenbadge]
