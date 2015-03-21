@@ -29,6 +29,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="describeme" target="1.8" />
+      <module name="describeme-build-tools" target="1.8" />
       <module name="describeme-core" target="1.8" />
       <module name="describeme-library" target="1.8" />
       <module name="describeme-parent" target="1.8" />
