@@ -27,6 +27,12 @@
   <packaging>pom</packaging>
   <name>DescribeMe Thirdparty BOM</name>
 
+  <description><![CDATA[
+
+    BOM POM for all production thirdparty dependencies used within DescribeMe.
+
+  ]]></description>
+
   <dependencyManagement>
     <dependencies>
       <dependency>

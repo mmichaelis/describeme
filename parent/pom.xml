@@ -26,6 +26,14 @@
   <artifactId>describeme-parent</artifactId>
   <packaging>pom</packaging>
   <name>DescribeMe Parent</name>
+
+  <description><![CDATA[
+
+    Parent for all DescribeMe API modules. The POM structure mainly exists to provide easy site
+    generation.
+
+  ]]></description>
+
   <modules>
     <module>core</module>
     <module>library</module>

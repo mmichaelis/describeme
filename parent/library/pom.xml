@@ -25,6 +25,14 @@
   <artifactId>describeme-library</artifactId>
   <name>DescribeMe Library</name>
 
+  <description><![CDATA[
+
+      Library module for DescribeMe providing a convenient set of Describers for standard
+      Java objects. If no Describer exists for an object the fallback is always appropriate
+      toString() methods.
+
+  ]]></description>
+
   <dependencies>
     <dependency>
       <groupId>com.github.mmichaelis.describeme</groupId>

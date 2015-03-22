@@ -27,6 +27,12 @@
   <packaging>pom</packaging>
   <name>DescribeMe Thirdparty Test BOM</name>
 
+  <description><![CDATA[
+
+    BOM POM for all test thirdparty dependencies used within DescribeMe.
+
+  ]]></description>
+
   <dependencyManagement>
     <dependencies>
       <dependency>

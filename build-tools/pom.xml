@@ -21,13 +21,18 @@
   <version>1.0.0-SNAPSHOT</version>
   <name>DescribeMe Build Tools</name>
 
-  <description><![CDATA[Support for Build-Tooling. Module can be taken as dependency to provide configuration
-    data to reporting plugins for example like the checkstyle and PMD plugin.]]></description>
+  <description><![CDATA[
+
+  Support for Build-Tooling. Module can be taken as dependency to provide configuration
+  data to reporting plugins for example like the Findbugs, Checkstyle and PMD plugin.
+
+  ]]></description>
+
   <url>http://mmichaelis.github.com/describeme</url>
   <inceptionYear>2015</inceptionYear>
   <licenses>
     <license>
-      <name>Apache License, Version 2.0</name>
+      <name>The Apache Software License, Version 2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
       <distribution>repo</distribution>
     </license>
