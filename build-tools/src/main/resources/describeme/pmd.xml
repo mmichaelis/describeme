@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2015 Mark Michaelis
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<ruleset name="Custom PMD Ruleset for DesscribeMe"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+  <description><![CDATA[
+    PMD Rulesets to apply to the DescribeMe Project.
+
+    To suppress selected warnings in the code use for example:
+
+        @SuppressWarnings("PMD.ShortMethodName")
+
+    For available rulesets have a look at the version of PMD used by the maven-pmd-plugin.
+
+    Links
+
+    * http://maven.apache.org/plugins/maven-pmd-plugin/
+    * http://pmd.sourceforge.net/howtomakearuleset.html
+    * http://pmd.sourceforge.net/rules/index.html
+    * https://github.com/pmd/pmd/tree/master/pmd/src/main/resources/rulesets/java
+  ]]></description>
+
+  <rule ref="rulesets/java/basic.xml"/>
+  <rule ref="rulesets/java/braces.xml"/>
+  <rule ref="rulesets/java/clone.xml"/>
+  <rule ref="rulesets/java/codesize.xml"/>
+  <rule ref="rulesets/java/comments.xml">
+    <!--
+    CommentSize: For some reason also matches copyright headers - and thus is not
+    useful at all.
+    -->
+    <exclude name="CommentSize"/>
+  </rule>
+  <rule ref="rulesets/java/controversial.xml">
+    <exclude name="AtLeastOneConstructor"/>
+    <!--
+        <exclude name="AvoidFinalLocalVariable"/>
+        <exclude name="AvoidLiteralsInIfCondition"/>
+        <exclude name="DefaultPackage"/>
+        <exclude name="DataflowAnomalyAnalysis"/>
+        <exclude name="NullAssignment"/>
+        <exclude name="CallSuperInConstructor"/>
+    -->
+  </rule>
+  <rule ref="rulesets/java/coupling.xml">
+    <exclude name="LawOfDemeter"/>
+    <exclude name="LoosePackageCoupling"/>
+  </rule>
+  <rule ref="rulesets/java/design.xml">
+    <!--
+        <exclude name="LoosePackageCoupling"/>
+    -->
+  </rule>
+  <rule ref="rulesets/java/empty.xml"/>
+  <rule ref="rulesets/java/finalizers.xml"/>
+  <rule ref="rulesets/java/imports.xml"/>
+  <rule ref="rulesets/java/j2ee.xml"/>
+  <!--
+    <rule ref="rulesets/java/j2ee.xml/DoNotCallSystemExit"/>
+  -->
+  <rule ref="rulesets/java/junit.xml"/>
+  <rule ref="rulesets/java/logging-java.xml"/>
+  <rule ref="rulesets/java/migrating.xml">
+    <!-- Collides with Predicate.test() methods -->
+    <exclude name="JUnit4TestShouldUseTestAnnotation"/>
+  </rule>
+  <rule ref="rulesets/java/naming.xml">
+    <!-- exclude as we will include it with different settings, see below -->
+    <exclude name="LongVariable"/>
+  </rule>
+  <rule ref="rulesets/java/naming.xml/LongVariable">
+    <properties>
+      <!-- Allowed length for variable names. -->
+      <!--
+      Discussion:
+
+      The value might be adjusted if you think it is appropriate. The value should be enough to
+      provide self documenting variable names and should still be easy to read. Thus as for books a
+      typical line length limit is 50 to 70 characters the length for one single variable name
+      should not be bigger.
+
+      The default limit of 17 characters is considered to be to small to stick to self describing
+      variable names.
+      -->
+      <property name="minimum" value="50"/>
+    </properties>
+  </rule>
+  <rule ref="rulesets/java/optimizations.xml">
+    <exclude name="LocalVariableCouldBeFinal"/>
+    <exclude name="MethodArgumentCouldBeFinal"/>
+  </rule>
+  <rule ref="rulesets/java/strictexception.xml"/>
+  <rule ref="rulesets/java/strings.xml"/>
+  <rule ref="rulesets/java/sunsecure.xml"/>
+  <rule ref="rulesets/java/typeresolution.xml"/>
+  <rule ref="rulesets/java/unnecessary.xml">
+    <!-- Useless Parantheses -->
+    <!--
+    Discussion:
+
+    Other code styles know of so called "clarifying parantheses". This PMD rule does not detect
+    and exclude them. So we completely ignore this rule.
+    -->
+    <exclude name="UselessParentheses"/>
+  </rule>
+  <rule ref="rulesets/java/unusedcode.xml"/>
+
+</ruleset>

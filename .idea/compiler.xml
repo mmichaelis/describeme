@@ -23,12 +23,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="describeme-build-tools" />
         <module name="describeme-core" />
         <module name="describeme-library" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="describeme" target="1.8" />
+      <module name="describeme-build-tools" target="1.8" />
       <module name="describeme-core" target="1.8" />
       <module name="describeme-library" target="1.8" />
       <module name="describeme-parent" target="1.8" />

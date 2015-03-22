@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2015 Mark Michaelis
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -6,9 +22,42 @@
 
   <groupId>com.github.mmichaelis.describeme</groupId>
   <artifactId>describeme</artifactId>
+  <name>DescribeMe</name>
   <packaging>pom</packaging>
   <version>1.0.0-SNAPSHOT</version>
+  <inceptionYear>2015</inceptionYear>
+  <url>http://mmichaelis.github.com/describeme</url>
+  <scm>
+    <connection>scm:git@github.com:mmichaelis/describeme.git</connection>
+    <developerConnection>scm:git@github.com:mmichaelis/describeme.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/mmichaelis/describeme</url>
+  </scm>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/mmichaelis/describeme/issues</url>
+  </issueManagement>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>mmichael</id>
+      <name>Mark Michaelis</name>
+      <email>thragor@gmx.net</email>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
   <modules>
+    <module>build-tools</module>
     <module>thirdparty-bom</module>
     <module>thirdparty-test-bom</module>
     <module>parent</module>
@@ -49,10 +98,369 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <local.site.deploy.url>file://${user.home}/target/describeme/site</local.site.deploy.url>
     <generated.sources.root>${project.build.directory}/generated-sources</generated.sources.root>
     <dependency.fail.onwarning>true</dependency.fail.onwarning>
+    <checkstyle.config.location>google_checks.xml</checkstyle.config.location>
+    <maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
+    <coveralls-maven-plugin.repoToken>rEeJT2SxinEhlpkh8ymkqHWrEJS7w1H7f
+    </coveralls-maven-plugin.repoToken>
   </properties>
 
+  <build>
+    <pluginManagement>
+      <plugins>
 
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.6</version>
+          <configuration>
+            <skipIfEmpty>true</skipIfEmpty>
+            <archive>
+              <addMavenDescriptor>false</addMavenDescriptor>
+              <forced>false</forced>
+              <manifestEntries>
+                <Built-By>Mark Michaelis</Built-By>
+                <Build-Jdk>${java.version}</Build-Jdk>
+                <Implementation-Title>${project.name} - ${project.artifactId}</Implementation-Title>
+                <Implementation-Version>${project.version}</Implementation-Version>
+                <Implementation-Build>${maven.build.timestamp}</Implementation-Build>
+                <Implementation-Vendor-Id>${project.groupId}</Implementation-Vendor-Id>
+                <Implementation-Vendor>Mark Michaelis</Implementation-Vendor>
+                <X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
+                <X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.4</version>
+          <configuration>
+            <generateSitemap>true</generateSitemap>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <!--
+              | allows markdown syntax for site generation. To use it place files below
+              | src/site/markdown/[filename].md
+              -->
+              <groupId>org.apache.maven.doxia</groupId>
+              <artifactId>doxia-module-markdown</artifactId>
+              <version>1.6</version>
+            </dependency>
+          </dependencies>
+          <executions>
+            <execution>
+              <id>attach-descriptor</id>
+              <goals>
+                <goal>attach-descriptor</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <!-- Used to check dependency/plugin versions -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>2.1</version>
+          <configuration>
+            <generateBackupPoms>false</generateBackupPoms>
+          </configuration>
+        </plugin>
+        <!-- see http://code.google.com/p/sortpom/ -->
+        <!-- To start: mvn com.google.code.sortpom:maven-sortpom-plugin:sort -->
+        <plugin>
+          <groupId>com.google.code.sortpom</groupId>
+          <artifactId>maven-sortpom-plugin</artifactId>
+          <version>2.3.0</version>
+          <configuration>
+            <!-- POM Code Convention - http://maven.apache.org/developers/conventions/code.html#POM_Code_Convention -->
+            <sortOrderFile>recommended_2008_06.xml</sortOrderFile>
+            <createBackupFile>false</createBackupFile>
+            <expandEmptyElements>false</expandEmptyElements>
+            <sortDependencies>true</sortDependencies>
+            <sortPlugins>true</sortPlugins>
+            <keepBlankLines>true</keepBlankLines>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>2.15</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>6.4.1</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>3.4</version>
+          <dependencies>
+            <dependency>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>describeme-build-tools</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <rulesets>
+              <ruleset>describeme/pmd.xml</ruleset>
+            </rulesets>
+            <targetJdk>${maven.compiler.target}</targetJdk>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>1.4</version>
+          <executions>
+            <execution>
+              <id>enforce</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <DependencyConvergence/>
+                  <requireNoRepositories>
+                    <message>Best Practice is to never define repositories in pom.xml (use a
+                      repository manager instead)
+                    </message>
+                    <allowedRepositories>
+                      <allowedRepository>sonatype-nexus-snapshots</allowedRepository>
+                    </allowedRepositories>
+                  </requireNoRepositories>
+                  <requirePluginVersions>
+                    <message>Best Practice is to always define plugin versions!</message>
+                  </requirePluginVersions>
+                  <requireUpperBoundDeps/>
+                  <bannedDependencies>
+                    <message><![CDATA[
+DecribeMe tries to avoid having any of the following dependencies:
+
+  * Logging frameworks different to slf4j because we recommend and use slf4j. Use
+    appropriate slf4j bridges to support commons-logging etc. from thirdparty
+    dependencies.
+  * Alternative Hamcrest Implementations - as DecribeMe uses Hamcrest Libraries for
+    Matchers they collide with junit:junit prior to JUnit 4.11. The same applies
+    to artifacts like mockito-all.
+                  ]]></message>
+                    <searchTransitive>true</searchTransitive>
+                    <excludes>
+                      <exclude>*:commons-logging</exclude>
+                      <!-- Mockito-All: Collides with used hamcrest version. -->
+                      <exclude>org.mockito:mockito-all</exclude>
+                      <exclude>*:log4j</exclude>
+                      <!-- Use junit instead; since JUnit 4.11 -->
+                      <exclude>junit:junit-dep</exclude>
+                    </excludes>
+                  </bannedDependencies>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.10</version>
+          <executions>
+            <execution>
+              <id>analyze-dependencies</id>
+              <goals>
+                <goal>analyze-only</goal>
+              </goals>
+              <configuration>
+                <failOnWarning>${dependency.fail.onwarning}</failOnWarning>
+              </configuration>
+            </execution>
+            <execution>
+              <id>analyze-dependency-duplicates</id>
+              <goals>
+                <goal>analyze-duplicate</goal>
+              </goals>
+              <phase>verify</phase>
+            </execution>
+            <execution>
+              <id>analyze-dependency-management</id>
+              <goals>
+                <goal>analyze-dep-mgt</goal>
+              </goals>
+              <phase>verify</phase>
+              <configuration>
+                <failBuild>${dependency.fail.onwarning}</failBuild>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.6.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven.surefire.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>3.0.0</version>
+          <configuration>
+            <effort>Max</effort>
+            <threshold>Low</threshold>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.8</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <!-- Make it available in IDE -->
+        <groupId>com.google.code.sortpom</groupId>
+        <artifactId>maven-sortpom-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>describeme-build-tools</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>describeme-build-tools</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>describeme-build-tools</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>local-site</id>
+      <properties>
+        <site.basedir>file://${java.io.tmpdir}/${project.groupId}/${project.artifactId}</site.basedir>
+      </properties>
+      <distributionManagement>
+        <!-- repository and snapshotRepository from parent POM -->
+        <!-- Local Deployment, will be overridden by GitHub Pages Deployment on Release -->
+        <site>
+          <id>local-site</id>
+          <name>Deployment as local artifacts</name>
+          <url>${site.basedir}</url>
+        </site>
+      </distributionManagement>
+    </profile>
+    <profile>
+      <!-- that profile is used only for coveralls.io banner that show coverage at ReadMe.md  -->
+      <id>travis</id>
+      <build>
+        <plugins>
+
+          <!-- Used to set custom properties by means of ${argLine}, that is required for jacoco -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven.surefire.plugin.version}</version>
+            <configuration>
+              <!--suppress MavenModelInspection -->
+              <argLine>${argLine} -Duser.language=en -Duser.country=US -XX:-UseSplitVerifier
+              </argLine>
+            </configuration>
+          </plugin>
+
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.7.4.201502262128</version>
+            <executions>
+              <execution>
+                <id>prepare-agent</id>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>report</id>
+                <goals>
+                  <goal>report</goal>
+                </goals>
+                <phase>prepare-package</phase>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.eluder.coveralls</groupId>
+            <artifactId>coveralls-maven-plugin</artifactId>
+            <version>3.1.0</version>
+            <configuration>
+              <repoToken>${coveralls-maven-plugin.repoToken}</repoToken>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
