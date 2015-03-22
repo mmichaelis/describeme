@@ -63,6 +63,23 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>2.8</version>
         </plugin>
+        <!-- see http://code.google.com/p/sortpom/ -->
+        <!-- To start: mvn com.google.code.sortpom:maven-sortpom-plugin:sort -->
+        <plugin>
+          <groupId>com.google.code.sortpom</groupId>
+          <artifactId>maven-sortpom-plugin</artifactId>
+          <version>2.3.0</version>
+          <configuration>
+            <!-- POM Code Convention - http://maven.apache.org/developers/conventions/code.html#POM_Code_Convention -->
+            <sortOrderFile>recommended_2008_06.xml</sortOrderFile>
+            <createBackupFile>false</createBackupFile>
+            <expandEmptyElements>false</expandEmptyElements>
+            <sortDependencies>true</sortDependencies>
+            <sortDependencies>scope,groupId,artifactId</sortDependencies>
+            <sortPlugins>groupId,artifactId</sortPlugins>
+            <keepBlankLines>true</keepBlankLines>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>

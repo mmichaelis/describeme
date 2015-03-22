@@ -181,7 +181,8 @@
             <createBackupFile>false</createBackupFile>
             <expandEmptyElements>false</expandEmptyElements>
             <sortDependencies>true</sortDependencies>
-            <sortPlugins>true</sortPlugins>
+            <sortDependencies>scope,groupId,artifactId</sortDependencies>
+            <sortPlugins>groupId,artifactId</sortPlugins>
             <keepBlankLines>true</keepBlankLines>
           </configuration>
         </plugin>
