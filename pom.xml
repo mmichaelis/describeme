@@ -22,9 +22,11 @@
 
   <groupId>com.github.mmichaelis.describeme</groupId>
   <artifactId>describeme</artifactId>
+  <name>DescribeMe</name>
   <packaging>pom</packaging>
   <version>1.0.0-SNAPSHOT</version>
   <inceptionYear>2015</inceptionYear>
+  <url>http://mmichaelis.github.com/describeme</url>
   <scm>
     <connection>scm:git@github.com:mmichaelis/describeme.git</connection>
     <developerConnection>scm:git@github.com:mmichaelis/describeme.git</developerConnection>
@@ -35,6 +37,13 @@
     <system>GitHub</system>
     <url>https://github.com/mmichaelis/describeme/issues</url>
   </issueManagement>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <developers>
     <developer>
       <id>mmichael</id>
@@ -89,7 +98,6 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <local.site.deploy.url>file://${user.home}/target/describeme/site</local.site.deploy.url>
     <generated.sources.root>${project.build.directory}/generated-sources</generated.sources.root>
     <dependency.fail.onwarning>true</dependency.fail.onwarning>
     <checkstyle.config.location>google_checks.xml</checkstyle.config.location>
@@ -193,6 +201,19 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-pmd-plugin</artifactId>
           <version>3.4</version>
+          <dependencies>
+            <dependency>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>describeme-build-tools</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <rulesets>
+              <ruleset>describeme/pmd.xml</ruleset>
+            </rulesets>
+            <targetJdk>${maven.compiler.target}</targetJdk>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -324,8 +345,8 @@ DecribeMe tries to avoid having any of the following dependencies:
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-pmd-plugin</artifactId>
-          <version>3.4</version>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <version>2.5</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -376,7 +397,21 @@ DecribeMe tries to avoid having any of the following dependencies:
   </build>
 
   <profiles>
-
+    <profile>
+      <id>local-site</id>
+      <properties>
+        <site.basedir>file://${java.io.tmpdir}/${project.groupId}/${project.artifactId}</site.basedir>
+      </properties>
+      <distributionManagement>
+        <!-- repository and snapshotRepository from parent POM -->
+        <!-- Local Deployment, will be overridden by GitHub Pages Deployment on Release -->
+        <site>
+          <id>local-site</id>
+          <name>Deployment as local artifacts</name>
+          <url>${site.basedir}</url>
+        </site>
+      </distributionManagement>
+    </profile>
     <profile>
       <!-- that profile is used only for coveralls.io banner that show coverage at ReadMe.md  -->
       <id>travis</id>

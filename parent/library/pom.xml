@@ -26,6 +26,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>describeme-library</artifactId>
+  <name>DescribeMe Library</name>
 
   <dependencies>
     <dependency>

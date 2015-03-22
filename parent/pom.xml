@@ -27,6 +27,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>describeme-parent</artifactId>
+  <name>DescribeMe Parent</name>
   <packaging>pom</packaging>
   <modules>
     <module>core</module>
@@ -56,13 +57,11 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <configuration>
-          <rulesets>
-            <ruleset>describeme/pmd.xml</ruleset>
-          </rulesets>
-          <targetJdk>${maven.compiler.target}</targetJdk>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
