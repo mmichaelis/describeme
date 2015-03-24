@@ -8,9 +8,9 @@
           <option name="checksumPolicy" value="NOT_SET" />
           <option name="failureBehavior" value="NOT_SET" />
           <option name="localRepository" value="" />
-          <option name="mavenHome" value="" />
+          <option name="mavenHome" value="Bundled (Maven 3)" />
           <option name="nonRecursive" value="false" />
-          <option name="outputLevel" value="WARN" />
+          <option name="outputLevel" value="INFO" />
           <option name="pluginUpdatePolicy" value="DEFAULT" />
           <option name="printErrorStackTraces" value="false" />
           <option name="threads" />
