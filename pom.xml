@@ -34,7 +34,7 @@
 
   ]]></description>
 
-  <url>http://mmichaelis.github.com/describeme</url>
+  <url>http://mmichaelis.github.io/describeme/</url>
   <inceptionYear>2015</inceptionYear>
   <licenses>
     <license>
@@ -365,6 +365,15 @@
             <generateBackupPoms>false</generateBackupPoms>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-changes-plugin</artifactId>
+          <version>2.11</version>
+          <configuration>
+            <includeOpenIssues>false</includeOpenIssues>
+            <columnNames>Id,Type,Summary,Fix Version</columnNames>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -410,7 +419,6 @@
           </dependency>
         </dependencies>
       </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
@@ -449,10 +457,31 @@
           </execution>
         </executions>
       </plugin>
-
-
     </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <!-- Empty report set as default -->
+            <reports>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>release-notes</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>github-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
 
   <profiles>
     <profile>
