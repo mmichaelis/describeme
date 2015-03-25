@@ -1,4 +1,4 @@
-# DescribeMe
+## Mission
 
 DescribeMe's mission is to provide an easy to use and extensible way to describe your Java objects
 in log statements and especially in test assertions.

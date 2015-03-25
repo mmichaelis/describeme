@@ -23,7 +23,8 @@
   </parent>
 
   <artifactId>describeme-library</artifactId>
-  <name>DescribeMe Library</name>
+  <name>Library</name>
+  <inceptionYear>2015</inceptionYear>
 
   <description><![CDATA[
 

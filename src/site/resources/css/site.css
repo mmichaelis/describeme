@@ -2,6 +2,19 @@
   color: #225E9B;
 }
 
+.navbar .brand {
+  color: #ddd;
+}
+.navbar .brand .color-highlight {
+  color: #fff;
+}
+.navbar .brand:hover {
+  color: #14ab8e;
+}
+.navbar .brand:hover .color-highlight {
+  color: #1dd2af;
+}
+
 body[class*="page-themes-bootswatch"] {
   background-image: none;
 }

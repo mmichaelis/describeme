@@ -25,7 +25,7 @@
 
   <artifactId>describeme-thirdparty-bom</artifactId>
   <packaging>pom</packaging>
-  <name>DescribeMe Thirdparty BOM</name>
+  <name>Thirdparty BOM</name>
 
   <description><![CDATA[
 

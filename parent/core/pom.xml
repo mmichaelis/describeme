@@ -24,7 +24,8 @@
   </parent>
 
   <artifactId>describeme-core</artifactId>
-  <name>DescribeMe Core</name>
+  <name>Core</name>
+  <inceptionYear>2015</inceptionYear>
 
   <description><![CDATA[
 
