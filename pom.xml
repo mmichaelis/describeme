@@ -137,6 +137,9 @@
             <keepBlankLines>true</keepBlankLines>
           </configuration>
         </plugin>
+        <!-- Will replace all $SINCE$ tags found with the current development version -->
+        <!-- -SNAPSHOT will be removed. Thus change your JavaDoc templates to include -->
+        <!-- $SINCE$ and on next build the replacement is done. -->
         <plugin>
           <groupId>com.google.code.maven-replacer-plugin</groupId>
           <artifactId>replacer</artifactId>
@@ -156,9 +159,11 @@
             </includes>
             <ignoreErrors>true</ignoreErrors>
             <regex>false</regex>
+            <delimiters>
+            </delimiters>
             <replacements>
               <replacement>
-                <token>$$SINCE$$</token>
+                <token>$SINCE$</token>
                 <value>${project.version}</value>
               </replacement>
               <replacement>
@@ -521,21 +526,6 @@
           </execution>
         </executions>
       </plugin>
-      <!--
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-javadoc-plugin</artifactId>
-              <executions>
-                <execution>
-                  <id>aggregate</id>
-                  <goals>
-                    <goal>aggregate</goal>
-                  </goals>
-                  <phase>site</phase>
-                </execution>
-              </executions>
-            </plugin>
-      -->
     </plugins>
   </build>
 
@@ -654,6 +644,11 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>${project.groupId}:*</exclude>
+          </excludes>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

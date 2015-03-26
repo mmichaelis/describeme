@@ -126,6 +126,9 @@
         <pmd>
           <tocTopMax>2</tocTopMax>
         </pmd>
+        <plugin-updates-report>
+          <tocTopMax>4</tocTopMax>
+        </plugin-updates-report>
         <dependency-updates-report>
           <tocTopMax>4</tocTopMax>
         </dependency-updates-report>
@@ -159,7 +162,7 @@
       <item name="License" href="license.html" />
     </menu>
     <menu name="Documentation" inherit="bottom">
-      <item name="Usage" href="usage/" />
+      <item name="Development" href="development.md" />
     </menu>
     <menu name="Contribute" inherit="bottom">
       <item name="Issues" href="https://github.com/mmichaelis/describeme/issues" />
