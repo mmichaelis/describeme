@@ -25,7 +25,7 @@ import static java.text.MessageFormat.format;
 import static java.util.Objects.requireNonNull;
 
 /**
- * @since $$SINCE:2015-03-18$$
+ * @since $1.0.0$
  */
 public abstract class AbstractDescriber implements InternalDescriber {
   @Override

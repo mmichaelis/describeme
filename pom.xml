@@ -14,7 +14,9 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.mmichaelis.describeme</groupId>
@@ -82,7 +84,8 @@
     <dependency.fail.onwarning>true</dependency.fail.onwarning>
     <checkstyle.config.location>google_checks.xml</checkstyle.config.location>
     <maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
-    <coveralls-maven-plugin.repoToken>rEeJT2SxinEhlpkh8ymkqHWrEJS7w1H7f</coveralls-maven-plugin.repoToken>
+    <coveralls-maven-plugin.repoToken>rEeJT2SxinEhlpkh8ymkqHWrEJS7w1H7f
+    </coveralls-maven-plugin.repoToken>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -132,6 +135,37 @@
             <sortDependencies>scope,groupId,artifactId</sortDependencies>
             <sortPlugins>groupId,artifactId</sortPlugins>
             <keepBlankLines>true</keepBlankLines>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.google.code.maven-replacer-plugin</groupId>
+          <artifactId>replacer</artifactId>
+          <version>1.5.3</version>
+          <executions>
+            <execution>
+              <phase>pre-site</phase>
+              <goals>
+                <goal>replace</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <basedir>${project.basedir}/src</basedir>
+            <includes>
+              <include>**/*.java</include>
+            </includes>
+            <ignoreErrors>true</ignoreErrors>
+            <regex>false</regex>
+            <replacements>
+              <replacement>
+                <token>$$SINCE$$</token>
+                <value>${project.version}</value>
+              </replacement>
+              <replacement>
+                <token>-SNAPSHOT</token>
+                <value/>
+              </replacement>
+            </replacements>
           </configuration>
         </plugin>
         <plugin>
@@ -206,10 +240,11 @@
               </goals>
               <configuration>
                 <rules>
-                  <DependencyConvergence />
+                  <DependencyConvergence/>
                   <requireNoRepositories>
                     <message>Best Practice is to never define repositories in pom.xml (use a
-                      repository manager instead)</message>
+                      repository manager instead)
+                    </message>
                     <allowedRepositories>
                       <allowedRepository>sonatype-nexus-snapshots</allowedRepository>
                     </allowedRepositories>
@@ -217,7 +252,7 @@
                   <requirePluginVersions>
                     <message>Best Practice is to always define plugin versions!</message>
                   </requirePluginVersions>
-                  <requireUpperBoundDeps />
+                  <requireUpperBoundDeps/>
                   <bannedDependencies>
                     <message><![CDATA[DecribeMe tries to avoid having any of the following dependencies:
 
@@ -348,6 +383,11 @@
           <version>${maven.surefire.plugin.version}</version>
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>${maven.surefire.plugin.version}</version>
+        </plugin>
+        <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>findbugs-maven-plugin</artifactId>
           <version>3.0.0</version>
@@ -380,7 +420,7 @@
           <version>2.10.2</version>
           <configuration>
             <bottom>
-              Copyright &#169; {inceptionYear}&#x2013;{currentYear}.
+              Copyright &#169; 2015&#x2013;{currentYear}.
               Licensed under the Apache License, Version 2.0. Visit
               &lt;a href="http://mmichaelis.github.io/describeme/">DescribeMe at GitHub&lt;/a>.
             </bottom>
@@ -389,6 +429,11 @@
             <linksource>true</linksource>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>javancss-maven-plugin</artifactId>
+          <version>2.1</version>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -396,6 +441,10 @@
         <!-- Make it available in IDE -->
         <groupId>com.google.code.sortpom</groupId>
         <artifactId>maven-sortpom-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>com.google.code.maven-replacer-plugin</groupId>
+        <artifactId>replacer</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -472,24 +521,140 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>aggregate</id>
-            <goals>
-              <goal>aggregate</goal>
-            </goals>
-            <phase>site</phase>
-          </execution>
-        </executions>
-      </plugin>
+      <!--
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>aggregate</id>
+                  <goals>
+                    <goal>aggregate</goal>
+                  </goals>
+                  <phase>site</phase>
+                </execution>
+              </executions>
+            </plugin>
+      -->
     </plugins>
   </build>
 
   <reporting>
     <plugins>
+      <!-- Maven Surefire Report Plugin, Test Status Report -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <!-- defines unit test reports in the modules -->
+            <id>unit-tests</id>
+            <reports>
+              <report>report</report>
+            </reports>
+            <configuration>
+              <alwaysGenerateSurefireReport>false</alwaysGenerateSurefireReport>
+            </configuration>
+          </reportSet>
+
+          <reportSet>
+            <!-- defines aggregate unit test report -->
+            <id>unit-tests-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>report</report>
+            </reports>
+            <configuration>
+              <aggregate>true</aggregate>
+            </configuration>
+          </reportSet>
+
+          <reportSet>
+            <!-- defines integration test reports in the modules -->
+            <id>integration-tests</id>
+            <reports>
+              <report>failsafe-report-only</report>
+            </reports>
+            <configuration>
+              <alwaysGenerateSurefireReport>false</alwaysGenerateSurefireReport>
+            </configuration>
+          </reportSet>
+
+          <reportSet>
+            <!-- defines aggregate integration test report -->
+            <id>integration-tests-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>failsafe-report-only</report>
+            </reports>
+            <configuration>
+              <aggregate>true</aggregate>
+            </configuration>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <!-- Checkstyle: Static Code Analysis -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <!-- defines pmd reports in the modules -->
+            <id>pmd-report</id>
+            <reports>
+              <report>pmd</report>
+            </reports>
+          </reportSet>
+
+          <reportSet>
+            <!-- defines pmd aggregate report -->
+            <id>pmd-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>pmd</report>
+            </reports>
+            <configuration>
+              <aggregate>true</aggregate>
+            </configuration>
+          </reportSet>
+
+          <reportSet>
+            <!-- defines cpd reports in the modules -->
+            <id>cpd-report</id>
+            <reports>
+              <report>cpd</report>
+            </reports>
+          </reportSet>
+
+          <reportSet>
+            <!-- defines cpd aggregate report -->
+            <id>cpd-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>cpd</report>
+            </reports>
+            <configuration>
+              <aggregate>true</aggregate>
+            </configuration>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changes-plugin</artifactId>
@@ -514,12 +679,19 @@
         <reportSets>
           <reportSet>
             <id>default</id>
+            <configuration>
+              <!-- Specific configuration for the given reports -->
+            </configuration>
             <reports>
               <report>javadoc</report>
+              <report>test-javadoc</report>
             </reports>
           </reportSet>
           <reportSet>
             <id>aggregate</id>
+            <configuration>
+              <!-- Specific configuration for the given reports -->
+            </configuration>
             <reports>
               <report>aggregate</report>
             </reports>
@@ -542,7 +714,8 @@
         </site>
       </distributionManagement>
       <properties>
-        <site.basedir>file://${java.io.tmpdir}/${project.groupId}/${project.artifactId}</site.basedir>
+        <site.basedir>file://${java.io.tmpdir}/${project.groupId}/${project.artifactId}
+        </site.basedir>
       </properties>
     </profile>
     <profile>
@@ -558,7 +731,8 @@
             <version>${maven.surefire.plugin.version}</version>
             <configuration>
               <!--suppress MavenModelInspection -->
-              <argLine>${argLine} -Duser.language=en -Duser.country=US -XX:-UseSplitVerifier</argLine>
+              <argLine>${argLine} -Duser.language=en -Duser.country=US -XX:-UseSplitVerifier
+              </argLine>
             </configuration>
           </plugin>
 
