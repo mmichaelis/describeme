@@ -3,8 +3,7 @@ language: java
 jdk:
   - oraclejdk8
 
-install: mvn clean verify site -Dlinkcheck.skip=true -Dmaven.javadoc.skip=true
-             -Dpmd.skip=true -Dfindbugs.skip=true
+install: mvn --batch-mode clean verify site
 
 after_success:
-  - mvn -Ptravis clean test org.jacoco:jacoco-maven-plugin:report org.eluder.coveralls:coveralls-maven-plugin:report
+  - mvn --batch-mode clean test org.jacoco:jacoco-maven-plugin:report org.eluder.coveralls:coveralls-maven-plugin:report

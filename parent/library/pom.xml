@@ -36,7 +36,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.github.mmichaelis.describeme</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>describeme-core</artifactId>
     </dependency>
     <dependency>
