@@ -14,7 +14,9 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.mmichaelis.describeme</groupId>
   <artifactId>describeme-build-tools</artifactId>
@@ -52,7 +54,6 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <local.site.deploy.url>file://${user.home}/target/describeme/site</local.site.deploy.url>
     <skipTests>true</skipTests>
   </properties>
   <build>
@@ -83,21 +84,4 @@
       </plugins>
     </pluginManagement>
   </build>
-  <profiles>
-    <profile>
-      <id>local-site</id>
-      <distributionManagement>
-        <!-- repository and snapshotRepository from parent POM -->
-        <!-- Local Deployment, will be overridden by GitHub Pages Deployment on Release -->
-        <site>
-          <id>local-site</id>
-          <name>Deployment as local artifacts</name>
-          <url>${site.basedir}</url>
-        </site>
-      </distributionManagement>
-      <properties>
-        <site.basedir>file://${java.io.tmpdir}/${project.groupId}/${project.artifactId}</site.basedir>
-      </properties>
-    </profile>
-  </profiles>
 </project>

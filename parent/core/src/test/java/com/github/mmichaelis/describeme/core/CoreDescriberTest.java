@@ -16,20 +16,22 @@
 
 package com.github.mmichaelis.describeme.core;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Formattable;
 import java.util.Formatter;
+import java.util.Iterator;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -37,9 +39,8 @@ import javax.annotation.Nullable;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-@Ignore
 @RunWith(Parameterized.class)
-public class DescribeTest {
+public class CoreDescriberTest {
 
   private static final Object SOME_OBJECT = new Object();
   private static final Consumer<String> SOME_CONSUMER = (Consumer<String>) s -> {
@@ -47,7 +48,7 @@ public class DescribeTest {
   private final Object toDescribe;
   private final String expectedDescription;
 
-  public DescribeTest(@Nullable Object toDescribe, @Nonnull String expectedDescription) {
+  public CoreDescriberTest(@Nullable Object toDescribe, @Nonnull String expectedDescription) {
     this.toDescribe = toDescribe;
     this.expectedDescription = expectedDescription;
   }
@@ -56,41 +57,44 @@ public class DescribeTest {
   @Parameters(name = "Test {index}: {0}, expecting toString: {1}")
   public static Collection<Object[]> data() {
     //noinspection RedundantCast
+    Iterator<? extends Serializable> someIterator = Arrays.asList(1, "Test").iterator();
+    Stream<? extends Serializable> someStream = Arrays.asList(1, "Test").stream();
+    ToStringInterface someLambda = () -> "Lorem Ipsum Dolor";
     return Arrays.asList(
         new Object[][]{
-            {null, "null"},
-            {true, "true"},
-            {false, "false"},
-            {(byte) 0b0010_0101, "37"},
-            {(short) 0b0010_0101, "37"},
-            {0b11010010_01101001_10010100_10010010, "-764,832,622"},
-            {12, "12"},
-            {12L, "12"},
-            {'c', "'c'"},
-            {"Lorem Ipsum", "\"Lorem Ipsum\""},
-            {new StringBuilder("Lorem Ipsum Dolor"), "\"Lorem Ipsum ...\""},
-            {new StringBuffer("Lorem Ipsum"), "\"Lorem Ipsum\""},
-            {1.23456789123456789f, "1.235"},
-            {1.23456789123456789d, "1.235"},
-            {1.234e2, "123.4"},
-            {SOME_OBJECT, "java.lang.Ob..."},
-            {new Object[]{}, "[]"},
-            {new Integer[]{1, 2}, "[1, 2]"},
+            {null, "null"}, // 0
+            {true, "true"}, // 1
+            {false, "false"}, // 2
+            {(byte) 0b0010_0101, "37"}, // 3
+            {(short) 0b0010_0101, "37"}, // 4
+            {0b11010010_01101001_10010100_10010010, "-764832622"}, // 5
+            {12, "12"}, // 6
+            {12L, "12"}, // 7
+            {'c', "c"}, // 8
+            {"Lorem Ipsum", "Lorem Ipsum"}, // 9
+            {new StringBuilder("Lorem Ipsum Dolor"), "Lorem Ipsum Dolor"}, // 10
+            {new StringBuffer("Lorem Ipsum"), "Lorem Ipsum"}, // 11
+            {1.23456789123456789f, "1.2345679"}, // 12
+            {1.23456789123456789d, "1.234567891234568"}, // 13
+            {1.234e2, "123.4"}, // 14
+            {SOME_OBJECT, String.valueOf(SOME_OBJECT)}, // 15
+            {new Object[]{}, "[]"}, // 16
+            {new Integer[]{1, 2}, "[1, 2]"}, // 17
             // Deep Test
-            {new Object[]{1, new Object[]{2, new Object[]{3, new Integer[]{4}}}}, "[1, [2, [3, [...]]]]"},
-            {new Object[]{1, new Object[]{2, new Object[]{3, "Test"}}}, "[1, [2, [3, \"Test\"]]]"},
-            {Collections.<Integer>emptyList(), "[]"},
-            {Arrays.asList(1, 2), "[1, 2]"},
-            {Arrays.asList(1, "Test"), "[1, \"Test\"]"},
-            {Arrays.asList(1, "Test").iterator(), "[1, \"Test\"]"},
-            {Arrays.asList(1, "Test").stream(), "[1, \"Test\"]"},
+            {new Object[]{1, new Object[]{2, new Object[]{3, new Integer[]{4}}}}, "[1, [2, [3, [4]]]]"}, // 18
+            {new Object[]{1, new Object[]{2, new Object[]{3, "Test"}}}, "[1, [2, [3, Test]]]"}, // 19
+            {Collections.<Integer>emptyList(), "[]"}, // 20
+            {Arrays.asList(1, 2), "[1, 2]"}, // 21
+            {Arrays.asList(1, "Test"), "[1, Test]"}, // 22
+            {someIterator, String.valueOf(someIterator)}, // 23
+            {someStream, String.valueOf(someStream)}, // 24
             // Can we do better for consumers?
-            {SOME_CONSUMER, "com.github.m..."},
+            {SOME_CONSUMER, String.valueOf(SOME_CONSUMER)}, // 25
             // Lambdas can format themselves being Formattable
-            {(ToStringInterface) () -> "Lorem Ipsum Dolor", "Lorem Ipsum ..."},
+            {someLambda, String.valueOf(someLambda)}, // 26
             {new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13},
-             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"},
-            {DescribeTest.class, "class com.gi..."},
+             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]"}, // 27
+            {CoreDescriberTest.class, String.valueOf(CoreDescriberTest.class)}, // 28
         }
     );
   }
