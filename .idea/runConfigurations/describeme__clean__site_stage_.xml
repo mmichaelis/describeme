@@ -28,7 +28,7 @@
           <option name="goals">
             <list>
               <option value="clean" />
-              <option value="verify" />
+              <option value="install" />
               <option value="site" />
               <option value="site:site" />
               <option value="site:stage" />

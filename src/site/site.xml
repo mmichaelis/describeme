@@ -162,7 +162,8 @@
       <item name="License" href="license.html" />
     </menu>
     <menu name="Documentation" inherit="bottom">
-      <item name="Development" href="development.md" />
+      <item name="Development" href="development.html" />
+      <item name="References" href="references.html" />
     </menu>
     <menu name="Contribute" inherit="bottom">
       <item name="Issues" href="https://github.com/mmichaelis/describeme/issues" />
