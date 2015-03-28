@@ -21,15 +21,17 @@ package com.github.mmichaelis.describeme.core;
  */
 public final class DescriberProperties {
 
+  public static final String P_DESCRIBE_MAX_DEPTH = "describe.max.depth";
+  public static final String P_DESCRIBE_MAX_COUNT = "describe.max.count";
+
   public static final int UNLIMITED = -1;
   @SuppressWarnings("AccessOfSystemProperties")
   public static final
-  int MAX_DEPTH = Integer.parseInt(System.getProperty("describe.max.depth", "-1"));
+  int MAX_DEPTH = Integer.parseInt(System.getProperty(P_DESCRIBE_MAX_DEPTH, "-1"));
   @SuppressWarnings("AccessOfSystemProperties")
   public static final
-  int MAX_COUNT = Integer.parseInt(System.getProperty("describe.max.count", "-1"));
+  int MAX_COUNT = Integer.parseInt(System.getProperty(P_DESCRIBE_MAX_COUNT, "-1"));
   public static final String ELLIPSIS = "...";
-  static final int ELLIPSIS_LENGTH = ELLIPSIS.length();
   public static final String RECURSION_PLACEHOLDER = "[...]";
 
   private DescriberProperties() {

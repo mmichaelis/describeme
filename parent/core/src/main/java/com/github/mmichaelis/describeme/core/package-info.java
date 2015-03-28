@@ -63,6 +63,6 @@
  *     </ul>
  *   </dd>
  * </dl>
- * @since $$SINCE:2015-03-22$$
+ * @since $SINCE$
  */
 package com.github.mmichaelis.describeme.core;
