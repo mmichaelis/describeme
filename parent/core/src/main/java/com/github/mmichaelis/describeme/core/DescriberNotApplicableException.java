@@ -17,30 +17,18 @@
 package com.github.mmichaelis.describeme.core;
 
 /**
- * @since $$SINCE:2015-03-18$$
+ * <p>
+ * Thrown when a Describer is forced to describe a value it cannot describe.
+ * </p>
+ *
+ * @since $SINCE$
  */
 public class DescriberNotApplicableException extends DescriberException {
 
   private static final long serialVersionUID = -5728781725752389748L;
 
-  public DescriberNotApplicableException() {
-  }
-
   public DescriberNotApplicableException(String message) {
     super(message);
   }
 
-  public DescriberNotApplicableException(String message, Throwable cause) {
-    super(message, cause);
-  }
-
-  public DescriberNotApplicableException(Throwable cause) {
-    super(cause);
-  }
-
-  protected DescriberNotApplicableException(String message, Throwable cause,
-                                            boolean enableSuppression,
-                                            boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
 }

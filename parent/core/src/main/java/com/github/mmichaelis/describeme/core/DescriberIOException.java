@@ -17,29 +17,18 @@
 package com.github.mmichaelis.describeme.core;
 
 /**
- * @since $$SINCE:2015-03-18$$
+ * <p>
+ * Wraps IOExceptions which might be raised while appending to appendables.
+ * </p>
+ *
+ * @since $SINCE$
  */
 public class DescriberIOException extends DescriberException {
 
   private static final long serialVersionUID = -2610615491164970753L;
 
-  public DescriberIOException() {
-  }
-
-  public DescriberIOException(String message) {
-    super(message);
-  }
-
   public DescriberIOException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  public DescriberIOException(Throwable cause) {
-    super(cause);
-  }
-
-  protected DescriberIOException(String message, Throwable cause, boolean enableSuppression,
-                                 boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
 }

@@ -17,7 +17,11 @@
 package com.github.mmichaelis.describeme.core;
 
 /**
- * @since $$SINCE:2015-03-18$$
+ * <p>
+ * General exception raised from Describers.
+ * </p>
+ *
+ * @since $SINCE$
  */
 public class DescriberException extends RuntimeException {
 
