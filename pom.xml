@@ -114,6 +114,11 @@
         <artifactId>describeme-thirdparty-test-bom</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.jetbrains</groupId>
+        <artifactId>annotations</artifactId>
+        <version>13.0</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -455,15 +460,15 @@
                 <goal>prepare-agent</goal>
               </goals>
             </execution>
-<!--
-            <execution>
-              <id>report</id>
-              <goals>
-                <goal>report</goal>
-              </goals>
-              <phase>prepare-package</phase>
-            </execution>
--->
+            <!--
+                        <execution>
+                          <id>report</id>
+                          <goals>
+                            <goal>report</goal>
+                          </goals>
+                          <phase>prepare-package</phase>
+                        </execution>
+            -->
           </executions>
         </plugin>
       </plugins>
