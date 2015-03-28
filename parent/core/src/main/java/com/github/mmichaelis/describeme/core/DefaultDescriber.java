@@ -16,8 +16,6 @@
 
 package com.github.mmichaelis.describeme.core;
 
-import java.util.function.BiConsumer;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -25,9 +23,9 @@ import static java.lang.String.valueOf;
 import static java.util.Arrays.deepToString;
 
 /**
- * @since $$SINCE:2015-03-16$$
+ * @since $SINCE$
  */
-public final class DefaultDescriber extends AbstractDescriber {
+public final class DefaultDescriber implements Describer {
 
   private static boolean isArray(@Nullable Object value) {
     return (value != null) && value.getClass().isArray();
@@ -39,10 +37,8 @@ public final class DefaultDescriber extends AbstractDescriber {
   }
 
   @Override
-  protected void internalDescribeTo(@Nonnull Appendable appendable,
-                                    @Nullable Object value,
-                                    int maxCount,
-                                    @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth,
+                         int maxCount) {
     // No truncation applied here. The idea is that for some values you do not want to have
     // truncation at all. And the ideal solution of this default implementation is that you
     // can just use the default rather than implementing your own Describer.

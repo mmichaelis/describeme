@@ -42,7 +42,7 @@ import static org.junit.Assert.assertThat;
 public class DescribeTest {
 
   private static final Object SOME_OBJECT = new Object();
-  private static final Object[] SOME_OBJECT_ARRAY = new Object[]{};
+  private static final Object[] SOME_OBJECT_ARRAY = {};
   private static final Consumer<String> SOME_CONSUMER = (Consumer<String>) s -> {
   };
   private final Object toDescribe;
@@ -59,50 +59,52 @@ public class DescribeTest {
     //noinspection RedundantCast
     return Arrays.asList(
         new Object[][]{
-            {null, "null"},
-            {true, "true"},
-            {false, "false"},
-            {(byte) 0b0010_0101, "37"},
-            {(short) 0b0010_0101, "37"},
-            {0b11010010_01101001_10010100_10010010, "-764,832,622"},
-            {12, "12"},
-            {12L, "12"},
-            {'c', "'c'"},
-            {"Lorem Ipsum", "\"Lorem Ipsum\""},
-            {new StringBuilder("Lorem Ipsum Dolor"), "\"Lorem Ipsum ...\""},
-            {new StringBuffer("Lorem Ipsum"), "\"Lorem Ipsum\""},
-            {1.23456789123456789f, "1.235"},
-            {1.23456789123456789d, "1.235"},
-            {1.234e2, "123.4"},
-            {SOME_OBJECT, String.valueOf(SOME_OBJECT)},
-            {SOME_OBJECT_ARRAY, "[]"},
-            {new Integer[]{1, 2}, "[1, 2]"},
+            {null, "null"}, // 0
+            {true, "true"}, // 1
+            {false, "false"}, // 2
+            {(byte) 0b0010_0101, "37"}, // 3
+            {(short) 0b0010_0101, "37"}, // 4
+            {0b11010010_01101001_10010100_10010010, "-764,832,622"}, // 5
+            {12, "12"}, // 6
+            {12L, "12"}, // 7
+            {'c', "'c'"}, // 8
+            {"Lorem Ipsum", "\"Lorem Ipsum\""}, // 9
+            {new StringBuilder("Lorem Ipsum Dolor"), "\"Lorem Ipsum Dolor\""}, // 10
+            {new StringBuffer("Lorem Ipsum"), "\"Lorem Ipsum\""}, // 11
+            {1.23456789123456789f, "1.235"}, // 12
+            {1.23456789123456789d, "1.235"}, // 13
+            {1.234e2, "123.4"}, // 14
+            {SOME_OBJECT, String.valueOf(SOME_OBJECT)}, // 15
+            {SOME_OBJECT_ARRAY, "[]"}, // 16
+            {new Integer[]{1, 2}, "[1, 2]"}, // 17
             // Deep Test
-            {new Object[]{1, new Object[]{2, new Object[]{3, new Integer[]{4}}}}, "[1, [2, [3, [...]]]]"},
+            {new Object[]{1, new Object[]{2, new Object[]{3, new Integer[]{4}}}},
+             "[1, [2, [3, [...]]]]"}, // 18
             {new Object[]{1, new Object[]{2, new Object[]{3, "Test"}}}, "[1, [2, [3, \"Test\"]]]"},
-            {Collections.<Integer>emptyList(), "[]"},
-            {Arrays.asList(1, 2), "[1, 2]"},
-            {Arrays.asList(1, "Test"), "[1, \"Test\"]"},
-            {Arrays.asList(1, "Test").iterator(), "[1, \"Test\"]"},
-            {Arrays.asList(1, "Test").stream(), "[1, \"Test\"]"},
+            // 19
+            {Collections.<Integer>emptyList(), "[]"}, // 20
+            {Arrays.asList(1, 2), "[1, 2]"}, // 21
+            {Arrays.asList(1, "Test"), "[1, \"Test\"]"}, // 22
+            {Arrays.asList(1, "Test").iterator(), "[1, \"Test\"]"}, // 23
+            {Arrays.asList(1, "Test").stream(), "[1, \"Test\"]"}, // 24
             // Can we do better for consumers?
-            {SOME_CONSUMER, String.valueOf(SOME_CONSUMER)},
+            {SOME_CONSUMER, String.valueOf(SOME_CONSUMER)}, // 25
             // Lambdas can format themselves being Formattable
-            {(ToStringInterface) () -> "Lorem Ipsum Dolor", "Lorem Ipsum ..."},
+            {(ToStringInterface) () -> "Lorem Ipsum Dolor", "Lorem Ipsum Dolor..."}, // 26
             {new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13},
-             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"},
+             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"}, // 27
             {Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),
-             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"},
+             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"}, // 28
             {Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).stream(),
-             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"},
+             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"}, // 29
             {Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).iterator(),
-             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"},
+             "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"}, // 30
             // No truncation to apply here. It is mainly meant for length of elements
             // rather than the length of Strings.
-            {SOME_OBJECT.getClass(), String.valueOf(SOME_OBJECT.getClass())},
-            {SOME_OBJECT_ARRAY.getClass(), String.valueOf(SOME_OBJECT_ARRAY.getClass())},
-            {SomeEnum.class, String.valueOf(SomeEnum.class)},
-            {SomeEnum.values(), "[A_ENUM, B_ENUM]"},
+            {SOME_OBJECT.getClass(), String.valueOf(SOME_OBJECT.getClass())}, // 31
+            {SOME_OBJECT_ARRAY.getClass(), String.valueOf(SOME_OBJECT_ARRAY.getClass())}, // 32
+            {SomeEnum.class, String.valueOf(SomeEnum.class)}, // 33
+            {SomeEnum.values(), "[A_ENUM, B_ENUM]"}, // 34
         }
     );
   }
@@ -126,7 +128,13 @@ public class DescribeTest {
     default void formatTo(Formatter formatter, int flags, int width, int precision) {
       String str = asString();
       //noinspection resource
-      formatter.format(MessageFormat.format("%1${0}.{1}s", width, precision), str);
+      String widthFormat = (width >= 0) ? Integer.toString(width) : "";
+      String precisionFormat = (precision >= 0) ? String.format(".%d", precision) : "";
+      String format = MessageFormat.format("%1${0}{1}s",
+                                           widthFormat,
+                                           precisionFormat);
+      //noinspection resource
+      formatter.format(format, str);
       if (str.length() > precision) {
         try {
           formatter.out().append("...");

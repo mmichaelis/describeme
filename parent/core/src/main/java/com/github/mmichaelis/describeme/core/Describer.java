@@ -35,17 +35,8 @@ import javax.annotation.Nullable;
  * <pre>{@code
  * resources/META-INF/services/com.github.mmichaelis.describeme.core.Describer
  * }</pre>
- * <dl>
- * <dt><strong>Implementations:</strong></dt>
- * <dd>
- * <p>
- * It is recommended to extend {@link AbstractDescriber} which automatically ensures recursion
- * into nested values like arrays, lists and such as well as it prevents the description to
- * be generated when the value is not describable.
- * </p>
- * </dd>
- * </dl>
  *
+ * @see RecursiveDescriber
  * @since $SINCE$
  */
 public interface Describer extends Predicate<Object> {

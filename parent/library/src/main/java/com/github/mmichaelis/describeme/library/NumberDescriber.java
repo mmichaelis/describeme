@@ -16,20 +16,19 @@
 
 package com.github.mmichaelis.describeme.library;
 
-import com.github.mmichaelis.describeme.core.AbstractDescriber;
 import com.github.mmichaelis.describeme.core.AppendableUtil;
+import com.github.mmichaelis.describeme.core.Describer;
 
 import java.text.NumberFormat;
 import java.util.Locale;
-import java.util.function.BiConsumer;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * @since $$SINCE:2015-03-16$$
+ * @since $SINCE$
  */
-public class NumberDescriber extends AbstractDescriber {
+public class NumberDescriber implements Describer {
 
   private static final NumberFormat FORMAT = NumberFormat.getNumberInstance(Locale.ROOT);
 
@@ -39,9 +38,10 @@ public class NumberDescriber extends AbstractDescriber {
   }
 
   @Override
-  protected void internalDescribeTo(@Nonnull Appendable appendable, @Nullable Object value,
-                                    int maxCount,
-                                    @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+  public void describeTo(@Nonnull Appendable appendable,
+                         @Nullable Object value,
+                         int maxDepth,
+                         int maxCount) {
     AppendableUtil.silentAppend(appendable, FORMAT.format(value));
   }
 

@@ -30,7 +30,7 @@ import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
 /**
  * @since $$SINCE:2015-03-20$$
  */
-public abstract class AbstractStreamDescriber extends AbstractDescriber {
+public abstract class AbstractStreamDescriber implements RecursiveDescriber {
 
   @Nonnull
   private static Consumer<Object> ellipsisConsumer(@Nonnull Appendable appendable,
@@ -40,9 +40,9 @@ public abstract class AbstractStreamDescriber extends AbstractDescriber {
   }
 
   @Override
-  protected final void internalDescribeTo(@Nonnull Appendable appendable, @Nullable Object value,
-                                          int maxCount,
-                                          @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+  public final void recursiveDescribeTo(@Nonnull Appendable appendable, @Nullable Object value,
+                                        int maxCount,
+                                        @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
     assert value != null : "value must not be null. Did you call test() before?";
     Stream<?> stream = valueAsStream(value);
     if (maxCount > DescriberProperties.UNLIMITED) {

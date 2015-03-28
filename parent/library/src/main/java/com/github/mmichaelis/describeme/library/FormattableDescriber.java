@@ -16,20 +16,19 @@
 
 package com.github.mmichaelis.describeme.library;
 
-import com.github.mmichaelis.describeme.core.AbstractDescriber;
+import com.github.mmichaelis.describeme.core.Describer;
 
 import java.util.Formattable;
 import java.util.Formatter;
 import java.util.Locale;
-import java.util.function.BiConsumer;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * @since $$SINCE:2015-03-16$$
+ * @since $SINCE$
  */
-public class FormattableDescriber extends AbstractDescriber {
+public class FormattableDescriber implements Describer {
 
   @Override
   public boolean test(@Nullable Object value) {
@@ -37,10 +36,8 @@ public class FormattableDescriber extends AbstractDescriber {
   }
 
   @Override
-  protected void internalDescribeTo(@Nonnull Appendable appendable,
-                                    @Nullable Object value,
-                                    int maxCount,
-                                    @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth,
+                         int maxCount) {
     assert value != null : "Cannot handle null values. Did you call test() before?";
     Formattable formattable = (Formattable) value;
     Formatter formatter = new Formatter(appendable, Locale.ROOT);

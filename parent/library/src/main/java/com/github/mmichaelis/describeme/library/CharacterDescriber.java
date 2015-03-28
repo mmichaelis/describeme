@@ -16,18 +16,16 @@
 
 package com.github.mmichaelis.describeme.library;
 
-import com.github.mmichaelis.describeme.core.AbstractDescriber;
 import com.github.mmichaelis.describeme.core.AppendableUtil;
-
-import java.util.function.BiConsumer;
+import com.github.mmichaelis.describeme.core.Describer;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * @since $$SINCE:2015-03-16$$
+ * @since $SINCE$
  */
-public class CharacterDescriber extends AbstractDescriber {
+public class CharacterDescriber implements Describer {
 
   @Override
   public boolean test(@Nullable Object value) {
@@ -35,10 +33,8 @@ public class CharacterDescriber extends AbstractDescriber {
   }
 
   @Override
-  protected void internalDescribeTo(@Nonnull Appendable appendable,
-                                    @Nullable Object value,
-                                    int maxCount,
-                                    @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth,
+                         int maxCount) {
     AppendableUtil.silentAppend(appendable, "'", value, "'");
   }
 

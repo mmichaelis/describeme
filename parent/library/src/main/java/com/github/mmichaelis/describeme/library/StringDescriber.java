@@ -16,11 +16,9 @@
 
 package com.github.mmichaelis.describeme.library;
 
-import com.github.mmichaelis.describeme.core.AbstractDescriber;
 import com.github.mmichaelis.describeme.core.AppendableUtil;
+import com.github.mmichaelis.describeme.core.Describer;
 import com.github.mmichaelis.describeme.core.DescriberProperties;
-
-import java.util.function.BiConsumer;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -28,9 +26,9 @@ import javax.annotation.Nullable;
 import static com.github.mmichaelis.describeme.core.DescriberProperties.ELLIPSIS;
 
 /**
- * @since $$SINCE:2015-03-16$$
+ * @since $SINCE$
  */
-public class StringDescriber extends AbstractDescriber {
+public class StringDescriber implements Describer {
 
   @Override
   public boolean test(@Nullable Object value) {
@@ -38,9 +36,10 @@ public class StringDescriber extends AbstractDescriber {
   }
 
   @Override
-  protected void internalDescribeTo(@Nonnull Appendable appendable, @Nullable Object value,
-                                    int maxCount,
-                                    @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+  public void describeTo(@Nonnull Appendable appendable,
+                         @Nullable Object value,
+                         int maxDepth,
+                         int maxCount) {
     assert value != null : "value must not be null. Did you call test() before?";
     CharSequence charSequence = (CharSequence) value;
     int stringLength = charSequence.length();

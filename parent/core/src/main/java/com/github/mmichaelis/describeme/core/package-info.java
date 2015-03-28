@@ -34,35 +34,32 @@
  * file.
  * </p>
  * <dl>
- *   <dt><strong>Extending:</strong></dt>
- *   <dd>
- *     <p>
- *       To add your own describers for your own objects or to override the default behavior
- *       you will have to:
- *     </p>
- *     <ul>
- *       <li>
- *         <p>
- *           implement {@link com.github.mmichaelis.describeme.core.Describer};
- *         </p>
- *         <p>
- *           It is recommended to actually extend
- *           {@link com.github.mmichaelis.describeme.core.AbstractDescriber} which provides some
- *           convenience like automatically dealing with {@code null} values.
- *         </p>
- *       </li>
- *       <li>
- *         <p>
- *           create the service description listing your own Describers with high priority
- *           describers first; the service description file should be located at:
- *         </p>
- *         <pre>{@code
+ * <dt><strong>Extending:</strong></dt>
+ * <dd>
+ * <p>
+ * To add your own describers for your own objects or to override the default behavior
+ * you will have to:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * implement either {@link com.github.mmichaelis.describeme.core.Describer} or
+ * {@link com.github.mmichaelis.describeme.core.RecursiveDescriber}
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * create the service description listing your own Describers with high priority
+ * describers first; the service description file should be located at:
+ * </p>
+ * <pre>{@code
  * resources/META-INF/services/com.github.mmichaelis.describeme.core.Describer
  *         }</pre>
- *       </li>
- *     </ul>
- *   </dd>
+ * </li>
+ * </ul>
+ * </dd>
  * </dl>
+ *
  * @since $SINCE$
  */
 package com.github.mmichaelis.describeme.core;

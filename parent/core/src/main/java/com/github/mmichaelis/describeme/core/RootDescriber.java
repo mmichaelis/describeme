@@ -30,14 +30,14 @@ import static java.util.stream.Collectors.joining;
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**
- * @since $$SINCE:2015-03-18$$
+ * @since $SINCE$
  */
-final class RootDescriber extends AbstractDescriber {
+final class RootDescriber implements RecursiveDescriber {
 
   private static final Logger LOG = getLogger(RootDescriber.class);
 
   @SuppressWarnings("StaticVariableOfConcreteClass")
-  private static final InternalDescriber INSTANCE = new RootDescriber();
+  private static final RecursiveDescriber INSTANCE = new RootDescriber();
 
   private static final ServiceLoader<Describer> DESCRIBER_SERVICE_LOADER;
   private static final Describer FALLBACK_DESCRIBER = new DefaultDescriber();
@@ -51,7 +51,7 @@ final class RootDescriber extends AbstractDescriber {
   }
 
   @Nonnull
-  public static InternalDescriber rootDescriber() {
+  public static RecursiveDescriber rootDescriber() {
     return INSTANCE;
   }
 
@@ -76,11 +76,16 @@ final class RootDescriber extends AbstractDescriber {
   }
 
   @Override
-  protected void internalDescribeTo(@Nonnull Appendable appendable, @Nullable Object value,
-                                    int maxCount,
-                                    @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
-    ((InternalDescriber) describerFor(value))
-        .describeTo(appendable, value, maxCount, recursiveConsumer);
+  public void recursiveDescribeTo(@Nonnull Appendable appendable, @Nullable Object value,
+                                  int maxCount,
+                                  @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+    Describer describer = describerFor(value);
+    if (describer instanceof RecursiveDescriber) {
+      RecursiveDescriber recursiveDescriber = (RecursiveDescriber) describer;
+      recursiveDescriber.describeTo(appendable, value, maxCount, recursiveConsumer);
+    } else {
+      describer.describeTo(appendable, value, maxCount);
+    }
   }
 
 }
