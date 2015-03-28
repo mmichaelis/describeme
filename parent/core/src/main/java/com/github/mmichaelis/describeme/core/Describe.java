@@ -16,10 +16,10 @@
 
 package com.github.mmichaelis.describeme.core;
 
-import java.util.function.BiConsumer;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
 import static com.github.mmichaelis.describeme.core.RootDescriber.rootDescriber;
 
@@ -31,24 +31,24 @@ public final class Describe {
   private Describe() {
   }
 
-  public static void describeTo(@Nonnull Appendable appendable, @Nullable Object value) {
+  public static void describeTo(@NotNull Appendable appendable, @Nullable Object value) {
     rootDescriber().describeTo(appendable, value);
   }
 
-  public static void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth) {
+  public static void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxDepth) {
     rootDescriber().describeTo(appendable, value, maxDepth);
   }
 
-  public static void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth, int maxCount) {
+  public static void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxDepth, int maxCount) {
     rootDescriber().describeTo(appendable, value, maxCount, maxDepth);
   }
 
-  static void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount, @Nonnull
+  static void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxCount, @NotNull
                          BiConsumer<Object, Object> recursiveDescriptionConsumer) {
     rootDescriber().describeTo(appendable, value, maxCount, recursiveDescriptionConsumer);
   }
 
-  @Nonnull
+  @NotNull
   public static String describe(@Nullable Object value, int maxDepth, int maxCount) {
     StringBuilder sb = new StringBuilder();
     describeTo(sb, value, maxDepth, maxCount);

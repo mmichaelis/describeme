@@ -20,8 +20,8 @@ import com.github.mmichaelis.describeme.core.AppendableUtil;
 import com.github.mmichaelis.describeme.core.Describer;
 import com.github.mmichaelis.describeme.core.DescriberProperties;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static com.github.mmichaelis.describeme.core.DescriberProperties.ELLIPSIS;
 
@@ -36,7 +36,7 @@ public class StringDescriber implements Describer {
   }
 
   @Override
-  public void describeTo(@Nonnull Appendable appendable,
+  public void describeTo(@NotNull Appendable appendable,
                          @Nullable Object value,
                          int maxCount) {
     assert value != null : "value must not be null. Did you call test() before?";

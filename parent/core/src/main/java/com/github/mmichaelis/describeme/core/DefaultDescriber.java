@@ -16,8 +16,8 @@
 
 package com.github.mmichaelis.describeme.core;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static java.lang.String.valueOf;
 import static java.util.Arrays.deepToString;
@@ -37,7 +37,7 @@ public final class DefaultDescriber implements Describer {
   }
 
   @Override
-  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount) {
+  public void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxCount) {
     // No truncation applied here. The idea is that for some values you do not want to have
     // truncation at all. And the ideal solution of this default implementation is that you
     // can just use the default rather than implementing your own Describer.

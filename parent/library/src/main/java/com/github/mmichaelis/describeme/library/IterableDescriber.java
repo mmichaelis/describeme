@@ -18,12 +18,12 @@ package com.github.mmichaelis.describeme.library;
 
 import com.github.mmichaelis.describeme.core.AbstractStreamDescriber;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Spliterator;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * @since $$SINCE:2015-03-16$$
@@ -35,9 +35,9 @@ public class IterableDescriber extends AbstractStreamDescriber {
     return value instanceof Iterable<?>;
   }
 
-  @Nonnull
+  @NotNull
   @Override
-  protected Stream<?> valueAsStream(@Nonnull Object value) {
+  protected Stream<?> valueAsStream(@NotNull Object value) {
     Iterable<?> iterable = (Iterable<?>) value;
     Spliterator<?> spliterator = iterable.spliterator();
     return StreamSupport.stream(spliterator, false);

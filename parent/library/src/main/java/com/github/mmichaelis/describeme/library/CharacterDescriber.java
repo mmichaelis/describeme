@@ -19,8 +19,8 @@ package com.github.mmichaelis.describeme.library;
 import com.github.mmichaelis.describeme.core.AppendableUtil;
 import com.github.mmichaelis.describeme.core.Describer;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @since $SINCE$
@@ -33,7 +33,7 @@ public class CharacterDescriber implements Describer {
   }
 
   @Override
-  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount) {
+  public void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxCount) {
     AppendableUtil.silentAppend(appendable, "'", value, "'");
   }
 

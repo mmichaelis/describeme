@@ -16,6 +16,8 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -33,9 +35,6 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -48,12 +47,12 @@ public class CoreDescriberTest {
   private final Object toDescribe;
   private final String expectedDescription;
 
-  public CoreDescriberTest(@Nullable Object toDescribe, @Nonnull String expectedDescription) {
+  public CoreDescriberTest(@Nullable Object toDescribe, @NotNull String expectedDescription) {
     this.toDescribe = toDescribe;
     this.expectedDescription = expectedDescription;
   }
 
-  @Nonnull
+  @NotNull
   @Parameters(name = "Test {index}: {0}, expecting toString: {1}")
   public static Collection<Object[]> data() {
     //noinspection RedundantCast

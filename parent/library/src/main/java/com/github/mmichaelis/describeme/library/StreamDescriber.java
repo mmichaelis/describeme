@@ -18,10 +18,10 @@ package com.github.mmichaelis.describeme.library;
 
 import com.github.mmichaelis.describeme.core.AbstractStreamDescriber;
 
-import java.util.stream.Stream;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
 /**
  * @since $$SINCE:2015-03-16$$
@@ -33,9 +33,9 @@ public class StreamDescriber extends AbstractStreamDescriber {
     return value instanceof Stream<?>;
   }
 
-  @Nonnull
+  @NotNull
   @Override
-  protected Stream<?> valueAsStream(@Nonnull Object value) {
+  protected Stream<?> valueAsStream(@NotNull Object value) {
     return (Stream<?>) value;
   }
 }

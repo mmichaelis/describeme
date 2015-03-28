@@ -18,11 +18,11 @@ package com.github.mmichaelis.describeme.library;
 
 import com.github.mmichaelis.describeme.core.AbstractStreamDescriber;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Arrays;
 import java.util.stream.Stream;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * @since $$SINCE:2015-03-16$$
@@ -34,9 +34,9 @@ public class ArrayDescriber extends AbstractStreamDescriber {
     return (value != null) && value.getClass().isArray();
   }
 
-  @Nonnull
+  @NotNull
   @Override
-  protected Stream<?> valueAsStream(@Nonnull Object value) {
+  protected Stream<?> valueAsStream(@NotNull Object value) {
     Object[] array = (Object[]) value;
     return Arrays.stream(array);
   }

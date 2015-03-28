@@ -18,12 +18,12 @@ package com.github.mmichaelis.describeme.library;
 
 import com.github.mmichaelis.describeme.core.Describer;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Formattable;
 import java.util.Formatter;
 import java.util.Locale;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * @since $SINCE$
@@ -36,7 +36,7 @@ public class FormattableDescriber implements Describer {
   }
 
   @Override
-  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount) {
+  public void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxCount) {
     assert value != null : "Cannot handle null values. Did you call test() before?";
     Formattable formattable = (Formattable) value;
     Formatter formatter = new Formatter(appendable, Locale.ROOT);

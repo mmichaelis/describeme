@@ -18,14 +18,14 @@ package com.github.mmichaelis.describeme.library;
 
 import com.github.mmichaelis.describeme.core.AbstractStreamDescriber;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * @since $$SINCE:2015-03-16$$
@@ -37,9 +37,9 @@ public class IteratorDescriber extends AbstractStreamDescriber {
     return value instanceof Iterator<?>;
   }
 
-  @Nonnull
+  @NotNull
   @Override
-  protected Stream<?> valueAsStream(@Nonnull Object value) {
+  protected Stream<?> valueAsStream(@NotNull Object value) {
     Iterator<?> iterator = (Iterator<?>) value;
     Spliterator<Object>
         spliterator =

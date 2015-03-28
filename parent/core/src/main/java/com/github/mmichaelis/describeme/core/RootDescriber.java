@@ -16,15 +16,14 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.function.BiConsumer;
 import java.util.stream.StreamSupport;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import static java.util.stream.Collectors.joining;
 import static org.slf4j.LoggerFactory.getLogger;
@@ -50,12 +49,12 @@ final class RootDescriber implements RecursiveDescriber {
                  .collect(joining(",\n\t")));
   }
 
-  @Nonnull
+  @NotNull
   public static RecursiveDescriber rootDescriber() {
     return INSTANCE;
   }
 
-  @Nonnull
+  @NotNull
   private static Optional<Describer> getDescriberFor(@Nullable Object object) {
     return StreamSupport
         .stream(DESCRIBER_SERVICE_LOADER.spliterator(), false)
@@ -63,7 +62,7 @@ final class RootDescriber implements RecursiveDescriber {
         .findFirst();
   }
 
-  @Nonnull
+  @NotNull
   private static Describer describerFor(@Nullable Object object) {
     Describer describer = getDescriberFor(object).orElse(FALLBACK_DESCRIBER);
     LOG.debug("Provided describer for {}: {}", object, describer);
@@ -76,9 +75,9 @@ final class RootDescriber implements RecursiveDescriber {
   }
 
   @Override
-  public void recursiveDescribeTo(@Nonnull Appendable appendable, @Nullable Object value,
+  public void recursiveDescribeTo(@NotNull Appendable appendable, @Nullable Object value,
                                   int maxCount,
-                                  @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+                                  @NotNull BiConsumer<Object, Object> recursiveConsumer) {
     Describer describer = describerFor(value);
     if (describer instanceof RecursiveDescriber) {
       RecursiveDescriber recursiveDescriber = (RecursiveDescriber) describer;

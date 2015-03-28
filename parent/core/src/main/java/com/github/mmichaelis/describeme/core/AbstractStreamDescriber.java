@@ -18,12 +18,12 @@ package com.github.mmichaelis.describeme.core;
 
 import com.google.common.base.MoreObjects;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
 
@@ -32,17 +32,17 @@ import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
  */
 public abstract class AbstractStreamDescriber implements RecursiveDescriber {
 
-  @Nonnull
-  private static Consumer<Object> ellipsisConsumer(@Nonnull Appendable appendable,
+  @NotNull
+  private static Consumer<Object> ellipsisConsumer(@NotNull Appendable appendable,
                                                    @Nullable Object parentObject, int maxCount,
-                                                   @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+                                                   @NotNull BiConsumer<Object, Object> recursiveConsumer) {
     return new EllipsisConsumer(appendable, parentObject, maxCount, recursiveConsumer);
   }
 
   @Override
-  public final void recursiveDescribeTo(@Nonnull Appendable appendable, @Nullable Object value,
+  public final void recursiveDescribeTo(@NotNull Appendable appendable, @Nullable Object value,
                                         int maxCount,
-                                        @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+                                        @NotNull BiConsumer<Object, Object> recursiveConsumer) {
     assert value != null : "value must not be null. Did you call test() before?";
     Stream<?> stream = valueAsStream(value);
     if (maxCount > DescriberProperties.UNLIMITED) {
@@ -53,22 +53,22 @@ public abstract class AbstractStreamDescriber implements RecursiveDescriber {
     silentAppend(appendable, "]");
   }
 
-  @Nonnull
-  protected abstract Stream<?> valueAsStream(@Nonnull Object value);
+  @NotNull
+  protected abstract Stream<?> valueAsStream(@NotNull Object value);
 
   private static class EllipsisConsumer implements Consumer<Object> {
 
-    @Nonnull
+    @NotNull
     private final Appendable appendable;
     @Nullable
     private final Object parentObject;
     private final int maxCount;
-    @Nonnull
+    @NotNull
     private final BiConsumer<Object, Object> recursiveConsumer;
     private int count;
 
-    EllipsisConsumer(@Nonnull Appendable appendable, @Nullable Object parentObject, int maxCount,
-                     @Nonnull BiConsumer<Object, Object> recursiveConsumer) {
+    EllipsisConsumer(@NotNull Appendable appendable, @Nullable Object parentObject, int maxCount,
+                     @NotNull BiConsumer<Object, Object> recursiveConsumer) {
       this.appendable = appendable;
       this.parentObject = parentObject;
       this.maxCount = maxCount;

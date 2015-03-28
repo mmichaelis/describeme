@@ -17,11 +17,10 @@
 package com.github.mmichaelis.describeme.core;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * <p>
@@ -75,7 +74,7 @@ public interface Describer extends Predicate<Object> {
    * @since $SINCE$
    */
   @Contract("null, _ -> fail")
-  default void describeTo(@Nonnull Appendable appendable, @Nullable Object value) {
+  default void describeTo(@NotNull Appendable appendable, @Nullable Object value) {
     describeTo(appendable, value, DescriberProperties.MAX_COUNT);
   }
 
@@ -100,6 +99,6 @@ public interface Describer extends Predicate<Object> {
    * @since $SINCE$
    */
   @Contract("null, _, _ -> fail")
-  void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount);
+  void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxCount);
 
 }

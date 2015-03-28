@@ -19,11 +19,11 @@ package com.github.mmichaelis.describeme.library;
 import com.github.mmichaelis.describeme.core.AppendableUtil;
 import com.github.mmichaelis.describeme.core.Describer;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.text.NumberFormat;
 import java.util.Locale;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * @since $SINCE$
@@ -38,7 +38,7 @@ public class NumberDescriber implements Describer {
   }
 
   @Override
-  public void describeTo(@Nonnull Appendable appendable,
+  public void describeTo(@NotNull Appendable appendable,
                          @Nullable Object value,
                          int maxCount) {
     AppendableUtil.silentAppend(appendable, FORMAT.format(value));

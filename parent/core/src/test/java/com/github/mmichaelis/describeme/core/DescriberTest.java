@@ -16,6 +16,8 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -23,9 +25,6 @@ import org.junit.rules.ErrorCollector;
 import java.io.IOException;
 import java.util.function.Function;
 import java.util.function.Predicate;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.theInstance;
@@ -84,7 +83,7 @@ public class DescriberTest {
     }
 
     @Override
-    public void describeTo(@Nonnull Appendable appendable,
+    public void describeTo(@NotNull Appendable appendable,
                            @Nullable Object value,
                            int maxCount) {
       lastAppendable = appendable;

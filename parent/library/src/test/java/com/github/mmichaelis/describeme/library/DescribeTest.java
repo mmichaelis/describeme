@@ -18,6 +18,8 @@ package com.github.mmichaelis.describeme.library;
 
 import com.github.mmichaelis.describeme.core.Describe;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -32,9 +34,6 @@ import java.util.Formattable;
 import java.util.Formatter;
 import java.util.function.Consumer;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -48,12 +47,12 @@ public class DescribeTest {
   private final Object toDescribe;
   private final String expectedDescription;
 
-  public DescribeTest(@Nullable Object toDescribe, @Nonnull String expectedDescription) {
+  public DescribeTest(@Nullable Object toDescribe, @NotNull String expectedDescription) {
     this.toDescribe = toDescribe;
     this.expectedDescription = expectedDescription;
   }
 
-  @Nonnull
+  @NotNull
   @Parameters(name = "Test {index}: {0}, expecting toString: {1}")
   public static Collection<Object[]> data() {
     //noinspection RedundantCast
@@ -79,7 +78,7 @@ public class DescribeTest {
             {new Integer[]{1, 2}, "[1, 2]"}, // 17
             // Deep Test
             {new Object[]{1, new Object[]{2, new Object[]{3, new Integer[]{4}}}},
-             "[1, [2, [3, [...]]]]"}, // 18
+             "[1, [2, [3, [[...]]]]]"}, // 18
             {new Object[]{1, new Object[]{2, new Object[]{3, "Test"}}}, "[1, [2, [3, \"Test\"]]]"},
             // 19
             {Collections.<Integer>emptyList(), "[]"}, // 20

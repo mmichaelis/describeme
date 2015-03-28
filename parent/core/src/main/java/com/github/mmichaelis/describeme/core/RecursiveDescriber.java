@@ -18,11 +18,9 @@ package com.github.mmichaelis.describeme.core;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.BiConsumer;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import static java.text.MessageFormat.format;
 import static java.util.Objects.requireNonNull;
@@ -56,7 +54,7 @@ public interface RecursiveDescriber extends Describer {
    */
   @Override
   @Contract("null, _, _ -> fail")
-  default void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount) {
+  default void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxCount) {
     describeTo(appendable, value, maxCount, DescriberProperties.MAX_DEPTH);
   }
 
@@ -86,7 +84,7 @@ public interface RecursiveDescriber extends Describer {
    * @since $SINCE$
    */
   @Contract("null, _, _, _ -> fail")
-  default void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount,
+  default void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxCount,
                           int maxDepth) {
     describeTo(appendable, value, maxCount,
                getRecursiveMeAndOtherConsumer(appendable, maxDepth, maxCount));
@@ -111,10 +109,10 @@ public interface RecursiveDescriber extends Describer {
    * @since $SINCE$
    */
   @Contract("null, _, _, _ -> fail; _, _, _, null -> fail")
-  default void describeTo(@Nonnull Appendable appendable,
+  default void describeTo(@NotNull Appendable appendable,
                           @Nullable Object value,
                           int maxCount,
-                          @Nonnull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
+                          @NotNull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
     requireNonNull(appendable, "appendable must be given.");
     if (!test(value)) {
       throw new DescriberNotApplicableException(
@@ -138,15 +136,15 @@ public interface RecursiveDescriber extends Describer {
    */
   @NotNull
   default BiConsumer<Object, Object> getRecursiveMeAndOtherConsumer(
-      @Nonnull Appendable appendable,
+      @NotNull Appendable appendable,
       int maxDepth,
       int maxCount) {
     return new RecursiveDescriptionConsumer(appendable, maxDepth, maxCount);
   }
 
 
-  void recursiveDescribeTo(@Nonnull Appendable appendable,
+  void recursiveDescribeTo(@NotNull Appendable appendable,
                            @Nullable Object value,
                            int maxCount,
-                           @Nonnull BiConsumer<Object, Object> recursiveConsumer);
+                           @NotNull BiConsumer<Object, Object> recursiveConsumer);
 }

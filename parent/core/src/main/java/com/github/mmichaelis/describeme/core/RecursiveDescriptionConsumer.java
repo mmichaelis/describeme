@@ -18,11 +18,11 @@ package com.github.mmichaelis.describeme.core;
 
 import com.google.common.base.MoreObjects;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.function.BiConsumer;
-
-import javax.annotation.Nonnull;
 
 import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
 
@@ -32,14 +32,14 @@ import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
 class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
 
   private static final int DEJA_VU_INITIAL_CAPACITY = 16;
-  @Nonnull
+  @NotNull
   private final Appendable appendable;
   private final int maxDepth;
   private final int maxCount;
   private final Collection<Object> dejaVu = new HashSet<>(DEJA_VU_INITIAL_CAPACITY);
   private int currentDepth;
 
-  RecursiveDescriptionConsumer(@Nonnull Appendable appendable, int maxDepth, int maxCount) {
+  RecursiveDescriptionConsumer(@NotNull Appendable appendable, int maxDepth, int maxCount) {
     this.appendable = appendable;
     this.maxDepth = maxDepth;
     this.maxCount = maxCount;
@@ -49,14 +49,14 @@ class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
   @Override
   public void accept(Object me, Object other) {
     if (isMaxDepthReached()) {
-      silentAppend(appendable, DescriberProperties.ELLIPSIS);
+      silentAppend(appendable, DescriberProperties.RECURSION_PLACEHOLDER);
       return;
     }
     remember(me);
     down();
     try {
       if (dejaVu.contains(other)) {
-        silentAppend(appendable, DescriberProperties.ELLIPSIS);
+        silentAppend(appendable, DescriberProperties.RECURSION_PLACEHOLDER);
       } else {
         Describe.describeTo(appendable, other, maxCount, this);
       }

@@ -16,9 +16,9 @@
 
 package com.github.mmichaelis.describeme.core;
 
-import java.io.IOException;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
+import java.io.IOException;
 
 import static java.text.MessageFormat.format;
 
@@ -30,7 +30,7 @@ public final class AppendableUtil {
   private AppendableUtil() {
   }
 
-  public static void silentAppend(@Nonnull Appendable appendable, Object... values) {
+  public static void silentAppend(@NotNull Appendable appendable, Object... values) {
     try {
       for (Object value : values) {
         appendable.append(String.valueOf(value));
