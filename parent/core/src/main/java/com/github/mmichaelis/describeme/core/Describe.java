@@ -40,7 +40,7 @@ public final class Describe {
   }
 
   public static void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth, int maxCount) {
-    rootDescriber().describeTo(appendable, value, maxDepth, maxCount);
+    rootDescriber().describeTo(appendable, value, maxCount, maxDepth);
   }
 
   static void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount, @Nonnull

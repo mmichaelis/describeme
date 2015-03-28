@@ -33,8 +33,7 @@ public class CharacterDescriber implements Describer {
   }
 
   @Override
-  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth,
-                         int maxCount) {
+  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount) {
     AppendableUtil.silentAppend(appendable, "'", value, "'");
   }
 

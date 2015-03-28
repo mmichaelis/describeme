@@ -40,7 +40,6 @@ public class NumberDescriber implements Describer {
   @Override
   public void describeTo(@Nonnull Appendable appendable,
                          @Nullable Object value,
-                         int maxDepth,
                          int maxCount) {
     AppendableUtil.silentAppend(appendable, FORMAT.format(value));
   }

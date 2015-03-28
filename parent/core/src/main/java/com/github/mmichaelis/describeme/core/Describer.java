@@ -35,6 +35,9 @@ import javax.annotation.Nullable;
  * <pre>{@code
  * resources/META-INF/services/com.github.mmichaelis.describeme.core.Describer
  * }</pre>
+ * <p>
+ * For describers supporting recursion into their elements implement {@link RecursiveDescriber}.
+ * </p>
  *
  * @see RecursiveDescriber
  * @since $SINCE$
@@ -58,17 +61,9 @@ public interface Describer extends Predicate<Object> {
    * <p>
    * Add the description of the object to the given appendable.
    * </p>
-   * <dl>
-   * <dt><strong>Defaults:</strong></dt>
-   * <dd>
-   * <dl>
-   * <dt>{@code maxDepth}:</dt>
-   * <dd>{@link DescriberProperties#MAX_DEPTH}</dd>
-   * <dt>{@code maxCount}:</dt>
-   * <dd>{@link DescriberProperties#MAX_COUNT}</dd>
-   * </dl>
-   * </dd>
-   * </dl>
+   * <p>
+   * Default implementation with unlimited count.
+   * </p>
    *
    * @param appendable appendable to add value's string representation to
    * @param value      the value to describe
@@ -81,28 +76,22 @@ public interface Describer extends Predicate<Object> {
    */
   @Contract("null, _ -> fail")
   default void describeTo(@Nonnull Appendable appendable, @Nullable Object value) {
-    describeTo(appendable, value, DescriberProperties.MAX_DEPTH);
+    describeTo(appendable, value, DescriberProperties.MAX_COUNT);
   }
 
   /**
    * <p>
    * Add the description of the object to the given appendable.
    * </p>
-   * <dl>
-   * <dt><strong>Defaults:</strong></dt>
-   * <dd>
-   * <dl>
-   * <dt>{@code maxCount}:</dt>
-   * <dd>{@link DescriberProperties#MAX_COUNT}</dd>
-   * </dl>
-   * </dd>
-   * </dl>
    *
    * @param appendable appendable to add value's string representation to
    * @param value      the value to describe
-   * @param maxDepth   the maximum depth to possibly recurse into an object to describe it; a
-   *                   negative value denotes <em>unlimited</em> - it is recommended to use {@link
-   *                   DescriberProperties#UNLIMITED}
+   * @param maxCount   limits the elements to be added to the appendable; a negative value denotes
+   *                   <em>unlimited</em> - it is recommended to use {@link
+   *                   DescriberProperties#UNLIMITED}; the maxCount parameter does not promise any
+   *                   length of the appended String but should denote a limit the String
+   *                   representation for large objects; maxCount typically refers to list or array
+   *                   elements
    * @throws NullPointerException            if appendable is {@code null}
    * @throws DescriberIOException            if a failure occurs accessing the appendable
    * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
@@ -111,32 +100,6 @@ public interface Describer extends Predicate<Object> {
    * @since $SINCE$
    */
   @Contract("null, _, _ -> fail")
-  default void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth) {
-    describeTo(appendable, value, maxDepth, DescriberProperties.MAX_COUNT);
-  }
-
-  /**
-   * <p>
-   * Add the description of the object to the given appendable.
-   * </p>
-   *
-   * @param appendable appendable to add value's string representation to
-   * @param value      the value to describe
-   * @param maxDepth   the maximum depth to possibly recurse into an object to describe it; a
-   *                   negative value denotes <em>unlimited</em> - it is recommended to use {@link
-   *                   DescriberProperties#UNLIMITED}
-   * @param maxCount   limits the elements to be added to the appendable; a negative value denotes
-   *                   <em>unlimited</em> - it is recommended to use {@link
-   *                   DescriberProperties#UNLIMITED}
-   * @throws NullPointerException            if appendable is {@code null}
-   * @throws DescriberIOException            if a failure occurs accessing the appendable
-   * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
-   *                                         be handled by this describer; you should have called
-   *                                         {@link #test(Object)} before
-   * @since $SINCE$
-   */
-  @Contract("null, _, _, _ -> fail")
-  void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth,
-                  int maxCount);
+  void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount);
 
 }

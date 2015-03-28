@@ -34,11 +34,60 @@ import static java.util.Objects.requireNonNull;
  */
 public interface RecursiveDescriber extends Describer {
 
+  /**
+   * <p>
+   * Add the description of the object to the given appendable.
+   * </p>
+   * <p>
+   * Default implementation with unlimited recursion depth.
+   * </p>
+   *
+   * @param appendable appendable to add value's string representation to
+   * @param value      the value to describe
+   * @param maxCount   limits the elements to be added to the appendable; a negative value denotes
+   *                   <em>unlimited</em> - it is recommended to use {@link
+   *                   DescriberProperties#UNLIMITED}
+   * @throws NullPointerException            if appendable is {@code null}
+   * @throws DescriberIOException            if a failure occurs accessing the appendable
+   * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
+   *                                         be handled by this describer; you should have called
+   *                                         {@link #test(Object)} before
+   * @since $SINCE$
+   */
   @Override
-  default void describeTo(@Nonnull Appendable appendable,
-                               @Nullable Object value,
-                               int maxDepth,
-                               int maxCount) {
+  @Contract("null, _, _ -> fail")
+  default void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount) {
+    describeTo(appendable, value, maxCount, DescriberProperties.MAX_DEPTH);
+  }
+
+  /**
+   * <p>
+   * Add the description of the object to the given appendable.
+   * </p>
+   * <p>
+   * Default implementation using some pre-defined recursion consumer which respects the
+   * given depth.
+   * </p>
+   *
+   * @param appendable appendable to add value's string representation to
+   * @param value      the value to describe
+   * @param maxCount   limits the elements to be added to the appendable; a negative value denotes
+   *                   <em>unlimited</em> - it is recommended to use {@link
+   *                   DescriberProperties#UNLIMITED}
+   * @param maxDepth   the maximum depth to possibly recurse into an object to describe it; a
+   *                   negative value denotes <em>unlimited</em> - it is recommended to use {@link
+   *                   DescriberProperties#UNLIMITED}
+   * @throws NullPointerException            if appendable is {@code null}
+   * @throws DescriberIOException            if a failure occurs accessing the appendable
+   * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
+   *                                         be handled by this describer; you should have called
+   *                                         {@link #test(Object)} before
+   * @see #getRecursiveMeAndOtherConsumer(Appendable, int, int)
+   * @since $SINCE$
+   */
+  @Contract("null, _, _, _ -> fail")
+  default void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount,
+                          int maxDepth) {
     describeTo(appendable, value, maxCount,
                getRecursiveMeAndOtherConsumer(appendable, maxDepth, maxCount));
   }
@@ -63,9 +112,9 @@ public interface RecursiveDescriber extends Describer {
    */
   @Contract("null, _, _, _ -> fail; _, _, _, null -> fail")
   default void describeTo(@Nonnull Appendable appendable,
-                  @Nullable Object value,
-                  int maxCount,
-                  @Nonnull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
+                          @Nullable Object value,
+                          int maxCount,
+                          @Nonnull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
     requireNonNull(appendable, "appendable must be given.");
     if (!test(value)) {
       throw new DescriberNotApplicableException(
@@ -74,6 +123,19 @@ public interface RecursiveDescriber extends Describer {
     recursiveDescribeTo(appendable, value, maxCount, recursiveMeAndOtherConsumer);
   }
 
+  /**
+   * <p>
+   * Provides an recursive consumer.
+   * </p>
+   * <p>
+   * By default provides a recursive consumer respecting the given depth.
+   * </p>
+   *
+   * @param appendable appendable to add the string representation to
+   * @param maxDepth   maximum depth
+   * @param maxCount   maximum element count
+   * @return consumer
+   */
   @NotNull
   default BiConsumer<Object, Object> getRecursiveMeAndOtherConsumer(
       @Nonnull Appendable appendable,

@@ -38,7 +38,6 @@ public class StringDescriber implements Describer {
   @Override
   public void describeTo(@Nonnull Appendable appendable,
                          @Nullable Object value,
-                         int maxDepth,
                          int maxCount) {
     assert value != null : "value must not be null. Did you call test() before?";
     CharSequence charSequence = (CharSequence) value;

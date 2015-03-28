@@ -59,39 +59,6 @@ public class DescriberTest {
         describer.getLastValue(),
         is(theInstance(someValue)));
     errorCollector.checkThat(
-        "Should default to unlimited depth.",
-        describer.getLastMaxDepth(),
-        is(DescriberProperties.UNLIMITED));
-    errorCollector.checkThat(
-        "Should default to unlimited count.",
-        describer.getLastMaxCount(),
-        is(DescriberProperties.UNLIMITED));
-  }
-
-  @Test
-  public void maxDepthGivenRespected() throws Exception {
-    TestedDescriber describer = new TestedDescriber(o -> true, String::valueOf);
-    String someValue = "Lorem";
-    Appendable appendable = new StringBuilder();
-    int someDepth = 42;
-
-    if (describer.test(someValue)) {
-      describer.describeTo(appendable, someValue, someDepth);
-    }
-
-    errorCollector.checkThat(
-        "Appendable should be handed over.",
-        describer.getLastAppendable(),
-        is(theInstance(appendable)));
-    errorCollector.checkThat(
-        "Value should be handed over.",
-        describer.getLastValue(),
-        is(theInstance(someValue)));
-    errorCollector.checkThat(
-        "Should use given depth.",
-        describer.getLastMaxDepth(),
-        is(someDepth));
-    errorCollector.checkThat(
         "Should default to unlimited count.",
         describer.getLastMaxCount(),
         is(DescriberProperties.UNLIMITED));
@@ -103,7 +70,6 @@ public class DescriberTest {
     private final Function<Object, String> describer;
     private Object lastAppendable;
     private Object lastValue;
-    private int lastMaxDepth;
     private int lastMaxCount;
 
     TestedDescriber(Predicate<? super Object> applicable,
@@ -120,11 +86,9 @@ public class DescriberTest {
     @Override
     public void describeTo(@Nonnull Appendable appendable,
                            @Nullable Object value,
-                           int maxDepth,
                            int maxCount) {
       lastAppendable = appendable;
       lastValue = value;
-      lastMaxDepth = maxDepth;
       lastMaxCount = maxCount;
 
       try {
@@ -140,10 +104,6 @@ public class DescriberTest {
 
     public Object getLastValue() {
       return lastValue;
-    }
-
-    public int getLastMaxDepth() {
-      return lastMaxDepth;
     }
 
     public int getLastMaxCount() {

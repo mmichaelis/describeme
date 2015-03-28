@@ -69,7 +69,7 @@ public class DescribeTest {
             {12L, "12"}, // 7
             {'c', "'c'"}, // 8
             {"Lorem Ipsum", "\"Lorem Ipsum\""}, // 9
-            {new StringBuilder("Lorem Ipsum Dolor"), "\"Lorem Ipsum Dolor\""}, // 10
+            {new StringBuilder("Lorem Ipsum Dolor"), "\"Lorem Ipsum ...\""}, // 10
             {new StringBuffer("Lorem Ipsum"), "\"Lorem Ipsum\""}, // 11
             {1.23456789123456789f, "1.235"}, // 12
             {1.23456789123456789d, "1.235"}, // 13
@@ -90,7 +90,7 @@ public class DescribeTest {
             // Can we do better for consumers?
             {SOME_CONSUMER, String.valueOf(SOME_CONSUMER)}, // 25
             // Lambdas can format themselves being Formattable
-            {(ToStringInterface) () -> "Lorem Ipsum Dolor", "Lorem Ipsum Dolor..."}, // 26
+            {(ToStringInterface) () -> "Lorem Ipsum Dolor", "Lorem Ipsum ..."}, // 26
             {new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13},
              "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ...]"}, // 27
             {Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),

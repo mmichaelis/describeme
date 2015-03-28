@@ -37,8 +37,7 @@ public final class DefaultDescriber implements Describer {
   }
 
   @Override
-  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth,
-                         int maxCount) {
+  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount) {
     // No truncation applied here. The idea is that for some values you do not want to have
     // truncation at all. And the ideal solution of this default implementation is that you
     // can just use the default rather than implementing your own Describer.

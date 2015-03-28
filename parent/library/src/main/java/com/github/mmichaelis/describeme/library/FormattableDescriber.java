@@ -36,8 +36,7 @@ public class FormattableDescriber implements Describer {
   }
 
   @Override
-  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxDepth,
-                         int maxCount) {
+  public void describeTo(@Nonnull Appendable appendable, @Nullable Object value, int maxCount) {
     assert value != null : "Cannot handle null values. Did you call test() before?";
     Formattable formattable = (Formattable) value;
     Formatter formatter = new Formatter(appendable, Locale.ROOT);
