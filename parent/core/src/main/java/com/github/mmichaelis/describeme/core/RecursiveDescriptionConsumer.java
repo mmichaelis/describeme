@@ -19,15 +19,25 @@ package com.github.mmichaelis.describeme.core;
 import com.google.common.base.MoreObjects;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.function.BiConsumer;
 
 import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
+import static java.util.Objects.requireNonNull;
 
 /**
- * @since $$SINCE:2015-03-19$$
+ * <p>
+ * Consumer to dive into recursive structures to describe them.
+ * </p>
+ * <p>
+ * The describer takes care of the recursion as well as to abort when a maximum depth is reached.
+ * </p>
+ *
+ * @see DescriberProperties
+ * @since $SINCE$
  */
 class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
 
@@ -36,16 +46,28 @@ class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
   private final Appendable appendable;
   private final int maxDepth;
   private final int maxCount;
+  /**
+   * Adapted from {@link java.util.Arrays#deepToString(Object[])} this field shall prevent
+   * self-contained recursive structures.
+   */
   private final Collection<Object> dejaVu = new HashSet<>(DEJA_VU_INITIAL_CAPACITY);
   private int currentDepth;
 
   RecursiveDescriptionConsumer(@NotNull Appendable appendable, int maxDepth, int maxCount) {
-    this.appendable = appendable;
+    this.appendable = requireNonNull(appendable, "appendable must be set.");
     this.maxDepth = maxDepth;
     this.maxCount = maxCount;
   }
 
 
+  /**
+   * <p>
+   * Describes the given value and prevents recursion by remembering its parent.
+   * </p>
+   *
+   * @param me    the parent which is currently described
+   * @param other the child element which needs to be described
+   */
   @Override
   public void accept(Object me, Object other) {
     if (isMaxDepthReached()) {
@@ -55,7 +77,7 @@ class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
     remember(me);
     down();
     try {
-      if (dejaVu.contains(other)) {
+      if ((other != null) && dejaVu.contains(other)) {
         silentAppend(appendable, DescriberProperties.RECURSION_PLACEHOLDER);
       } else {
         Describe.describeTo(appendable, other, maxCount, this);
@@ -77,11 +99,11 @@ class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
         .toString();
   }
 
-  private boolean remember(Object me) {
+  private boolean remember(@Nullable Object me) {
     return dejaVu.add(me);
   }
 
-  private boolean forget(Object me) {
+  private boolean forget(@Nullable Object me) {
     return dejaVu.remove(me);
   }
 
