@@ -17,7 +17,7 @@
 package com.github.mmichaelis.describeme.core;
 
 /**
- * @since $$SINCE:2015-03-17$$
+ * @since $SINCE$
  */
 public final class DescriberProperties {
 

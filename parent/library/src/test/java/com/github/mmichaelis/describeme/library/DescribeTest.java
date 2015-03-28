@@ -112,7 +112,7 @@ public class DescribeTest {
   public void test() throws Exception {
     int maxDepth = 3;
     int maxCount = 12;
-    assertThat("expecting toString value", Describe.describe(toDescribe, maxDepth, maxCount),
+    assertThat("expecting toString value", Describe.describe(toDescribe, maxCount, maxDepth),
                is(expectedDescription));
   }
 

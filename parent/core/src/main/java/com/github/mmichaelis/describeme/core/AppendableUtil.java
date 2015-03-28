@@ -16,24 +16,48 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
 import static java.text.MessageFormat.format;
+import static java.util.Objects.requireNonNull;
 
 /**
- * @since $$SINCE:2015-03-19$$
+ * <p>
+ * Utility for silently appending to any appendable. As some appendables might throw
+ * IOExceptions they are caught and wrapped into a dedicated
+ * {@link DescriberIOException}.
+ * </p>
+ *
+ * @since $SINCE$
  */
 public final class AppendableUtil {
 
+  /**
+   * Utility class, do not create.
+   */
   private AppendableUtil() {
   }
 
-  public static void silentAppend(@NotNull Appendable appendable, Object... values) {
+  /**
+   * Appends values to appendable and wraps possible IOExceptions.
+   *
+   * @param appendable appendable to append values to
+   * @param values     values to add, will be transformed via {@code String.valueOf()}
+   */
+  @Contract("null, _ -> fail")
+  public static void silentAppend(@NotNull Appendable appendable, @Nullable Object... values) {
+    requireNonNull(appendable, "appendable must be set.");
     try {
-      for (Object value : values) {
-        appendable.append(String.valueOf(value));
+      if (values == null) {
+        appendable.append(String.valueOf((Object) null));
+      } else {
+        for (Object value : values) {
+          appendable.append(String.valueOf(value));
+        }
       }
     } catch (IOException e) {
       throw new DescriberIOException(

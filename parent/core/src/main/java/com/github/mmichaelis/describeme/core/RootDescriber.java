@@ -29,6 +29,16 @@ import static java.util.stream.Collectors.joining;
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**
+ * <p>
+ * The root describer which delegates to all other describers. It accesses
+ * the service loader to find all available describers and uses a fallback
+ * describer if for a value no describers exist.
+ * </p>
+ * <p>
+ * Retrieve the singleton instance of the root describer via
+ * {@link #rootDescriber()}.
+ * </p>
+ *
  * @since $SINCE$
  */
 final class RootDescriber implements RecursiveDescriber {
@@ -41,14 +51,28 @@ final class RootDescriber implements RecursiveDescriber {
   private static final ServiceLoader<Describer> DESCRIBER_SERVICE_LOADER;
   private static final Describer FALLBACK_DESCRIBER = new DefaultDescriber();
 
+  /**
+   * Initializes the ServiceLoader and lists all describers found in the
+   * given priority with the first one having the highest priority and
+   * the last one serving as fallback.
+   */
   static {
     DESCRIBER_SERVICE_LOADER = ServiceLoader.load(Describer.class);
-    LOG.info("Registered describers:\n\t{}",
-             StreamSupport.stream(DESCRIBER_SERVICE_LOADER.spliterator(), false)
-                 .map(obj -> obj.getClass().getName())
-                 .collect(joining(",\n\t")));
+    if (LOG.isDebugEnabled()) {
+      String separator = String.format(",%n\t");
+      LOG.debug("Registered describers:{}{}",
+                separator,
+                StreamSupport.stream(DESCRIBER_SERVICE_LOADER.spliterator(), false)
+                    .map(obj -> obj.getClass().getName())
+                    .collect(joining(separator)));
+    }
   }
 
+  /**
+   * Retrieve the instance of the root describer.
+   *
+   * @return instance
+   */
   @NotNull
   public static RecursiveDescriber rootDescriber() {
     return INSTANCE;
@@ -75,13 +99,13 @@ final class RootDescriber implements RecursiveDescriber {
   }
 
   @Override
-  public void recursiveDescribeTo(@NotNull Appendable appendable, @Nullable Object value,
-                                  int maxCount,
-                                  @NotNull BiConsumer<Object, Object> recursiveConsumer) {
+  public void describeTo(@NotNull Appendable appendable, @Nullable Object value,
+                         int maxCount,
+                         @NotNull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
     Describer describer = describerFor(value);
     if (describer instanceof RecursiveDescriber) {
       RecursiveDescriber recursiveDescriber = (RecursiveDescriber) describer;
-      recursiveDescriber.describeTo(appendable, value, maxCount, recursiveConsumer);
+      recursiveDescriber.describeTo(appendable, value, maxCount, recursiveMeAndOtherConsumer);
     } else {
       describer.describeTo(appendable, value, maxCount);
     }

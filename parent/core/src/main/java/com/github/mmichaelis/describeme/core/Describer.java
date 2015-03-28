@@ -22,6 +22,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
 
+import static java.text.MessageFormat.format;
+
 /**
  * <p>
  * A describer is responsible for describing specific objects where describing means to provide
@@ -48,6 +50,11 @@ public interface Describer extends Predicate<Object> {
    * Validate if this describer is applicable to the given type. As the method gets the object
    * to describe you might also distinguish if a Describer is applicable by the concrete value.
    * </p>
+   * <p>
+   * Mind that an evaluation should be lightweight and should not depend on any mutable state
+   * of the object. This is because {@code test()} might be called multiple times (expect two
+   * times) for the same object.
+   * </p>
    *
    * @param value object to validate
    * @return {@code true} if this describer can describe the given value; {@code false} otherwise
@@ -58,10 +65,34 @@ public interface Describer extends Predicate<Object> {
 
   /**
    * <p>
+   * Validates the value and returns it. If validation fails, thus if {@link #test(Object)}
+   * return {@code false} an exception will be thrown.
+   * </p>
+   * <p>
+   * The default implementation just calls {@link #test(Object)} for validation and throws
+   * an exception if the value is not valid.
+   * </p>
+   *
+   * @param value the value to validate
+   * @return the value
+   * @throws DescriberNotApplicableException if describer is not applicable
+   */
+  @Nullable
+  default Object validatedValue(@Nullable Object value) {
+    if (!test(value)) {
+      throw new DescriberNotApplicableException(
+          format("Describer {0} not applicable to {1}.", getClass().getName(), value));
+    }
+    return value;
+  }
+
+  /**
+   * <p>
    * Add the description of the object to the given appendable.
    * </p>
    * <p>
-   * Default implementation with unlimited count.
+   * Default implementation uses {@link DescriberProperties#MAX_COUNT} which is configurable
+   * through system properties.
    * </p>
    *
    * @param appendable appendable to add value's string representation to
@@ -81,6 +112,12 @@ public interface Describer extends Predicate<Object> {
   /**
    * <p>
    * Add the description of the object to the given appendable.
+   * </p>
+   * <p>
+   * On implementation it is recommended to use for example
+   * {@link java.util.Objects#requireNonNull(Object)} to validate the appendable and to use
+   * {@link #validatedValue(Object)} to validate that the object really matches the requirements
+   * - just in case someone did not call {@link #test(Object)} before.
    * </p>
    *
    * @param appendable appendable to add value's string representation to

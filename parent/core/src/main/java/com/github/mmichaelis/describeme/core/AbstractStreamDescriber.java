@@ -16,89 +16,62 @@
 
 package com.github.mmichaelis.describeme.core;
 
-import com.google.common.base.MoreObjects;
-
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
 
 /**
- * @since $$SINCE:2015-03-20$$
+ * <p>
+ * Recurse into streams to describe their elements. If you have any structure which could
+ * be transformed to a stream this is the recommended base class to use for your Describer.
+ * </p>
+ * <p>
+ * It automatically handles maximum depth and maximum count if requested, thus if limited.
+ * The only thing to do when implementing is to implement {@link #valueAsStream(Object)}.
+ * </p>
+ *
+ * @since $SINCE$
  */
 public abstract class AbstractStreamDescriber implements RecursiveDescriber {
 
-  @NotNull
-  private static Consumer<Object> ellipsisConsumer(@NotNull Appendable appendable,
-                                                   @Nullable Object parentObject, int maxCount,
-                                                   @NotNull BiConsumer<Object, Object> recursiveConsumer) {
-    return new EllipsisConsumer(appendable, parentObject, maxCount, recursiveConsumer);
-  }
-
+  /**
+   * {@inheritDoc}
+   * <p>
+   * Value must be convertible to a stream. Stream elements will be sequentially added
+   * to the appendable, separated by commas and surrounded by square brackets.
+   * </p>
+   *
+   * @since $SINCE$
+   */
   @Override
-  public final void recursiveDescribeTo(@NotNull Appendable appendable, @Nullable Object value,
-                                        int maxCount,
-                                        @NotNull BiConsumer<Object, Object> recursiveConsumer) {
+  @Contract("null, _, _, _ -> fail; _, _, _, null -> fail")
+  public final void describeTo(@NotNull Appendable appendable, @Nullable Object value,
+                               int maxCount,
+                               @NotNull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
+    validatedValue(value);
     assert value != null : "value must not be null. Did you call test() before?";
     Stream<?> stream = valueAsStream(value);
-    if (maxCount > DescriberProperties.UNLIMITED) {
-      stream = stream.limit(maxCount + 1);
-    }
     silentAppend(appendable, "[");
-    stream.forEach(ellipsisConsumer(appendable, value, maxCount, recursiveConsumer));
+    stream.allMatch(new EllipsisPredicate(appendable, value, maxCount,
+                                          recursiveMeAndOtherConsumer));
     silentAppend(appendable, "]");
   }
 
+  /**
+   * <p>
+   * Provide the values to describe as stream.
+   * </p>
+   *
+   * @param value value to convert to a stream
+   * @return stream
+   * @since $SINCE$
+   */
   @NotNull
   protected abstract Stream<?> valueAsStream(@NotNull Object value);
-
-  private static class EllipsisConsumer implements Consumer<Object> {
-
-    @NotNull
-    private final Appendable appendable;
-    @Nullable
-    private final Object parentObject;
-    private final int maxCount;
-    @NotNull
-    private final BiConsumer<Object, Object> recursiveConsumer;
-    private int count;
-
-    EllipsisConsumer(@NotNull Appendable appendable, @Nullable Object parentObject, int maxCount,
-                     @NotNull BiConsumer<Object, Object> recursiveConsumer) {
-      this.appendable = appendable;
-      this.parentObject = parentObject;
-      this.maxCount = maxCount;
-      this.recursiveConsumer = recursiveConsumer;
-      count = 0;
-    }
-
-    @Override
-    public void accept(@Nullable Object obj) {
-      if (count > 0) {
-        silentAppend(appendable, ", ");
-      }
-      if ((maxCount <= DescriberProperties.UNLIMITED) || (count < maxCount)) {
-        recursiveConsumer.accept(parentObject, obj);
-      } else {
-        silentAppend(appendable, DescriberProperties.ELLIPSIS);
-      }
-      count++;
-    }
-
-    @Override
-    public String toString() {
-      return MoreObjects.toStringHelper(this)
-          .add("appendable", appendable)
-          .add("parentObject", parentObject)
-          .add("count", count)
-          .add("maxCount", maxCount)
-          .add("recursiveConsumer", recursiveConsumer)
-          .toString();
-    }
-  }
 
 }
