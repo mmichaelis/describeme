@@ -16,6 +16,9 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
+import static java.util.Objects.requireNonNull;
+
 import com.google.common.base.MoreObjects;
 
 import org.jetbrains.annotations.NotNull;
@@ -24,9 +27,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.function.BiConsumer;
-
-import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
-import static java.util.Objects.requireNonNull;
 
 /**
  * <p>
@@ -37,7 +37,7 @@ import static java.util.Objects.requireNonNull;
  * </p>
  *
  * @see DescriberProperties
- * @since $SINCE$
+ * @since 1.0.0
  */
 class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
 

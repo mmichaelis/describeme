@@ -26,7 +26,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class NumberDescriber implements Describer {
 

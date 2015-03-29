@@ -16,6 +16,10 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -24,14 +28,10 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
 /**
  * Tests {@link EllipsisPredicate}.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class EllipsisPredicateTest {
 

@@ -16,6 +16,8 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
+
 import com.google.common.base.MoreObjects;
 
 import org.jetbrains.annotations.NotNull;
@@ -23,8 +25,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
-
-import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
 
 /**
  * <p>
@@ -37,7 +37,7 @@ import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
  * filtering once the limit is reached.
  * </p>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 class EllipsisPredicate implements Predicate<Object> {
 

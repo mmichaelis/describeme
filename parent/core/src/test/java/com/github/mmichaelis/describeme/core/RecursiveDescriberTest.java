@@ -16,6 +16,9 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.theInstance;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.junit.Rule;
@@ -27,13 +30,10 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.theInstance;
-
 /**
  * Tests {@link Describer}.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class RecursiveDescriberTest {
 
@@ -88,20 +88,10 @@ public class RecursiveDescriberTest {
       return applicable.test(value);
     }
 
-    @NotNull
-    @Override
-    public BiConsumer<Object, Object> getRecursiveMeAndOtherConsumer(@NotNull Appendable appendable,
-                                                                     int maxDepth,
-                                                                     int maxCount) {
-      lastMaxDepth = maxDepth;
-      //noinspection ReturnOfInnerClass
-      return new MyBiConsumer(appendable, maxCount);
-    }
-
     @Override
     public void describeTo(@NotNull Appendable appendable, @Nullable Object value,
-                                    int maxCount,
-                                    @NotNull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
+                           int maxCount,
+                           @NotNull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
       lastAppendable = appendable;
       lastValue = value;
       lastMaxCount = maxCount;
@@ -115,8 +105,18 @@ public class RecursiveDescriberTest {
         }
         appendable.append(describer.apply(value));
       } catch (IOException e) {
-        throw new DescriberIOException("Failure.", e);
+        throw new DescriberTempException("Failure.", e);
       }
+    }
+
+    @NotNull
+    @Override
+    public BiConsumer<Object, Object> getRecursiveMeAndOtherConsumer(@NotNull Appendable appendable,
+                                                                     int maxDepth,
+                                                                     int maxCount) {
+      lastMaxDepth = maxDepth;
+      //noinspection ReturnOfInnerClass
+      return new MyBiConsumer(appendable, maxCount);
     }
 
     public Object getLastAppendable() {

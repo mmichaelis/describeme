@@ -16,6 +16,11 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static java.text.MessageFormat.format;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import com.github.mmichaelis.describeme.core.config.StreamDescriberConfiguration;
 
 import org.jetbrains.annotations.NotNull;
@@ -26,15 +31,10 @@ import java.util.Arrays;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import static java.text.MessageFormat.format;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
 /**
  * Tests {@link AbstractStreamDescriber}.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class AbstractStreamDescriberTest {
 

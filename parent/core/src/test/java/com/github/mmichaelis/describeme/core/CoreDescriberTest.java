@@ -16,6 +16,9 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.junit.Test;
@@ -34,9 +37,6 @@ import java.util.Formatter;
 import java.util.Iterator;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 @RunWith(Parameterized.class)
 public class CoreDescriberTest {
@@ -80,8 +80,10 @@ public class CoreDescriberTest {
             {new Object[]{}, "[]"}, // 16
             {new Integer[]{1, 2}, "[1, 2]"}, // 17
             // Deep Test
-            {new Object[]{1, new Object[]{2, new Object[]{3, new Integer[]{4}}}}, "[1, [2, [3, [4]]]]"}, // 18
-            {new Object[]{1, new Object[]{2, new Object[]{3, "Test"}}}, "[1, [2, [3, Test]]]"}, // 19
+            {new Object[]{1, new Object[]{2, new Object[]{3, new Integer[]{4}}}},
+             "[1, [2, [3, [4]]]]"}, // 18
+            {new Object[]{1, new Object[]{2, new Object[]{3, "Test"}}}, "[1, [2, [3, Test]]]"},
+            // 19
             {Collections.<Integer>emptyList(), "[]"}, // 20
             {Arrays.asList(1, 2), "[1, 2]"}, // 21
             {Arrays.asList(1, "Test"), "[1, Test]"}, // 22

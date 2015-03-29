@@ -16,15 +16,15 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
-
-import static org.slf4j.LoggerFactory.getLogger;
 
 /**
  * Properties within DescribeMe.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public final class DescriberProperties {
 
@@ -32,45 +32,45 @@ public final class DescriberProperties {
    * System property to set to define a maximum recursion depth. Only applies
    * when not explicitly set in code.
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   public static final String P_DESCRIBE_MAX_DEPTH = "describe.max.depth";
   /**
    * System property to set to reduce the count of elements to display. Some Decribers
    * might ignore it. Only applies when count is not explicitly set in code.
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   public static final String P_DESCRIBE_MAX_COUNT = "describe.max.count";
   /**
    * Signals unlimited depth or count.
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   public static final int UNLIMITED = -1;
   /**
    * Default maximum depth. Can be controlled via system property {@link #P_DESCRIBE_MAX_DEPTH}.
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   public static final int MAX_DEPTH;
   /**
    * Default maximum count. Can be controlled via system property {@link #P_DESCRIBE_MAX_COUNT}.
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   public static final int MAX_COUNT;
   /**
    * Used to represent truncated values because of length restriction.
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   public static final String ELLIPSIS = "...";
   /**
    * Used to represent truncated values either because of self-reference in recursive structures
    * or because maximum depth is reached.
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   public static final String RECURSION_PLACEHOLDER = "[...]";
   private static final Logger LOG = getLogger(DescriberProperties.class);
@@ -78,7 +78,7 @@ public final class DescriberProperties {
   /**
    * Utility class only.
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   private DescriberProperties() {
   }
@@ -89,7 +89,7 @@ public final class DescriberProperties {
    *
    * @param key key to read from system properties
    * @return value successfully read from system property or default
-   * @since $SINCE$
+   * @since 1.0.0
    */
   private static int getSystemNumberProperty(@NotNull String key) {
     int maxDepth;
@@ -105,7 +105,7 @@ public final class DescriberProperties {
 
   /**
    * Securely initialized values from system properties.
-   * @since $SINCE$
+   * @since 1.0.0
    */
   static {
     MAX_DEPTH = getSystemNumberProperty(P_DESCRIBE_MAX_DEPTH);

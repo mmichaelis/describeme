@@ -25,7 +25,7 @@ import java.util.function.BiConsumer;
 /**
  * Extension to {@link Describer} which handles recursion.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public interface RecursiveDescriber extends Describer {
 
@@ -41,7 +41,7 @@ public interface RecursiveDescriber extends Describer {
    * stream.
    * </p>
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   @Override
   @Contract("null, _, _ -> fail")
@@ -67,12 +67,12 @@ public interface RecursiveDescriber extends Describer {
    *                   negative value denotes <em>unlimited</em> - it is recommended to use {@link
    *                   DescriberProperties#UNLIMITED}
    * @throws NullPointerException            if appendable is {@code null}
-   * @throws DescriberIOException            if a failure occurs accessing the appendable
+   * @throws DescriberTempException            if a failure occurs accessing the appendable
    * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
    *                                         be handled by this describer; you should have called
    *                                         {@link #test(Object)} before
    * @see #getRecursiveMeAndOtherConsumer(Appendable, int, int)
-   * @since $SINCE$
+   * @since 1.0.0
    */
   @Contract("null, _, _, _ -> fail")
   default void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxCount,
@@ -98,11 +98,11 @@ public interface RecursiveDescriber extends Describer {
    *                                    detect self-contained object hierarchies
    * @throws NullPointerException            if appendable and/or recursiveMeAndOtherConsumer is
    *                                         {@code null}
-   * @throws DescriberIOException            if a failure occurs accessing the appendable
+   * @throws DescriberTempException            if a failure occurs accessing the appendable
    * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
    *                                         be handled by this describer; you should have called
    *                                         {@link #test(Object)} before
-   * @since $SINCE$
+   * @since 1.0.0
    */
   @Contract("null, _, _, _ -> fail; _, _, _, null -> fail")
   void describeTo(@NotNull Appendable appendable,

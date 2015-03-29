@@ -16,20 +16,20 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static com.github.mmichaelis.describeme.core.RootDescriber.rootDescriber;
+
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.BiConsumer;
 
-import static com.github.mmichaelis.describeme.core.RootDescriber.rootDescriber;
-
 /**
  * <p>
  * Describes a given value by strategies found along the classpath.
  * </p>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public final class Describe {
 
@@ -52,8 +52,8 @@ public final class Describe {
    * @param appendable appendable to add value's string representation to
    * @param value      the value to describe
    * @throws NullPointerException if appendable is {@code null}
-   * @throws DescriberIOException if a failure occurs accessing the appendable
-   * @since $SINCE$
+   * @throws DescriberTempException if a failure occurs accessing the appendable
+   * @since 1.0.0
    */
   @Contract("null, _ -> fail")
   public static void describeTo(@NotNull Appendable appendable, @Nullable Object value) {
@@ -74,8 +74,8 @@ public final class Describe {
    *                   representation for large objects; maxCount typically refers to list or array
    *                   elements
    * @throws NullPointerException if appendable is {@code null}
-   * @throws DescriberIOException if a failure occurs accessing the appendable
-   * @since $SINCE$
+   * @throws DescriberTempException if a failure occurs accessing the appendable
+   * @since 1.0.0
    */
   @Contract("null, _, _ -> fail")
   public static void describeTo(@NotNull Appendable appendable, @Nullable Object value,
@@ -97,12 +97,76 @@ public final class Describe {
    *                   negative value denotes <em>unlimited</em> - it is recommended to use {@link
    *                   DescriberProperties#UNLIMITED}
    * @throws NullPointerException if appendable is {@code null}
-   * @throws DescriberIOException if a failure occurs accessing the appendable
-   * @since $SINCE$
+   * @throws DescriberTempException if a failure occurs accessing the appendable
+   * @since 1.0.0
    */
   public static void describeTo(@NotNull Appendable appendable, @Nullable Object value,
                                 int maxCount, int maxDepth) {
     rootDescriber().describeTo(appendable, value, maxCount, maxDepth);
+  }
+
+  /**
+   * <p>
+   * Describe the given value as string with the given restrictions applied.
+   * </p>
+   *
+   * @param value    value to describe
+   * @param maxCount limits the length of the value; the limit might refer to number of characters
+   *                 or number of elements in an array - and describers might ignore it
+   * @param maxDepth the maximum depth to recurse into e. g. arrays, lists and maps
+   * @return value as String representation
+   * @since 1.0.0
+   */
+  @NotNull
+  public static String describe(@Nullable Object value, int maxCount, int maxDepth) {
+    StringBuilder sb = new StringBuilder(INITIAL_DESCRIPTION_CAPACITY);
+    describeTo(sb, value, maxCount, maxDepth);
+    return sb.toString();
+  }
+
+  /**
+   * <p>
+   * Describe the given value as string.
+   * </p>
+   * <p>
+   * While by default no constraints apply to the string transformation it can be controlled
+   * through
+   * system properties as denoted by {@link DescriberProperties#P_DESCRIBE_MAX_DEPTH} and
+   * {@link DescriberProperties#P_DESCRIBE_MAX_COUNT} which are be default <em>unlimited</em>.
+   * </p>
+   *
+   * @param value value to describe
+   * @return value as String representation
+   * @since 1.0.0
+   */
+  @NotNull
+  public static String describe(@Nullable Object value) {
+    StringBuilder sb = new StringBuilder(INITIAL_DESCRIPTION_CAPACITY);
+    describeTo(sb, value);
+    return sb.toString();
+  }
+
+  /**
+   * <p>
+   * Describe the given value as string with the given restrictions applied.
+   * </p>
+   * <p>
+   * While by default recursive structures are not limited, the depth can be limited by setting
+   * the system property as denoted by {@link DescriberProperties#P_DESCRIBE_MAX_DEPTH}. Any
+   * negative value means: <em>unlimited</em>.
+   * </p>
+   *
+   * @param value    value to describe
+   * @param maxCount limits the length of the value; the limit might refer to number of characters
+   *                 or number of elements in an array - and describers might ignore it
+   * @return value as String representation
+   * @since 1.0.0
+   */
+  @NotNull
+  public static String describe(@Nullable Object value, int maxCount) {
+    StringBuilder sb = new StringBuilder(INITIAL_DESCRIPTION_CAPACITY);
+    describeTo(sb, value, maxCount);
+    return sb.toString();
   }
 
   /**
@@ -122,8 +186,8 @@ public final class Describe {
    *                                    detect self-contained object hierarchies
    * @throws NullPointerException if appendable and/or recursiveMeAndOtherConsumer is
    *                              {@code null}
-   * @throws DescriberIOException if a failure occurs accessing the appendable
-   * @since $SINCE$
+   * @throws DescriberTempException if a failure occurs accessing the appendable
+   * @since 1.0.0
    */
   @Contract("null, _, _, _ -> fail; _, _, _, null -> fail")
   static void describeTo(@NotNull Appendable appendable,
@@ -131,67 +195,6 @@ public final class Describe {
                          int maxCount,
                          @NotNull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
     rootDescriber().describeTo(appendable, value, maxCount, recursiveMeAndOtherConsumer);
-  }
-
-  /**
-   * <p>
-   * Describe the given value as string with the given restrictions applied.
-   * </p>
-   *
-   * @param value    value to describe
-   * @param maxCount limits the length of the value; the limit might refer to number of characters
-   *                 or number of elements in an array - and describers might ignore it
-   * @param maxDepth the maximum depth to recurse into e. g. arrays, lists and maps
-   * @since $SINCE$
-   */
-  @NotNull
-  public static String describe(@Nullable Object value, int maxCount, int maxDepth) {
-    StringBuilder sb = new StringBuilder(INITIAL_DESCRIPTION_CAPACITY);
-    describeTo(sb, value, maxCount, maxDepth);
-    return sb.toString();
-  }
-
-  /**
-   * <p>
-   * Describe the given value as string with the given restrictions applied.
-   * </p>
-   * <p>
-   * While by default recursive structures are not limited, the depth can be limited by setting
-   * the system property as denoted by {@link DescriberProperties#P_DESCRIBE_MAX_DEPTH}. Any
-   * negative value means: <em>unlimited</em>.
-   * </p>
-   *
-   * @param value    value to describe
-   * @param maxCount limits the length of the value; the limit might refer to number of characters
-   *                 or number of elements in an array - and describers might ignore it
-   * @since $SINCE$
-   */
-  @NotNull
-  public static String describe(@Nullable Object value, int maxCount) {
-    StringBuilder sb = new StringBuilder(INITIAL_DESCRIPTION_CAPACITY);
-    describeTo(sb, value, maxCount);
-    return sb.toString();
-  }
-
-  /**
-   * <p>
-   * Describe the given value as string.
-   * </p>
-   * <p>
-   * While by default no constraints apply to the string transformation it can be controlled
-   * through
-   * system properties as denoted by {@link DescriberProperties#P_DESCRIBE_MAX_DEPTH} and
-   * {@link DescriberProperties#P_DESCRIBE_MAX_COUNT} which are be default <em>unlimited</em>.
-   * </p>
-   *
-   * @param value value to describe
-   * @since $SINCE$
-   */
-  @NotNull
-  public static String describe(@Nullable Object value) {
-    StringBuilder sb = new StringBuilder(INITIAL_DESCRIPTION_CAPACITY);
-    describeTo(sb, value);
-    return sb.toString();
   }
 
 }

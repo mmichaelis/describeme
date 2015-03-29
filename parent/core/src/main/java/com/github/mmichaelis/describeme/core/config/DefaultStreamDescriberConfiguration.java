@@ -23,18 +23,20 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Some typical stream describer configurations.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public enum DefaultStreamDescriberConfiguration implements StreamDescriberConfiguration {
   /**
    * Typical configuration for list types which also includes arrays.
-   * @since $SINCE$
+   *
+   * @since 1.0.0
    */
   LIST_CONFIGURATION("[", "]", ", "),
   /**
    * Typical configuration for maps. Key/Value separators are defined in the context
    * of entries.
-   * @since $SINCE$
+   *
+   * @since 1.0.0
    */
   MAP_CONFIGURATION("{", "}", ", "),;
 

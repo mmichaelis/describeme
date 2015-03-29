@@ -21,14 +21,11 @@ package com.github.mmichaelis.describeme.core;
  * General exception raised from Describers.
  * </p>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class DescriberException extends RuntimeException {
 
   private static final long serialVersionUID = 2388362520110062086L;
-
-  public DescriberException() {
-  }
 
   public DescriberException(String message) {
     super(message);
@@ -38,12 +35,4 @@ public class DescriberException extends RuntimeException {
     super(message, cause);
   }
 
-  public DescriberException(Throwable cause) {
-    super(cause);
-  }
-
-  protected DescriberException(String message, Throwable cause, boolean enableSuppression,
-                               boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
 }

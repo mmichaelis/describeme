@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class CharacterDescriber implements Describer {
 

@@ -16,13 +16,13 @@
 
 package com.github.mmichaelis.describeme.core;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import static java.lang.String.valueOf;
 import static java.util.Arrays.deepToString;
 import static java.util.Objects.requireNonNull;
+
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * <p>
@@ -31,7 +31,7 @@ import static java.util.Objects.requireNonNull;
  * to strings.
  * </p>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public final class DefaultDescriber implements Describer {
 

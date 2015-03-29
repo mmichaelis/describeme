@@ -26,7 +26,7 @@ import java.util.Formatter;
 import java.util.Locale;
 
 /**
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class FormattableDescriber implements Describer {
 

@@ -15,9 +15,9 @@
   ~ limitations under the License.
   -->
 
-<ruleset name="Custom PMD Ruleset for DesscribeMe"
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         name="Custom PMD Ruleset for DesscribeMe"
          xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd"
          xsi:noNamespaceSchemaLocation="http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
   <description><![CDATA[

@@ -16,6 +16,8 @@
 
 package com.github.mmichaelis.describeme.library;
 
+import static com.github.mmichaelis.describeme.core.DescriberProperties.ELLIPSIS;
+
 import com.github.mmichaelis.describeme.core.AppendableUtil;
 import com.github.mmichaelis.describeme.core.Describer;
 import com.github.mmichaelis.describeme.core.DescriberProperties;
@@ -23,10 +25,8 @@ import com.github.mmichaelis.describeme.core.DescriberProperties;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static com.github.mmichaelis.describeme.core.DescriberProperties.ELLIPSIS;
-
 /**
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class StringDescriber implements Describer {
 

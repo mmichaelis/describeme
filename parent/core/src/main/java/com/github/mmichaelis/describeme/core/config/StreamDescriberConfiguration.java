@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Configuration options for the Stream Describer.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public interface StreamDescriberConfiguration {
 

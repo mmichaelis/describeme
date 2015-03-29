@@ -16,23 +16,23 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static java.text.MessageFormat.format;
+import static java.util.Objects.requireNonNull;
+
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
-import static java.text.MessageFormat.format;
-import static java.util.Objects.requireNonNull;
-
 /**
  * <p>
  * Utility for silently appending to any appendable. As some appendables might throw
  * IOExceptions they are caught and wrapped into a dedicated
- * {@link DescriberIOException}.
+ * {@link DescriberTempException}.
  * </p>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public final class AppendableUtil {
 
@@ -60,7 +60,7 @@ public final class AppendableUtil {
         }
       }
     } catch (IOException e) {
-      throw new DescriberIOException(
+      throw new DescriberTempException(
           format("Unable to append values {0} to appendable {1}.", values, appendable), e);
     }
   }

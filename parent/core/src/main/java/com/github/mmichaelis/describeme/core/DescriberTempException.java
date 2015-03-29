@@ -21,13 +21,13 @@ package com.github.mmichaelis.describeme.core;
  * Wraps IOExceptions which might be raised while appending to appendables.
  * </p>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
-public class DescriberIOException extends DescriberException {
+public class DescriberTempException extends DescriberException {
 
   private static final long serialVersionUID = -2610615491164970753L;
 
-  public DescriberIOException(String message, Throwable cause) {
+  public DescriberTempException(String message, Throwable cause) {
     super(message, cause);
   }
 

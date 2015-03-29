@@ -16,6 +16,9 @@
 
 package com.github.mmichaelis.describeme.library;
 
+import static com.github.mmichaelis.describeme.core.config.DefaultStreamDescriberConfiguration.LIST_CONFIGURATION;
+import static java.util.Objects.requireNonNull;
+
 import com.github.mmichaelis.describeme.core.AbstractStreamDescriber;
 
 import org.jetbrains.annotations.Contract;
@@ -25,11 +28,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static com.github.mmichaelis.describeme.core.config.DefaultStreamDescriberConfiguration.LIST_CONFIGURATION;
-import static java.util.Objects.requireNonNull;
-
 /**
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class ArrayDescriber extends AbstractStreamDescriber {
 

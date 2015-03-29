@@ -21,7 +21,7 @@ package com.github.mmichaelis.describeme.core;
  * Thrown when a Describer is forced to describe a value it cannot describe.
  * </p>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class DescriberNotApplicableException extends DescriberException {
 

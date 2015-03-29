@@ -16,6 +16,9 @@
 
 package com.github.mmichaelis.describeme.library;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import com.github.mmichaelis.describeme.core.Describe;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,9 +36,6 @@ import java.util.Collections;
 import java.util.Formattable;
 import java.util.Formatter;
 import java.util.function.Consumer;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 @RunWith(Parameterized.class)
 public class DescribeTest {
@@ -116,6 +116,11 @@ public class DescribeTest {
                is(expectedDescription));
   }
 
+  private enum SomeEnum {
+    A_ENUM,
+    B_ENUM
+  }
+
   // Idea taken from:
   // http://stackoverflow.com/questions/23628631/how-to-make-a-lambda-expression-define-tostring-in-java-8
   @FunctionalInterface
@@ -141,10 +146,5 @@ public class DescribeTest {
         }
       }
     }
-  }
-
-  private enum SomeEnum {
-    A_ENUM,
-    B_ENUM
   }
 }

@@ -21,6 +21,6 @@
  * providing some pre-defined configuration sets.
  * </p>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 package com.github.mmichaelis.describeme.core.config;

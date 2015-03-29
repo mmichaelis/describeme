@@ -16,6 +16,9 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.theInstance;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.junit.Rule;
@@ -26,13 +29,10 @@ import java.io.IOException;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.theInstance;
-
 /**
  * Tests {@link Describer}.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class DescriberTest {
 
@@ -93,7 +93,7 @@ public class DescriberTest {
       try {
         appendable.append(describer.apply(value));
       } catch (IOException e) {
-        throw new DescriberIOException("Failure.", e);
+        throw new DescriberTempException("Failure.", e);
       }
     }
 

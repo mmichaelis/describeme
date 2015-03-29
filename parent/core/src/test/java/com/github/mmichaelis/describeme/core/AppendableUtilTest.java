@@ -16,6 +16,15 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
+import static com.github.mmichaelis.describeme.core.IsUtilityClassMatcher.isUtilityClass;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.isEmptyOrNullString;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.sameInstance;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -24,18 +33,10 @@ import org.junit.rules.TestName;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.isEmptyOrNullString;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.sameInstance;
-import static org.junit.Assert.assertThat;
-
 /**
  * Tests {@link AppendableUtil}.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public class AppendableUtilTest {
 
@@ -68,11 +69,16 @@ public class AppendableUtilTest {
     IOException exceptionToThrow = new IOException(testName.getMethodName());
     Appendable appendable = new FailingAppendable(exceptionToThrow);
 
-    expectedException.expect(DescriberIOException.class);
+    expectedException.expect(DescriberTempException.class);
     expectedException.expectCause(sameInstance(exceptionToThrow));
     expectedException.expectMessage(not(isEmptyOrNullString()));
 
     silentAppend(appendable, testName.getMethodName());
+  }
+
+  @Test
+  public void matchesUtilityClassRequirements() throws Exception {
+    assertThat(AppendableUtil.class, isUtilityClass());
   }
 
   private static class FailingAppendable implements Appendable {
@@ -98,4 +104,5 @@ public class AppendableUtilTest {
       throw exceptionToThrow;
     }
   }
+
 }

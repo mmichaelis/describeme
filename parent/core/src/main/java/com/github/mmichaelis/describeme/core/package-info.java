@@ -60,6 +60,6 @@
  * </dd>
  * </dl>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 package com.github.mmichaelis.describeme.core;

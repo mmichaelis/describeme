@@ -16,6 +16,9 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
+import static java.util.Objects.requireNonNull;
+
 import com.google.common.base.MoreObjects;
 
 import com.github.mmichaelis.describeme.core.config.StreamDescriberConfiguration;
@@ -27,9 +30,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
-import static java.util.Objects.requireNonNull;
-
 /**
  * <p>
  * Recurse into streams to describe their elements. If you have any structure which could
@@ -40,14 +40,14 @@ import static java.util.Objects.requireNonNull;
  * The only thing to do when implementing is to implement {@link #valueAsStream(Object)}.
  * </p>
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 public abstract class AbstractStreamDescriber implements RecursiveDescriber {
 
   /**
    * Configuration for the stream describer.
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   @NotNull
   private final StreamDescriberConfiguration configuration;
@@ -57,7 +57,7 @@ public abstract class AbstractStreamDescriber implements RecursiveDescriber {
    *
    * @param configuration some configuration about start and end marker as well as element
    *                      separator
-   * @since $SINCE$
+   * @since 1.0.0
    */
   protected AbstractStreamDescriber(@NotNull StreamDescriberConfiguration configuration) {
     this.configuration = requireNonNull(configuration, "configuration must not be null.");
@@ -70,7 +70,7 @@ public abstract class AbstractStreamDescriber implements RecursiveDescriber {
    * to the appendable, separated by commas and surrounded by square brackets.
    * </p>
    *
-   * @since $SINCE$
+   * @since 1.0.0
    */
   @Override
   @Contract("null, _, _, _ -> fail; _, _, _, null -> fail")
@@ -101,7 +101,7 @@ public abstract class AbstractStreamDescriber implements RecursiveDescriber {
    *
    * @param value value to convert to a stream
    * @return stream
-   * @since $SINCE$
+   * @since 1.0.0
    */
   @NotNull
   @Contract("null -> fail")

@@ -16,6 +16,8 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import static org.hamcrest.Matchers.is;
+
 import com.google.common.collect.ImmutableMap;
 
 import org.hamcrest.Matcher;
@@ -35,12 +37,10 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.function.Predicate;
 
-import static org.hamcrest.Matchers.is;
-
 /**
  * Tests {@link DefaultDescriber}.
  *
- * @since $SINCE$
+ * @since 1.0.0
  */
 @RunWith(Parameterized.class)
 public class DefaultDescriberTest {
