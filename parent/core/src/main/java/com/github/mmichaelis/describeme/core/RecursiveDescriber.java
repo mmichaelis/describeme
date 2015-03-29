@@ -67,7 +67,7 @@ public interface RecursiveDescriber extends Describer {
    *                   negative value denotes <em>unlimited</em> - it is recommended to use {@link
    *                   DescriberProperties#UNLIMITED}
    * @throws NullPointerException            if appendable is {@code null}
-   * @throws DescriberTempException            if a failure occurs accessing the appendable
+   * @throws DescriberIoException            if a failure occurs accessing the appendable
    * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
    *                                         be handled by this describer; you should have called
    *                                         {@link #test(Object)} before
@@ -98,7 +98,7 @@ public interface RecursiveDescriber extends Describer {
    *                                    detect self-contained object hierarchies
    * @throws NullPointerException            if appendable and/or recursiveMeAndOtherConsumer is
    *                                         {@code null}
-   * @throws DescriberTempException            if a failure occurs accessing the appendable
+   * @throws DescriberIoException            if a failure occurs accessing the appendable
    * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
    *                                         be handled by this describer; you should have called
    *                                         {@link #test(Object)} before

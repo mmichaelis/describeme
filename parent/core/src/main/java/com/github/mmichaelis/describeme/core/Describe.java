@@ -52,7 +52,7 @@ public final class Describe {
    * @param appendable appendable to add value's string representation to
    * @param value      the value to describe
    * @throws NullPointerException if appendable is {@code null}
-   * @throws DescriberTempException if a failure occurs accessing the appendable
+   * @throws DescriberIoException if a failure occurs accessing the appendable
    * @since 1.0.0
    */
   @Contract("null, _ -> fail")
@@ -74,7 +74,7 @@ public final class Describe {
    *                   representation for large objects; maxCount typically refers to list or array
    *                   elements
    * @throws NullPointerException if appendable is {@code null}
-   * @throws DescriberTempException if a failure occurs accessing the appendable
+   * @throws DescriberIoException if a failure occurs accessing the appendable
    * @since 1.0.0
    */
   @Contract("null, _, _ -> fail")
@@ -97,7 +97,7 @@ public final class Describe {
    *                   negative value denotes <em>unlimited</em> - it is recommended to use {@link
    *                   DescriberProperties#UNLIMITED}
    * @throws NullPointerException if appendable is {@code null}
-   * @throws DescriberTempException if a failure occurs accessing the appendable
+   * @throws DescriberIoException if a failure occurs accessing the appendable
    * @since 1.0.0
    */
   public static void describeTo(@NotNull Appendable appendable, @Nullable Object value,
@@ -186,7 +186,7 @@ public final class Describe {
    *                                    detect self-contained object hierarchies
    * @throws NullPointerException if appendable and/or recursiveMeAndOtherConsumer is
    *                              {@code null}
-   * @throws DescriberTempException if a failure occurs accessing the appendable
+   * @throws DescriberIoException if a failure occurs accessing the appendable
    * @since 1.0.0
    */
   @Contract("null, _, _, _ -> fail; _, _, _, null -> fail")

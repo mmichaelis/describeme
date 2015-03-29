@@ -29,7 +29,7 @@ import java.io.IOException;
  * <p>
  * Utility for silently appending to any appendable. As some appendables might throw
  * IOExceptions they are caught and wrapped into a dedicated
- * {@link DescriberTempException}.
+ * {@link DescriberIoException}.
  * </p>
  *
  * @since 1.0.0
@@ -60,7 +60,7 @@ public final class AppendableUtil {
         }
       }
     } catch (IOException e) {
-      throw new DescriberTempException(
+      throw new DescriberIoException(
           format("Unable to append values {0} to appendable {1}.", values, appendable), e);
     }
   }

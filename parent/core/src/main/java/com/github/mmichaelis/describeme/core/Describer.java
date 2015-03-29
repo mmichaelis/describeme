@@ -98,7 +98,7 @@ public interface Describer extends Predicate<Object> {
    * @param appendable appendable to add value's string representation to
    * @param value      the value to describe
    * @throws NullPointerException            if appendable is {@code null}
-   * @throws DescriberTempException            if a failure occurs accessing the appendable
+   * @throws DescriberIoException            if a failure occurs accessing the appendable
    * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
    *                                         be handled by this describer; you should have called
    *                                         {@link #test(Object)} before
@@ -129,7 +129,7 @@ public interface Describer extends Predicate<Object> {
    *                   representation for large objects; maxCount typically refers to list or array
    *                   elements
    * @throws NullPointerException            if appendable is {@code null}
-   * @throws DescriberTempException            if a failure occurs accessing the appendable
+   * @throws DescriberIoException            if a failure occurs accessing the appendable
    * @throws DescriberNotApplicableException if the value handed over to the Describer cannot
    *                                         be handled by this describer; you should have called
    *                                         {@link #test(Object)} before

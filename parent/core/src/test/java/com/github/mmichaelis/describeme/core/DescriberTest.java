@@ -93,7 +93,7 @@ public class DescriberTest {
       try {
         appendable.append(describer.apply(value));
       } catch (IOException e) {
-        throw new DescriberTempException("Failure.", e);
+        throw new DescriberIoException("Failure.", e);
       }
     }
 

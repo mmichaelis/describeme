@@ -69,7 +69,7 @@ public class AppendableUtilTest {
     IOException exceptionToThrow = new IOException(testName.getMethodName());
     Appendable appendable = new FailingAppendable(exceptionToThrow);
 
-    expectedException.expect(DescriberTempException.class);
+    expectedException.expect(DescriberIoException.class);
     expectedException.expectCause(sameInstance(exceptionToThrow));
     expectedException.expectMessage(not(isEmptyOrNullString()));
 

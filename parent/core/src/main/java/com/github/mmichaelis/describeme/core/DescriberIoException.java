@@ -23,11 +23,11 @@ package com.github.mmichaelis.describeme.core;
  *
  * @since 1.0.0
  */
-public class DescriberTempException extends DescriberException {
+public class DescriberIoException extends DescriberException {
 
   private static final long serialVersionUID = -2610615491164970753L;
 
-  public DescriberTempException(String message, Throwable cause) {
+  public DescriberIoException(String message, Throwable cause) {
     super(message, cause);
   }
 
