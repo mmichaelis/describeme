@@ -19,6 +19,8 @@ package com.github.mmichaelis.describeme.library;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import com.google.common.collect.ImmutableMap;
+
 import com.github.mmichaelis.describeme.core.Describe;
 
 import org.jetbrains.annotations.NotNull;
@@ -38,7 +40,7 @@ import java.util.Formatter;
 import java.util.function.Consumer;
 
 @RunWith(Parameterized.class)
-public class DescribeTest {
+public class LibraryDescribeTest {
 
   private static final Object SOME_OBJECT = new Object();
   private static final Object[] SOME_OBJECT_ARRAY = {};
@@ -47,7 +49,7 @@ public class DescribeTest {
   private final Object toDescribe;
   private final String expectedDescription;
 
-  public DescribeTest(@Nullable Object toDescribe, @NotNull String expectedDescription) {
+  public LibraryDescribeTest(@Nullable Object toDescribe, @NotNull String expectedDescription) {
     this.toDescribe = toDescribe;
     this.expectedDescription = expectedDescription;
   }
@@ -104,6 +106,10 @@ public class DescribeTest {
             {SOME_OBJECT_ARRAY.getClass(), String.valueOf(SOME_OBJECT_ARRAY.getClass())}, // 32
             {SomeEnum.class, String.valueOf(SomeEnum.class)}, // 33
             {SomeEnum.values(), "[A_ENUM, B_ENUM]"}, // 34
+            {Collections.emptyMap(), "{}"}, // 35
+            {Collections.singletonMap("k", "v"), "{\"k\"=\"v\"}"}, // 36
+            {ImmutableMap.builder().put("k1", "v1").put("k2", "v2").build(), "{\"k1\"=\"v1\", \"k2\"=\"v2\"}"}, // 37
+            {ImmutableMap.builder().put("k1", new Object[]{1, new Object[]{2, 3}}).put("k2", "v2").build(), "{\"k1\"=[1, [[...], [...]]], \"k2\"=\"v2\"}"}, // 38
         }
     );
   }

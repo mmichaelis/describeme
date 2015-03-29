@@ -17,6 +17,8 @@
 # FormattableDescriber: First as this gives most control to objects to
 # format themselves.
 com.github.mmichaelis.describeme.library.FormattableDescriber
+com.github.mmichaelis.describeme.library.MapDescriber
+com.github.mmichaelis.describeme.library.EntryDescriber
 com.github.mmichaelis.describeme.library.IterableDescriber
 com.github.mmichaelis.describeme.library.IteratorDescriber
 com.github.mmichaelis.describeme.library.StreamDescriber
