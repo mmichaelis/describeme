@@ -29,6 +29,8 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
+ * Tests {@link EllipsisPredicate}.
+ *
  * @since $SINCE$
  */
 public class EllipsisPredicateTest {
@@ -38,10 +40,21 @@ public class EllipsisPredicateTest {
     List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
     StringBuilder appendable = new StringBuilder();
     Predicate<Object> predicate =
-        new EllipsisPredicate(appendable, integers, 4, new MyBiConsumer(appendable));
+        new EllipsisPredicate(appendable, integers, 4, new MyBiConsumer(appendable), ", ");
     integers.stream().allMatch(predicate);
     assertThat("Result is truncated and ellipsis added.", appendable.toString(),
                is(equalTo("1, 2, 3, 4, ...")));
+  }
+
+  @Test
+  public void unlimitedForUnlimitedMaxCount() throws Exception {
+    List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
+    StringBuilder appendable = new StringBuilder();
+    Predicate<Object> predicate =
+        new EllipsisPredicate(appendable, integers, -1, new MyBiConsumer(appendable), ", ");
+    integers.stream().allMatch(predicate);
+    assertThat("Result is truncated and ellipsis added.", appendable.toString(),
+               is(equalTo("1, 2, 3, 4, 5")));
   }
 
   @Test
@@ -49,7 +62,7 @@ public class EllipsisPredicateTest {
     List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     StringBuilder appendable = new StringBuilder();
     Predicate<Object> predicate =
-        new EllipsisPredicate(appendable, integers, 4, new MyBiConsumer(appendable));
+        new EllipsisPredicate(appendable, integers, 4, new MyBiConsumer(appendable), ", ");
     integers.stream().allMatch(predicate);
     assertThat("Result is truncated and ellipsis added.", appendable.toString(),
                is(equalTo("1, 2, 3, 4, ...")));
@@ -60,7 +73,7 @@ public class EllipsisPredicateTest {
     List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
     StringBuilder appendable = new StringBuilder();
     Predicate<Object> predicate =
-        new EllipsisPredicate(appendable, integers, 5, new MyBiConsumer(appendable));
+        new EllipsisPredicate(appendable, integers, 5, new MyBiConsumer(appendable), ", ");
     integers.stream().allMatch(predicate);
     assertThat("Result is truncated and ellipsis added.", appendable.toString(),
                is(equalTo("1, 2, 3, 4, 5")));
@@ -71,7 +84,7 @@ public class EllipsisPredicateTest {
     List<Integer> integers = Collections.singletonList(1);
     StringBuilder appendable = new StringBuilder();
     Predicate<Object> predicate =
-        new EllipsisPredicate(appendable, integers, 5, new MyBiConsumer(appendable));
+        new EllipsisPredicate(appendable, integers, 5, new MyBiConsumer(appendable), ", ");
     integers.stream().allMatch(predicate);
     assertThat("No separator added.", appendable.toString(),
                is(equalTo("1")));
@@ -82,7 +95,7 @@ public class EllipsisPredicateTest {
     List<Integer> integers = Collections.emptyList();
     StringBuilder appendable = new StringBuilder();
     Predicate<Object> predicate =
-        new EllipsisPredicate(appendable, integers, 5, new MyBiConsumer(appendable));
+        new EllipsisPredicate(appendable, integers, 5, new MyBiConsumer(appendable), ", ");
     integers.stream().allMatch(predicate);
     assertThat(appendable.toString(), is(equalTo("")));
   }
@@ -92,7 +105,7 @@ public class EllipsisPredicateTest {
     List<Integer> integers = Collections.singletonList(1);
     StringBuilder appendable = new StringBuilder();
     Predicate<Object> predicate =
-        new EllipsisPredicate(appendable, integers, 0, new MyBiConsumer(appendable));
+        new EllipsisPredicate(appendable, integers, 0, new MyBiConsumer(appendable), ", ");
     integers.stream().allMatch(predicate);
     assertThat(appendable.toString(), is(equalTo("...")));
   }

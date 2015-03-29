@@ -25,7 +25,6 @@ import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
 import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
-import static java.util.Objects.requireNonNull;
 
 /**
  * <p>
@@ -49,26 +48,27 @@ class EllipsisPredicate implements Predicate<Object> {
   private final int maxCount;
   @NotNull
   private final BiConsumer<Object, Object> recursiveConsumer;
+  private final String elementSeparator;
   private int count;
 
-  EllipsisPredicate(@NotNull Appendable appendable,
-                    @Nullable Object parentObject,
-                    int maxCount,
-                    @NotNull BiConsumer<Object, Object> recursiveConsumer) {
-    this.appendable = requireNonNull(appendable, "Appendable must be set.");
+  EllipsisPredicate(@NotNull Appendable appendable, @Nullable Object parentObject, int maxCount,
+                    @NotNull BiConsumer<Object, Object> recursiveConsumer,
+                    String elementSeparator) {
+    this.appendable = appendable;
     this.parentObject = parentObject;
     this.maxCount = maxCount;
-    this.recursiveConsumer = requireNonNull(recursiveConsumer, "Recursive consumer must be set.");
+    this.recursiveConsumer = recursiveConsumer;
+    this.elementSeparator = elementSeparator;
     count = 0;
   }
 
   @Override
   public boolean test(@Nullable Object obj) {
-    if (count > maxCount) {
+    if ((maxCount >= 0) && (count > maxCount)) {
       return false;
     }
     if (count > 0) {
-      silentAppend(appendable, ", ");
+      silentAppend(appendable, elementSeparator);
     }
     boolean appended = false;
     if ((maxCount <= DescriberProperties.UNLIMITED) || (count < maxCount)) {
@@ -88,6 +88,7 @@ class EllipsisPredicate implements Predicate<Object> {
         .add("parentObject", parentObject)
         .add("count", count)
         .add("maxCount", maxCount)
+        .add("elementSeparator", elementSeparator)
         .add("recursiveConsumer", recursiveConsumer)
         .toString();
   }

@@ -16,6 +16,10 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import com.google.common.base.MoreObjects;
+
+import com.github.mmichaelis.describeme.core.config.StreamDescriberConfiguration;
+
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,6 +28,7 @@ import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
 import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
+import static java.util.Objects.requireNonNull;
 
 /**
  * <p>
@@ -40,6 +45,25 @@ import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
 public abstract class AbstractStreamDescriber implements RecursiveDescriber {
 
   /**
+   * Configuration for the stream describer.
+   *
+   * @since $SINCE$
+   */
+  @NotNull
+  private final StreamDescriberConfiguration configuration;
+
+  /**
+   * Constructor configuring the stream describer behavior.
+   *
+   * @param configuration some configuration about start and end marker as well as element
+   *                      separator
+   * @since $SINCE$
+   */
+  protected AbstractStreamDescriber(@NotNull StreamDescriberConfiguration configuration) {
+    this.configuration = requireNonNull(configuration, "configuration must not be null.");
+  }
+
+  /**
    * {@inheritDoc}
    * <p>
    * Value must be convertible to a stream. Stream elements will be sequentially added
@@ -53,13 +77,21 @@ public abstract class AbstractStreamDescriber implements RecursiveDescriber {
   public final void describeTo(@NotNull Appendable appendable, @Nullable Object value,
                                int maxCount,
                                @NotNull BiConsumer<Object, Object> recursiveMeAndOtherConsumer) {
+    requireNonNull(appendable, "appendable must not be null.");
     validatedValue(value);
-    assert value != null : "value must not be null. Did you call test() before?";
+    assert value != null : "validateValue should have prevented null value.";
     Stream<?> stream = valueAsStream(value);
-    silentAppend(appendable, "[");
-    stream.allMatch(new EllipsisPredicate(appendable, value, maxCount,
-                                          recursiveMeAndOtherConsumer));
-    silentAppend(appendable, "]");
+    silentAppend(appendable, configuration.startMarker());
+    stream.allMatch(new EllipsisPredicate(appendable, value, maxCount, recursiveMeAndOtherConsumer,
+                                          configuration.elementSeparator()));
+    silentAppend(appendable, configuration.endMarker());
+  }
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+        .add("configuration", configuration)
+        .toString();
   }
 
   /**
@@ -72,6 +104,6 @@ public abstract class AbstractStreamDescriber implements RecursiveDescriber {
    * @since $SINCE$
    */
   @NotNull
+  @Contract("null -> fail")
   protected abstract Stream<?> valueAsStream(@NotNull Object value);
-
 }

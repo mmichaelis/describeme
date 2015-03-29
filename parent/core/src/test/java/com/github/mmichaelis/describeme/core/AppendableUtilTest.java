@@ -59,8 +59,7 @@ public class AppendableUtilTest {
     StringBuilder builder = new StringBuilder();
     String testString = testName.getMethodName();
     String[] testArray = SPLIT_TO_CHARACTERS.split(testString);
-    // silentAppend(builder, (Object[]) testArray);
-    silentAppend(builder, testArray);
+    silentAppend(builder, (Object[]) testArray);
     assertThat(builder.toString(), is(equalTo(testString)));
   }
 

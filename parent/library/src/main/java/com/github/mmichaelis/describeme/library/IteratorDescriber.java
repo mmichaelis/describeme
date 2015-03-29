@@ -18,6 +18,7 @@ package com.github.mmichaelis.describeme.library;
 
 import com.github.mmichaelis.describeme.core.AbstractStreamDescriber;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,10 +28,17 @@ import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import static com.github.mmichaelis.describeme.core.config.DefaultStreamDescriberConfiguration.LIST_CONFIGURATION;
+import static java.util.Objects.requireNonNull;
+
 /**
- * @since $$SINCE:2015-03-16$$
+ * @since $SINCE$
  */
 public class IteratorDescriber extends AbstractStreamDescriber {
+
+  public IteratorDescriber() {
+    super(LIST_CONFIGURATION);
+  }
 
   @Override
   public boolean test(@Nullable Object value) {
@@ -39,8 +47,9 @@ public class IteratorDescriber extends AbstractStreamDescriber {
 
   @NotNull
   @Override
+  @Contract("null -> fail")
   protected Stream<?> valueAsStream(@NotNull Object value) {
-    Iterator<?> iterator = (Iterator<?>) value;
+    Iterator<?> iterator = (Iterator<?>) requireNonNull(value, "value must not be null.");
     Spliterator<Object>
         spliterator =
         Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED);
