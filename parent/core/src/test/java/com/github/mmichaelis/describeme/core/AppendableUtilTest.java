@@ -50,7 +50,7 @@ public class AppendableUtilTest {
   @Test
   public void robustnessForNullValues() throws Exception {
     StringBuilder builder = new StringBuilder();
-    silentAppend(builder, null);
+    silentAppend(builder, (Object[]) null);
     assertThat(builder.toString(), is(equalTo("null")));
   }
 
@@ -59,6 +59,7 @@ public class AppendableUtilTest {
     StringBuilder builder = new StringBuilder();
     String testString = testName.getMethodName();
     String[] testArray = SPLIT_TO_CHARACTERS.split(testString);
+    // silentAppend(builder, (Object[]) testArray);
     silentAppend(builder, testArray);
     assertThat(builder.toString(), is(equalTo(testString)));
   }
