@@ -110,6 +110,10 @@ public class LibraryDescribeTest {
             {Collections.singletonMap("k", "v"), "{\"k\"=\"v\"}"}, // 36
             {ImmutableMap.builder().put("k1", "v1").put("k2", "v2").build(), "{\"k1\"=\"v1\", \"k2\"=\"v2\"}"}, // 37
             {ImmutableMap.builder().put("k1", new Object[]{1, new Object[]{2, 3}}).put("k2", "v2").build(), "{\"k1\"=[1, [[...], [...]]], \"k2\"=\"v2\"}"}, // 38
+            {new RuntimeException(), "java.lang.RuntimeException"}, // 39
+            {new RuntimeException("some message"), "java.lang.RuntimeException: some message"}, // 40
+            {new RuntimeException(new NullPointerException()), "java.lang.RuntimeException: (cause: java.lang.NullPointerException)"}, // 41
+            {new RuntimeException("some message", new NullPointerException()), "java.lang.RuntimeException: some message (cause: java.lang.NullPointerException)"}, // 42
         }
     );
   }

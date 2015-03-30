@@ -59,7 +59,6 @@ class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
     this.maxCount = maxCount;
   }
 
-
   /**
    * <p>
    * Describes the given value and prevents recursion by remembering its parent.
@@ -99,26 +98,53 @@ class RecursiveDescriptionConsumer implements BiConsumer<Object, Object> {
         .toString();
   }
 
+  /**
+   * Remember object so that we do not report it again during recursion.
+   *
+   * @param me object to remember
+   * @return {@code true} if added, {@code false} if not
+   */
   private boolean remember(@Nullable Object me) {
     return dejaVu.add(me);
   }
 
+  /**
+   * <p>
+   * Forget object, as we left recursion. In other words: The same object might occur
+   * multiple times on the same depth but not as descendant of itself.
+   * </p>
+   *
+   * @param me object to forget
+   * @return {@code true} if removed, {@code false} if not
+   */
   private boolean forget(@Nullable Object me) {
     return dejaVu.remove(me);
   }
 
+  /**
+   * Increase depth. Only count depth if it is actually limited in order to prevent
+   * overflows.
+   */
   private void down() {
     if (maxDepth > DescriberProperties.UNLIMITED) {
       currentDepth++;
     }
   }
 
+  /**
+   * Decrease depth but only until depth 0 is reached.
+   */
   private void up() {
     if (currentDepth > 0) {
       currentDepth--;
     }
   }
 
+  /**
+   * Validate if consumer is at maximum depth.
+   *
+   * @return {@code true} if maximum depth is reached; {@code false} otherwise
+   */
   private boolean isMaxDepthReached() {
     return currentDepth == maxDepth;
   }
