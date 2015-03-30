@@ -16,6 +16,8 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * <p>
  * General exception raised from Describers.
@@ -27,11 +29,34 @@ public class DescriberException extends RuntimeException {
 
   private static final long serialVersionUID = 2388362520110062086L;
 
-  public DescriberException(String message) {
+  /**
+   * Constructs a new describer exception with the specified detail message.
+   * The cause is not initialized, and may subsequently be initialized by a
+   * call to {@link #initCause}.
+   *
+   * @param message the detail message. The detail message is saved for
+   *                later retrieval by the {@link #getMessage()} method.
+   * @since $SINCE$
+   */
+  public DescriberException(@Nullable String message) {
     super(message);
   }
 
-  public DescriberException(String message, Throwable cause) {
+  /**
+   * <p>
+   * Constructs a new describer exception with the specified detail message and
+   * cause.
+   * </p>
+   *
+   * @param message the detail message (which is saved for later retrieval
+   *                by the {@link #getMessage()} method).
+   * @param cause   the cause (which is saved for later retrieval by the
+   *                {@link #getCause()} method).  (A {@code null} value is
+   *                permitted, and indicates that the cause is nonexistent or
+   *                unknown.)
+   * @since $SINCE$
+   */
+  public DescriberException(@Nullable String message, @Nullable Throwable cause) {
     super(message, cause);
   }
 

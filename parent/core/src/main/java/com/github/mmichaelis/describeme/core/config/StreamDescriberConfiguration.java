@@ -31,7 +31,9 @@ public interface StreamDescriberConfiguration {
    * @return start marker
    */
   @NotNull
-  String startMarker();
+  default String startMarker() {
+    return "[";
+  }
 
   /**
    * Marker string to place at the end of the stream description.
@@ -39,7 +41,9 @@ public interface StreamDescriberConfiguration {
    * @return end marker
    */
   @NotNull
-  String endMarker();
+  default String endMarker() {
+    return "]";
+  }
 
   /**
    * String to place between the elements of a stream.
@@ -47,5 +51,7 @@ public interface StreamDescriberConfiguration {
    * @return element separator
    */
   @NotNull
-  String elementSeparator();
+  default String elementSeparator() {
+    return ", ";
+  }
 }

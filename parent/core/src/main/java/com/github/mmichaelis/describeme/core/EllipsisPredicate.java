@@ -43,15 +43,29 @@ class EllipsisPredicate implements Predicate<Object> {
 
   @NotNull
   private final Appendable appendable;
+  /**
+   * Parent object required to detect recursions.
+   */
   @Nullable
   private final Object parentObject;
+  /**
+   * Maximum count of elements.
+   */
   private final int maxCount;
   @NotNull
   private final BiConsumer<Object, Object> recursiveConsumer;
+  /**
+   * String to separate elements.
+   */
   private final String elementSeparator;
+  /**
+   * Current count of elements.
+   */
   private int count;
 
-  EllipsisPredicate(@NotNull Appendable appendable, @Nullable Object parentObject, int maxCount,
+  EllipsisPredicate(@NotNull Appendable appendable,
+                    @Nullable Object parentObject,
+                    int maxCount,
                     @NotNull BiConsumer<Object, Object> recursiveConsumer,
                     String elementSeparator) {
     this.appendable = appendable;

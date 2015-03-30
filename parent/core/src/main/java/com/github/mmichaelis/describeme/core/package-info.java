@@ -54,7 +54,7 @@
  * </p>
  * <pre>{@code
  * resources/META-INF/services/com.github.mmichaelis.describeme.core.Describer
- *         }</pre>
+ * }</pre>
  * </li>
  * </ul>
  * </dd>

@@ -56,7 +56,6 @@ public class DescribeTest {
   public void describeTo_AppendableObject_failsOnNull() throws Exception {
     StringBuilder sb = null;
     String value = "Lorem";
-    expectedException.expect(NullPointerException.class);
     expectedException.expectMessage(not(isEmptyString()));
     Describe.describeTo(sb, value);
   }
@@ -74,7 +73,6 @@ public class DescribeTest {
   public void describeTo_AppendableObjectMaxCount_failsOnNull() throws Exception {
     StringBuilder sb = null;
     String value = "Lorem";
-    expectedException.expect(NullPointerException.class);
     expectedException.expectMessage(not(isEmptyString()));
     Describe.describeTo(sb, value, 1);
   }
@@ -92,7 +90,6 @@ public class DescribeTest {
   public void describeTo_AppendableObjectMaxCountMaxDepth_failsOnNull() throws Exception {
     StringBuilder sb = null;
     String value = "Lorem";
-    expectedException.expect(NullPointerException.class);
     expectedException.expectMessage(not(isEmptyString()));
     Describe.describeTo(sb, value, 1, 1);
   }

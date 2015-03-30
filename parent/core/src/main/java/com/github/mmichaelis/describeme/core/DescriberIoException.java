@@ -16,6 +16,8 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * <p>
  * Wraps IOExceptions which might be raised while appending to appendables.
@@ -27,7 +29,21 @@ public class DescriberIoException extends DescriberException {
 
   private static final long serialVersionUID = -2610615491164970753L;
 
-  public DescriberIoException(String message, Throwable cause) {
+  /**
+   * <p>
+   * Constructs a new describer IO exception with the specified detail message and
+   * cause.
+   * </p>
+   *
+   * @param message the detail message (which is saved for later retrieval
+   *                by the {@link #getMessage()} method).
+   * @param cause   the cause (which is saved for later retrieval by the
+   *                {@link #getCause()} method).  (A {@code null} value is
+   *                permitted, and indicates that the cause is nonexistent or
+   *                unknown.)
+   * @since $SINCE$
+   */
+  public DescriberIoException(@Nullable String message, @Nullable Throwable cause) {
     super(message, cause);
   }
 

@@ -16,6 +16,8 @@
 
 package com.github.mmichaelis.describeme.core;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * <p>
  * Thrown when a Describer is forced to describe a value it cannot describe.
@@ -27,7 +29,16 @@ public class DescriberNotApplicableException extends DescriberException {
 
   private static final long serialVersionUID = -5728781725752389748L;
 
-  public DescriberNotApplicableException(String message) {
+  /**
+   * Constructs a new describer exception with the specified detail message.
+   * The cause is not initialized, and may subsequently be initialized by a
+   * call to {@link #initCause}.
+   *
+   * @param message the detail message. The detail message is saved for
+   *                later retrieval by the {@link #getMessage()} method.
+   * @since $SINCE$
+   */
+  public DescriberNotApplicableException(@Nullable String message) {
     super(message);
   }
 
