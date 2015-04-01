@@ -58,10 +58,10 @@
     </developer>
   </developers>
   <modules>
-    <module>build-tools</module>
-    <module>thirdparty-bom</module>
-    <module>thirdparty-test-bom</module>
-    <module>parent</module>
+    <module>describeme-build-tools</module>
+    <module>describeme-thirdparty-bom</module>
+    <module>describeme-thirdparty-test-bom</module>
+    <module>describeme-parent</module>
   </modules>
   <scm>
     <connection>scm:git@github.com:mmichaelis/describeme.git</connection>
