@@ -37,8 +37,8 @@
   ]]></description>
 
   <modules>
-    <module>core</module>
-    <module>library</module>
+    <module>describeme-core</module>
+    <module>describeme-library</module>
   </modules>
 
   <dependencyManagement>

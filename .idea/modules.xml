@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/describeme.iml" filepath="$PROJECT_DIR$/describeme.iml" />
       <module fileurl="file://$PROJECT_DIR$/describeme-build-tools/describeme-build-tools.iml" filepath="$PROJECT_DIR$/describeme-build-tools/describeme-build-tools.iml" />
-      <module fileurl="file://$PROJECT_DIR$/describeme-parent/core/describeme-core.iml" filepath="$PROJECT_DIR$/describeme-parent/core/describeme-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/describeme-parent/library/describeme-library.iml" filepath="$PROJECT_DIR$/describeme-parent/library/describeme-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/describeme-parent/describeme-core/describeme-core.iml" filepath="$PROJECT_DIR$/describeme-parent/describeme-core/describeme-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/describeme-parent/describeme-library/describeme-library.iml" filepath="$PROJECT_DIR$/describeme-parent/describeme-library/describeme-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/describeme-parent/describeme-parent.iml" filepath="$PROJECT_DIR$/describeme-parent/describeme-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/describeme-thirdparty-bom/describeme-thirdparty-bom.iml" filepath="$PROJECT_DIR$/describeme-thirdparty-bom/describeme-thirdparty-bom.iml" />
       <module fileurl="file://$PROJECT_DIR$/describeme-thirdparty-test-bom/describeme-thirdparty-test-bom.iml" filepath="$PROJECT_DIR$/describeme-thirdparty-test-bom/describeme-thirdparty-test-bom.iml" />

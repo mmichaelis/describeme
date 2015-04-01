@@ -4,8 +4,8 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/describeme-build-tools" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/describeme-parent" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/describeme-parent/core" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/describeme-parent/library" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/describeme-parent/describeme-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/describeme-parent/describeme-library" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/describeme-thirdparty-bom" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/describeme-thirdparty-test-bom" charset="UTF-8" />
   </component>
