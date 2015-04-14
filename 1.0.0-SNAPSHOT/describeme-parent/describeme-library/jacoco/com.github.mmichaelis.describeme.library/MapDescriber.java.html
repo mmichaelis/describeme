@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MapDescriber.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Library</a> &gt; <a href="index.source.html" class="el_package">com.github.mmichaelis.describeme.library</a> &gt; <span class="el_source">MapDescriber.java</span></div><h1>MapDescriber.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2015 Mark Michaelis
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.mmichaelis.describeme.library;
+
+import static com.github.mmichaelis.describeme.core.config.DefaultStreamDescriberConfiguration.MAP_CONFIGURATION;
+import static java.util.Objects.requireNonNull;
+
+import com.github.mmichaelis.describeme.core.AbstractStreamDescriber;
+
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Map;
+import java.util.stream.Stream;
+
+/**
+ * Describer for Maps which uses {@link EntryDescriber} for describing each single
+ * entry.
+ *
+ * @since 1.0.0
+ */
+public class MapDescriber extends AbstractStreamDescriber {
+
+  public MapDescriber() {
+<span class="fc" id="L40">    super(MAP_CONFIGURATION);</span>
+<span class="fc" id="L41">  }</span>
+
+  @Override
+  public boolean test(@Nullable Object value) {
+<span class="fc" id="L45">    return value instanceof Map&lt;?, ?&gt;;</span>
+  }
+
+  @NotNull
+  @Override
+  @Contract(&quot;null -&gt; fail&quot;)
+  protected Stream&lt;?&gt; valueAsStream(@NotNull Object value) {
+<span class="fc" id="L52">    Map&lt;?, ?&gt; map = (Map&lt;?, ?&gt;) requireNonNull(value, &quot;value must not be null.&quot;);</span>
+<span class="fc" id="L53">    return map.entrySet().stream();</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
