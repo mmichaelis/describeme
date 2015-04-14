@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Describe.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">com.github.mmichaelis.describeme.core</a> &gt; <span class="el_source">Describe.java</span></div><h1>Describe.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2015 Mark Michaelis
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.mmichaelis.describeme.core;
+
+import static com.github.mmichaelis.describeme.core.RootDescriber.rootDescriber;
+
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.function.BiConsumer;
+
+/**
+ * &lt;p&gt;
+ * Describes a given value by strategies found along the classpath.
+ * &lt;/p&gt;
+ *
+ * @since 1.0.0
+ */
+public final class Describe {
+
+  /**
+   * Some rough guess how long strings might be.
+   */
+  private static final int INITIAL_DESCRIPTION_CAPACITY = 128;
+
+  /**
+   * Utility class, do not create.
+   */
+<span class="fc" id="L44">  private Describe() {</span>
+<span class="fc" id="L45">  }</span>
+
+  /**
+   * &lt;p&gt;
+   * Add the description of the object to the given appendable.
+   * &lt;/p&gt;
+   *
+   * @param appendable appendable to add value's string representation to
+   * @param value      the value to describe
+   * @throws NullPointerException if appendable is {@code null}
+   * @throws DescriberIoException if a failure occurs accessing the appendable
+   * @since 1.0.0
+   */
+  @Contract(&quot;null, _ -&gt; fail&quot;)
+  public static void describeTo(@NotNull Appendable appendable, @Nullable Object value) {
+<span class="fc" id="L60">    rootDescriber().describeTo(appendable, value);</span>
+<span class="fc" id="L61">  }</span>
+
+  /**
+   * &lt;p&gt;
+   * Add the description of the object to the given appendable.
+   * &lt;/p&gt;
+   *
+   * @param appendable appendable to add value's string representation to
+   * @param value      the value to describe
+   * @param maxCount   limits the elements to be added to the appendable; a negative value denotes
+   *                   &lt;em&gt;unlimited&lt;/em&gt; - it is recommended to use {@link
+   *                   DescriberProperties#UNLIMITED}; the maxCount parameter does not promise any
+   *                   length of the appended String but should denote a limit the String
+   *                   representation for large objects; maxCount typically refers to list or array
+   *                   elements
+   * @throws NullPointerException if appendable is {@code null}
+   * @throws DescriberIoException if a failure occurs accessing the appendable
+   * @since 1.0.0
+   */
+  @Contract(&quot;null, _, _ -&gt; fail&quot;)
+  public static void describeTo(@NotNull Appendable appendable, @Nullable Object value,
+                                int maxCount) {
+<span class="fc" id="L83">    rootDescriber().describeTo(appendable, value, maxCount);</span>
+<span class="fc" id="L84">  }</span>
+
+  /**
+   * &lt;p&gt;
+   * Add the description of the object to the given appendable.
+   * &lt;/p&gt;
+   *
+   * @param appendable appendable to add value's string representation to
+   * @param value      the value to describe
+   * @param maxCount   limits the elements to be added to the appendable; a negative value denotes
+   *                   &lt;em&gt;unlimited&lt;/em&gt; - it is recommended to use {@link
+   *                   DescriberProperties#UNLIMITED}
+   * @param maxDepth   the maximum depth to possibly recurse into an object to describe it; a
+   *                   negative value denotes &lt;em&gt;unlimited&lt;/em&gt; - it is recommended to use {@link
+   *                   DescriberProperties#UNLIMITED}
+   * @throws NullPointerException if appendable is {@code null}
+   * @throws DescriberIoException if a failure occurs accessing the appendable
+   * @since 1.0.0
+   */
+  public static void describeTo(@NotNull Appendable appendable, @Nullable Object value,
+                                int maxCount, int maxDepth) {
+<span class="fc" id="L105">    rootDescriber().describeTo(appendable, value, maxCount, maxDepth);</span>
+<span class="fc" id="L106">  }</span>
+
+  /**
+   * &lt;p&gt;
+   * Describe the given value as string with the given restrictions applied.
+   * &lt;/p&gt;
+   *
+   * @param value    value to describe
+   * @param maxCount limits the length of the value; the limit might refer to number of characters
+   *                 or number of elements in an array - and describers might ignore it
+   * @param maxDepth the maximum depth to recurse into e. g. arrays, lists and maps
+   * @return value as String representation
+   * @since 1.0.0
+   */
+  @NotNull
+  public static String describe(@Nullable Object value, int maxCount, int maxDepth) {
+<span class="fc" id="L122">    StringBuilder sb = new StringBuilder(INITIAL_DESCRIPTION_CAPACITY);</span>
+<span class="fc" id="L123">    describeTo(sb, value, maxCount, maxDepth);</span>
+<span class="fc" id="L124">    return sb.toString();</span>
+  }
+
+  /**
+   * &lt;p&gt;
+   * Describe the given value as string.
+   * &lt;/p&gt;
+   * &lt;p&gt;
+   * While by default no constraints apply to the string transformation it can be controlled
+   * through
+   * system properties as denoted by {@link DescriberProperties#P_DESCRIBE_MAX_DEPTH} and
+   * {@link DescriberProperties#P_DESCRIBE_MAX_COUNT} which are be default &lt;em&gt;unlimited&lt;/em&gt;.
+   * &lt;/p&gt;
+   *
+   * @param value value to describe
+   * @return value as String representation
+   * @since 1.0.0
+   */
+  @NotNull
+  public static String describe(@Nullable Object value) {
+<span class="fc" id="L144">    StringBuilder sb = new StringBuilder(INITIAL_DESCRIPTION_CAPACITY);</span>
+<span class="fc" id="L145">    describeTo(sb, value);</span>
+<span class="fc" id="L146">    return sb.toString();</span>
+  }
+
+  /**
+   * &lt;p&gt;
+   * Describe the given value as string with the given restrictions applied.
+   * &lt;/p&gt;
+   * &lt;p&gt;
+   * While by default recursive structures are not limited, the depth can be limited by setting
+   * the system property as denoted by {@link DescriberProperties#P_DESCRIBE_MAX_DEPTH}. Any
+   * negative value means: &lt;em&gt;unlimited&lt;/em&gt;.
+   * &lt;/p&gt;
+   *
+   * @param value    value to describe
+   * @param maxCount limits the length of the value; the limit might refer to number of characters
+   *                 or number of elements in an array - and describers might ignore it
+   * @return value as String representation
+   * @since 1.0.0
+   */
+  @NotNull
+  public static String describe(@Nullable Object value, int maxCount) {
+<span class="fc" id="L167">    StringBuilder sb = new StringBuilder(INITIAL_DESCRIPTION_CAPACITY);</span>
+<span class="fc" id="L168">    describeTo(sb, value, maxCount);</span>
+<span class="fc" id="L169">    return sb.toString();</span>
+  }
+
+  /**
+   * &lt;p&gt;
+   * Add the description of the object to the given appendable and recurse into
+   * sub elements of value using the {@code recursiveMeAndOtherConsumer}.
+   * &lt;/p&gt;
+   *
+   * @param appendable                  appendable to add value's string representation to
+   * @param value                       the value to describe
+   * @param maxCount                    limits the elements to be added to the appendable; a
+   *                                    negative value denotes
+   *                                    &lt;em&gt;unlimited&lt;/em&gt; - it is recommended to use {@link
+   *                                    DescriberProperties#UNLIMITED}
+   * @param recursiveMeAndOtherConsumer consumer for recursion; call it with current value and
+   *                                    sub element as second argument such that the consumer can
+   *                                    detect self-contained object hierarchies
+   * @throws NullPointerException if appendable and/or recursiveMeAndOtherConsumer is
+   *                              {@code null}
+   * @throws DescriberIoException if a failure occurs accessing the appendable
+   * @since 1.0.0
+   */
+  @Contract(&quot;null, _, _, _ -&gt; fail; _, _, _, null -&gt; fail&quot;)
+  static void describeTo(@NotNull Appendable appendable,
+                         @Nullable Object value,
+                         int maxCount,
+                         @NotNull BiConsumer&lt;Object, Object&gt; recursiveMeAndOtherConsumer) {
+<span class="fc" id="L197">    rootDescriber().describeTo(appendable, value, maxCount, recursiveMeAndOtherConsumer);</span>
+<span class="fc" id="L198">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
