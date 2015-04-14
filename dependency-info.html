@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Dependency Information | Thirdparty Test BOM</title>
+		<title>Dependency Information | Main Modules</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -55,7 +55,7 @@
 <link rel="author" href="https://about.me/michaelismark"/>
 	</head>
 
-	<body class="page-dependency-info project-describeme-thirdparty-test-bom" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-dependency-info project-describeme-parent" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -106,7 +106,7 @@
 			<ul class="breadcrumb">
 				<li><a href="../" title="DescribeMe">DescribeMe</a></li>
 				<li class="divider">/</li>
-				<li><a href="./" title="Thirdparty Test BOM">Thirdparty Test BOM</a></li>
+				<li><a href="./" title="Main Modules">Main Modules</a></li>
 				<li class="divider">/</li>
 				<li>Dependency Information</li>
 			</ul>
@@ -159,7 +159,7 @@
   <div class="source"> 
    <pre>&lt;dependency&gt;
   &lt;groupId&gt;com.github.mmichaelis.describeme&lt;/groupId&gt;
-  &lt;artifactId&gt;describeme-thirdparty-test-bom&lt;/artifactId&gt;
+  &lt;artifactId&gt;describeme-parent&lt;/artifactId&gt;
   &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
   &lt;type&gt;pom&lt;/type&gt;
 &lt;/dependency&gt;</pre> 
@@ -169,15 +169,15 @@
   <h3 id="Apache_Buildr">Apache Buildr</h3> 
   <a name="Apache_Buildr"></a> 
   <div class="source"> 
-   <pre>'com.github.mmichaelis.describeme:describeme-thirdparty-test-bom:pom:1.0.0-SNAPSHOT'</pre> 
+   <pre>'com.github.mmichaelis.describeme:describeme-parent:pom:1.0.0-SNAPSHOT'</pre> 
   </div> 
  </div> 
  <div class="section"> 
   <h3 id="Apache_Ivy">Apache Ivy</h3> 
   <a name="Apache_Ivy"></a> 
   <div class="source"> 
-   <pre>&lt;dependency org=&quot;com.github.mmichaelis.describeme&quot; name=&quot;describeme-thirdparty-test-bom&quot; rev=&quot;1.0.0-SNAPSHOT&quot;&gt;
-  &lt;artifact name=&quot;describeme-thirdparty-test-bom&quot; type=&quot;pom&quot; /&gt;
+   <pre>&lt;dependency org=&quot;com.github.mmichaelis.describeme&quot; name=&quot;describeme-parent&quot; rev=&quot;1.0.0-SNAPSHOT&quot;&gt;
+  &lt;artifact name=&quot;describeme-parent&quot; type=&quot;pom&quot; /&gt;
 &lt;/dependency&gt;</pre> 
   </div> 
  </div> 
@@ -186,7 +186,7 @@
   <a name="Groovy_Grape"></a> 
   <div class="source"> 
    <pre>@Grapes(
-@Grab(group='com.github.mmichaelis.describeme', module='describeme-thirdparty-test-bom', version='1.0.0-SNAPSHOT')
+@Grab(group='com.github.mmichaelis.describeme', module='describeme-parent', version='1.0.0-SNAPSHOT')
 )</pre> 
   </div> 
  </div> 
@@ -194,21 +194,21 @@
   <h3 id="Grails">Grails</h3> 
   <a name="Grails"></a> 
   <div class="source"> 
-   <pre>compile 'com.github.mmichaelis.describeme:describeme-thirdparty-test-bom:1.0.0-SNAPSHOT'</pre> 
+   <pre>compile 'com.github.mmichaelis.describeme:describeme-parent:1.0.0-SNAPSHOT'</pre> 
   </div> 
  </div> 
  <div class="section"> 
   <h3 id="Leiningen">Leiningen</h3> 
   <a name="Leiningen"></a> 
   <div class="source"> 
-   <pre>[com.github.mmichaelis.describeme/describeme-thirdparty-test-bom &quot;1.0.0-SNAPSHOT&quot;]</pre> 
+   <pre>[com.github.mmichaelis.describeme/describeme-parent &quot;1.0.0-SNAPSHOT&quot;]</pre> 
   </div> 
  </div> 
  <div class="section"> 
   <h3 id="SBT">SBT</h3> 
   <a name="SBT"></a> 
   <div class="source"> 
-   <pre>libraryDependencies += &quot;com.github.mmichaelis.describeme&quot; % &quot;describeme-thirdparty-test-bom&quot; % &quot;1.0.0-SNAPSHOT&quot;</pre> 
+   <pre>libraryDependencies += &quot;com.github.mmichaelis.describeme&quot; % &quot;describeme-parent&quot; % &quot;1.0.0-SNAPSHOT&quot;</pre> 
   </div> 
  </div> 
 </div>
@@ -227,6 +227,12 @@
 				<div class="span3 bottom-nav">
 					<ul class="nav nav-list">
 						<li class="nav-header">Modules</li>
+						<li >
+							<a href="describeme-core/index.html" title="Core">Core</a>
+						</li>
+						<li >
+							<a href="describeme-library/index.html" title="Library">Library</a>
+						</li>
 					</ul>
 				</div>
 				<div class="span3 bottom-nav">
@@ -273,6 +279,9 @@
 						</li>
 						<li >
 							<a href="license.html" title="Project License">Project License</a>
+						</li>
+						<li >
+							<a href="modules.html" title="Project Modules">Project Modules</a>
 						</li>
 						<li >
 							<a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
