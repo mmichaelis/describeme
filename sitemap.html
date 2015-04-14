@@ -8,22 +8,22 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Sitemap | Main Modules</title>
+		<title>Sitemap | Core</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
  
 		<link href="//netdna.bootstrapcdn.com/bootswatch/2.3.2/flatly/bootstrap.min.css" rel="stylesheet" />
 		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet" />
-		<link href="../../desribeme/css/bootswatch.css" rel="stylesheet" />
-		<link href="../../desribeme/css/reflow-skin.css" rel="stylesheet" />
+		<link href="../../../desribeme/css/bootswatch.css" rel="stylesheet" />
+		<link href="../../../desribeme/css/reflow-skin.css" rel="stylesheet" />
 
 		<link href="//yandex.st/highlightjs/7.5/styles/github.min.css" rel="stylesheet" />
 
-		<link href="../../desribeme/css/lightbox.css" rel="stylesheet" />
+		<link href="../../../desribeme/css/lightbox.css" rel="stylesheet" />
 
-		<link href="../../desribeme/css/site.css" rel="stylesheet" />
-		<link href="../../desribeme/css/print.css" rel="stylesheet" media="print" />
+		<link href="../../../desribeme/css/site.css" rel="stylesheet" />
+		<link href="../../../desribeme/css/print.css" rel="stylesheet" media="print" />
 
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
@@ -55,7 +55,7 @@
 <link rel="author" href="https://about.me/michaelismark"/>
 	</head>
 
-	<body class="page-sitemap project-describeme-parent" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-sitemap project-describeme-core" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -65,7 +65,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="../"><span class="color-highlight">Describe</span>Me</a>
+					<a class="brand" href="../../"><span class="color-highlight">Describe</span>Me</a>
 					<div class="nav-collapse collapse" id="top-nav-collapse">
 						<ul class="nav pull-right">
 							<li ><a href="https://github.com/mmichaelis/describeme" title="GitHub" class="externalLink">GitHub</a></li>
@@ -93,7 +93,7 @@
 		<div class="row" id="banner">
 			<div class="span12">
 				<div class="pull-left">
-					<a href="../" id="bannerLeft"><h1><span class="color-highlight">Describe</span>Me</h1></a>
+					<a href="../../" id="bannerLeft"><h1><span class="color-highlight">Describe</span>Me</h1></a>
 					<p class="lead">Extensible strategies for describing Java objects</p>
 				</div>
 				<div class="pull-right">
@@ -107,6 +107,8 @@
 				<li><a href="./" title="DescribeMe">DescribeMe</a></li>
 				<li class="divider">/</li>
 				<li><a href="./" title="Main Modules">Main Modules</a></li>
+				<li class="divider">/</li>
+				<li><a href="./" title="Core">Core</a></li>
 				<li class="divider">/</li>
 				<li>Sitemap</li>
 			</ul>
@@ -167,16 +169,12 @@
    <h4 id="Parent">Parent</h4> 
    <hr /> 
    <ul> 
-    <li><a href="../index.html">DescribeMe</a></li> 
+    <li><a href="../index.html">Main Modules</a></li> 
    </ul> 
   </div> 
   <div class="section"> 
    <h4 id="Modules">Modules</h4> 
    <hr /> 
-   <ul> 
-    <li><a href="describeme-core/index.html">Core</a></li> 
-    <li><a href="describeme-library/index.html">Library</a></li> 
-   </ul> 
   </div> 
   <div class="section"> 
    <h4 id="Documentation">Documentation</h4> 
@@ -210,12 +208,12 @@
    <ul> 
     <li><a href="./project-info.html">Project Information</a> 
      <ul> 
+      <li><a href="dependencies.html">Dependencies</a></li> 
       <li><a href="dependency-info.html">Dependency Information</a></li> 
       <li><a href="dependency-management.html">Dependency Management</a></li> 
       <li><a href="index.html">About</a></li> 
       <li><a href="issue-tracking.html">Issue Tracking</a></li> 
       <li><a href="license.html">Project License</a></li> 
-      <li><a href="modules.html">Project Modules</a></li> 
       <li><a href="plugin-management.html">Plugin Management</a></li> 
       <li><a href="plugins.html">Project Plugins</a></li> 
       <li><a href="team-list.html">Project Team</a></li> 
@@ -224,9 +222,17 @@
      </ul></li> 
     <li><a href="./project-reports.html">Project Reports</a> 
      <ul> 
+      <li><a href="surefire-report.html">Surefire Report</a></li> 
+      <li><a href="jacoco/index.html">JaCoCo Test</a></li> 
+      <li><a href="checkstyle.html">Checkstyle</a></li> 
+      <li><a href="xref/index.html">Source Xref</a></li> 
+      <li><a href="xref-test/index.html">Test Source Xref</a></li> 
+      <li><a href="pmd.html">PMD</a></li> 
+      <li><a href="findbugs.html">FindBugs</a></li> 
       <li><a href="property-updates-report.html">Property Updates Report</a></li> 
       <li><a href="plugin-updates-report.html">Plugin Updates Report</a></li> 
       <li><a href="dependency-updates-report.html">Dependency Updates Report</a></li> 
+      <li><a href="apidocs/index.html">JavaDocs</a></li> 
      </ul></li> 
    </ul> 
   </div> 
@@ -247,12 +253,6 @@
 				<div class="span3 bottom-nav">
 					<ul class="nav nav-list">
 						<li class="nav-header">Modules</li>
-						<li >
-							<a href="describeme-core/index.html" title="Core">Core</a>
-						</li>
-						<li >
-							<a href="describeme-library/index.html" title="Library">Library</a>
-						</li>
 					</ul>
 				</div>
 				<div class="span3 bottom-nav">
@@ -314,11 +314,11 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-	<script src="../../desribeme/js/lightbox.min.js"></script>
-	<script src="../../desribeme/js/reflow-scroll.js"></script>
+	<script src="../../../desribeme/js/lightbox.min.js"></script>
+	<script src="../../../desribeme/js/reflow-scroll.js"></script>
 	<script src="//yandex.st/highlightjs/7.5/highlight.min.js"></script>
 
-	<script src="../../desribeme/js/reflow-skin.js"></script>
+	<script src="../../../desribeme/js/reflow-skin.js"></script>
 
 	</body>
 </html>
