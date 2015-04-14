@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Dependency Updates Report | Thirdparty BOM</title>
+		<title>Dependency Updates Report | Thirdparty Test BOM</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -55,7 +55,7 @@
 <link rel="author" href="https://about.me/michaelismark"/>
 	</head>
 
-	<body class="page-dependency-updates-report project-describeme-thirdparty-bom" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-dependency-updates-report project-describeme-thirdparty-test-bom" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -106,7 +106,7 @@
 			<ul class="breadcrumb">
 				<li><a href="../" title="DescribeMe">DescribeMe</a></li>
 				<li class="divider">/</li>
-				<li><a href="./" title="Thirdparty BOM">Thirdparty BOM</a></li>
+				<li><a href="./" title="Thirdparty Test BOM">Thirdparty Test BOM</a></li>
 				<li class="divider">/</li>
 				<li>Dependency Updates Report</li>
 			</ul>
@@ -131,14 +131,15 @@
 		<li class="dropdown">
 			<a href="#" title="More&hellip;" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">&hellip; <b class="caret"></b></a>
 			<ul class="dropdown-menu" role="menu">
+								<li><a href="#chqoslogbacklogback-classic" title="ch.qos.logback:logback-classic">ch.qos.logback:logback-classic</a></li>
 								<li><a href="#comgithubmmichaelisdescribemedescribeme-core" title="com.github.mmichaelis.describeme:describeme-core">com.github.mmichaelis.describeme:describeme-core</a></li>
 								<li><a href="#comgithubmmichaelisdescribemedescribeme-library" title="com.github.mmichaelis.describeme:describeme-library">com.github.mmichaelis.describeme:describeme-library</a></li>
 								<li><a href="#comgithubmmichaelisdescribemedescribeme-parent" title="com.github.mmichaelis.describeme:describeme-parent">com.github.mmichaelis.describeme:describeme-parent</a></li>
 								<li><a href="#comgithubmmichaelisdescribemedescribeme-thirdparty-bom" title="com.github.mmichaelis.describeme:describeme-thirdparty-bom">com.github.mmichaelis.describeme:describeme-thirdparty-bom</a></li>
 								<li><a href="#comgithubmmichaelisdescribemedescribeme-thirdparty-test-bom" title="com.github.mmichaelis.describeme:describeme-thirdparty-test-bom">com.github.mmichaelis.describeme:describeme-thirdparty-test-bom</a></li>
-								<li><a href="#comgoogleguavaguava" title="com.google.guava:guava">com.google.guava:guava</a></li>
-								<li><a href="#orgjetbrainsannotations" title="org.jetbrains:annotations">org.jetbrains:annotations</a></li>
-								<li><a href="#orgslf4jslf4j-api" title="org.slf4j:slf4j-api">org.slf4j:slf4j-api</a></li>
+								<li><a href="#comgoogleguavaguava-testlib" title="com.google.guava:guava-testlib">com.google.guava:guava-testlib</a></li>
+								<li><a href="#junitjunit" title="junit:junit">junit:junit</a></li>
+								<li><a href="#orghamcresthamcrest-library" title="org.hamcrest:hamcrest-library">org.hamcrest:hamcrest-library</a></li>
 
 			</ul>
 		</li>
@@ -163,7 +164,7 @@
    <tr class="a"> 
     <td><i class="icon-ok"></i></td> 
     <td># of dependencies using the latest version available</td> 
-    <td>7</td> 
+    <td>8</td> 
    </tr> 
    <tr class="b"> 
     <td><i class="icon-warning-sign"></i></td> 
@@ -191,7 +192,7 @@
   <h3 id="Dependency_Management">Dependency Management</h3> 
   <table border="0" class="bodyTable table table-striped table-hover"> 
    <thead> 
-    <tr class="a"> 
+    <tr class="b"> 
      <th>Status</th> 
      <th>Group Id</th> 
      <th>Artifact Id</th> 
@@ -222,6 +223,19 @@
    </thead> 
    <tbody> 
     <tr class="a"> 
+     <td><i class="icon-warning-sign"></i></td> 
+     <td>ch.qos.logback</td> 
+     <td>logback-classic</td> 
+     <td>1.1.2</td> 
+     <td></td> 
+     <td></td> 
+     <td>jar</td> 
+     <td></td> 
+     <td><b>1.1.3</b></td> 
+     <td></td> 
+     <td></td> 
+    </tr> 
+    <tr class="b"> 
      <td><i class="icon-ok"></i></td> 
      <td>com.github.mmichaelis.describeme</td> 
      <td>describeme-core</td> 
@@ -234,7 +248,7 @@
      <td></td> 
      <td></td> 
     </tr> 
-    <tr class="b"> 
+    <tr class="a"> 
      <td><i class="icon-ok"></i></td> 
      <td>com.github.mmichaelis.describeme</td> 
      <td>describeme-library</td> 
@@ -247,7 +261,7 @@
      <td></td> 
      <td></td> 
     </tr> 
-    <tr class="a"> 
+    <tr class="b"> 
      <td><i class="icon-ok"></i></td> 
      <td>com.github.mmichaelis.describeme</td> 
      <td>describeme-parent</td> 
@@ -260,7 +274,7 @@
      <td></td> 
      <td></td> 
     </tr> 
-    <tr class="b"> 
+    <tr class="a"> 
      <td><i class="icon-ok"></i></td> 
      <td>com.github.mmichaelis.describeme</td> 
      <td>describeme-thirdparty-bom</td> 
@@ -273,7 +287,7 @@
      <td></td> 
      <td></td> 
     </tr> 
-    <tr class="a"> 
+    <tr class="b"> 
      <td><i class="icon-ok"></i></td> 
      <td>com.github.mmichaelis.describeme</td> 
      <td>describeme-thirdparty-test-bom</td> 
@@ -286,11 +300,24 @@
      <td></td> 
      <td></td> 
     </tr> 
-    <tr class="b"> 
+    <tr class="a"> 
      <td><i class="icon-ok"></i></td> 
      <td>com.google.guava</td> 
-     <td>guava</td> 
+     <td>guava-testlib</td> 
      <td>18.0</td> 
+     <td></td> 
+     <td></td> 
+     <td>jar</td> 
+     <td></td> 
+     <td></td> 
+     <td></td> 
+     <td></td> 
+    </tr> 
+    <tr class="b"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>junit</td> 
+     <td>junit</td> 
+     <td>4.12</td> 
      <td></td> 
      <td></td> 
      <td>jar</td> 
@@ -301,27 +328,14 @@
     </tr> 
     <tr class="a"> 
      <td><i class="icon-ok"></i></td> 
-     <td>org.jetbrains</td> 
-     <td>annotations</td> 
-     <td>13.0</td> 
+     <td>org.hamcrest</td> 
+     <td>hamcrest-library</td> 
+     <td>1.3</td> 
      <td></td> 
      <td></td> 
      <td>jar</td> 
      <td></td> 
      <td></td> 
-     <td></td> 
-     <td></td> 
-    </tr> 
-    <tr class="b"> 
-     <td><i class="icon-warning-sign"></i></td> 
-     <td>org.slf4j</td> 
-     <td>slf4j-api</td> 
-     <td>1.7.10</td> 
-     <td></td> 
-     <td></td> 
-     <td>jar</td> 
-     <td></td> 
-     <td><b>1.7.11</b></td> 
      <td></td> 
      <td></td> 
     </tr> 
@@ -337,46 +351,101 @@
  <h2 id="Dependency_Updates">Dependency Updates</h2> 
  <p></p> 
  <div class="section"> 
-  <h3 id="comgithubmmichaelisdescribemedescribeme-core">com.github.mmichaelis.describeme:describeme-core</h3> 
+  <h3 id="chqoslogbacklogback-classic">ch.qos.logback:logback-classic</h3> 
   <table border="0" class="bodyTable table table-striped table-hover"> 
    <thead> 
     <tr class="b"> 
+     <th width="80%">Newer versions</th> 
+     <td><b>1.1.3</b>&nbsp;<i>Next Incremental</i></td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="a"> 
      <th width="80%">Type</th> 
      <td>jar</td> 
     </tr> 
    </thead> 
    <thead> 
-    <tr class="a"> 
+    <tr class="b"> 
      <th width="80%">Classifier</th> 
      <td></td> 
     </tr> 
    </thead> 
    <thead> 
-    <tr class="b"> 
+    <tr class="a"> 
      <th width="80%">Scope</th> 
      <td></td> 
     </tr> 
    </thead> 
    <thead> 
+    <tr class="b"> 
+     <th width="80%">Current Version</th> 
+     <td>1.1.2</td> 
+    </tr> 
+   </thead> 
+   <thead> 
     <tr class="a"> 
+     <th width="80%">Artifact Id</th> 
+     <td>logback-classic</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="b"> 
+     <th width="80%">Group Id</th> 
+     <td>ch.qos.logback</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="a"> 
+     <th width="80%">Status</th> 
+     <td><i class="icon-warning-sign"></i>&nbsp;There is at least one newer incremental version available. Incremental updates are typically passive.</td> 
+    </tr> 
+   </thead> 
+   <tbody> 
+   </tbody> 
+  </table> 
+ </div> 
+ <div class="section"> 
+  <h3 id="comgithubmmichaelisdescribemedescribeme-core">com.github.mmichaelis.describeme:describeme-core</h3> 
+  <table border="0" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th width="80%">Type</th> 
+     <td>jar</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="b"> 
+     <th width="80%">Classifier</th> 
+     <td></td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="a"> 
+     <th width="80%">Scope</th> 
+     <td></td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="b"> 
      <th width="80%">Current Version</th> 
      <td>1.0.0-SNAPSHOT</td> 
     </tr> 
    </thead> 
    <thead> 
-    <tr class="b"> 
+    <tr class="a"> 
      <th width="80%">Artifact Id</th> 
      <td>describeme-core</td> 
     </tr> 
    </thead> 
    <thead> 
-    <tr class="a"> 
+    <tr class="b"> 
      <th width="80%">Group Id</th> 
      <td>com.github.mmichaelis.describeme</td> 
     </tr> 
    </thead> 
    <thead> 
-    <tr class="b"> 
+    <tr class="a"> 
      <th width="80%">Status</th> 
      <td><i class="icon-ok"></i>&nbsp;No newer versions available.</td> 
     </tr> 
@@ -582,7 +651,7 @@
   </table> 
  </div> 
  <div class="section"> 
-  <h3 id="comgoogleguavaguava">com.google.guava:guava</h3> 
+  <h3 id="comgoogleguavaguava-testlib">com.google.guava:guava-testlib</h3> 
   <table border="0" class="bodyTable table table-striped table-hover"> 
    <thead> 
     <tr class="a"> 
@@ -611,7 +680,7 @@
    <thead> 
     <tr class="a"> 
      <th width="80%">Artifact Id</th> 
-     <td>guava</td> 
+     <td>guava-testlib</td> 
     </tr> 
    </thead> 
    <thead> 
@@ -631,7 +700,7 @@
   </table> 
  </div> 
  <div class="section"> 
-  <h3 id="orgjetbrainsannotations">org.jetbrains:annotations</h3> 
+  <h3 id="junitjunit">junit:junit</h3> 
   <table border="0" class="bodyTable table table-striped table-hover"> 
    <thead> 
     <tr class="a"> 
@@ -654,19 +723,19 @@
    <thead> 
     <tr class="b"> 
      <th width="80%">Current Version</th> 
-     <td>13.0</td> 
+     <td>4.12</td> 
     </tr> 
    </thead> 
    <thead> 
     <tr class="a"> 
      <th width="80%">Artifact Id</th> 
-     <td>annotations</td> 
+     <td>junit</td> 
     </tr> 
    </thead> 
    <thead> 
     <tr class="b"> 
      <th width="80%">Group Id</th> 
-     <td>org.jetbrains</td> 
+     <td>junit</td> 
     </tr> 
    </thead> 
    <thead> 
@@ -680,14 +749,8 @@
   </table> 
  </div> 
  <div class="section"> 
-  <h3 id="orgslf4jslf4j-api">org.slf4j:slf4j-api</h3> 
+  <h3 id="orghamcresthamcrest-library">org.hamcrest:hamcrest-library</h3> 
   <table border="0" class="bodyTable table table-striped table-hover"> 
-   <thead> 
-    <tr class="b"> 
-     <th width="80%">Newer versions</th> 
-     <td><b>1.7.11</b>&nbsp;<i>Next Incremental</i><br /><b>1.7.12</b>&nbsp;<i>Latest Incremental</i></td> 
-    </tr> 
-   </thead> 
    <thead> 
     <tr class="a"> 
      <th width="80%">Type</th> 
@@ -709,25 +772,25 @@
    <thead> 
     <tr class="b"> 
      <th width="80%">Current Version</th> 
-     <td>1.7.10</td> 
+     <td>1.3</td> 
     </tr> 
    </thead> 
    <thead> 
     <tr class="a"> 
      <th width="80%">Artifact Id</th> 
-     <td>slf4j-api</td> 
+     <td>hamcrest-library</td> 
     </tr> 
    </thead> 
    <thead> 
     <tr class="b"> 
      <th width="80%">Group Id</th> 
-     <td>org.slf4j</td> 
+     <td>org.hamcrest</td> 
     </tr> 
    </thead> 
    <thead> 
     <tr class="a"> 
      <th width="80%">Status</th> 
-     <td><i class="icon-warning-sign"></i>&nbsp;There is at least one newer incremental version available. Incremental updates are typically passive.</td> 
+     <td><i class="icon-ok"></i>&nbsp;No newer versions available.</td> 
     </tr> 
    </thead> 
    <tbody> 
