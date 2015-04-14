@@ -8,22 +8,22 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>About | Library</title>
+		<title>DescribeMe - Extensible strategies for describing Java objects</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
  
 		<link href="//netdna.bootstrapcdn.com/bootswatch/2.3.2/flatly/bootstrap.min.css" rel="stylesheet" />
 		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet" />
-		<link href="../../../desribeme/css/bootswatch.css" rel="stylesheet" />
-		<link href="../../../desribeme/css/reflow-skin.css" rel="stylesheet" />
+		<link href="../desribeme/css/bootswatch.css" rel="stylesheet" />
+		<link href="../desribeme/css/reflow-skin.css" rel="stylesheet" />
 
 		<link href="//yandex.st/highlightjs/7.5/styles/github.min.css" rel="stylesheet" />
 
-		<link href="../../../desribeme/css/lightbox.css" rel="stylesheet" />
+		<link href="../desribeme/css/lightbox.css" rel="stylesheet" />
 
-		<link href="../../../desribeme/css/site.css" rel="stylesheet" />
-		<link href="../../../desribeme/css/print.css" rel="stylesheet" media="print" />
+		<link href="../desribeme/css/site.css" rel="stylesheet" />
+		<link href="../desribeme/css/print.css" rel="stylesheet" media="print" />
 
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
@@ -55,7 +55,7 @@
 <link rel="author" href="https://about.me/michaelismark"/>
 	</head>
 
-	<body class="page-index project-describeme-library" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-index project-describeme" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -65,7 +65,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="../../"><span class="color-highlight">Describe</span>Me</a>
+					<a class="brand" href="./"><span class="color-highlight">Describe</span>Me</a>
 					<div class="nav-collapse collapse" id="top-nav-collapse">
 						<ul class="nav pull-right">
 							<li ><a href="https://github.com/mmichaelis/describeme" title="GitHub" class="externalLink">GitHub</a></li>
@@ -93,7 +93,7 @@
 		<div class="row" id="banner">
 			<div class="span12">
 				<div class="pull-left">
-					<a href="../../" id="bannerLeft"><h1><span class="color-highlight">Describe</span>Me</h1></a>
+					<a href="./" id="bannerLeft"><h1><span class="color-highlight">Describe</span>Me</h1></a>
 					<p class="lead">Extensible strategies for describing Java objects</p>
 				</div>
 				<div class="pull-right">
@@ -102,49 +102,62 @@
 			</div>
 		</div>
 	</div>
-		<div>
-			<ul class="breadcrumb">
-				<li><a href="./" title="DescribeMe">DescribeMe</a></li>
-				<li class="divider">/</li>
-				<li><a href="./" title="Main Modules">Main Modules</a></li>
-				<li class="divider">/</li>
-				<li><a href="./" title="Library">Library</a></li>
-				<li class="divider">/</li>
-				<li>About</li>
-			</ul>
-		</div>
-		<hr class="toc-separator" />
-		<div id="toc-bar" class="navbar" data-spy="affix" data-offset-top="250">
-			<div class="navbar-inner">
-				<div id="toc-scroll-target" class="container">
-					<a class="btn btn-navbar" data-toggle="collapse" data-target="#toc-nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					<div class="nav-collapse collapse" id="toc-nav-collapse">
-						<ul id="toc" class="nav">
-						<li class="toplevel"><a href="#About_Library" title="About Library">About Library</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
 	</header>
 
 	<div class="main-body">
-	<div class="row">
-		<div class="span12">
-			<div class="body-content">
-<div class="section"> 
- <div class="page-header">
-  <h2 id="About_Library">About Library</h2>
- </div> 
- <a name="About_Library"></a> 
- <p>Library module for DescribeMe providing a convenient set of Describers for standard Java objects. If no Describer exists for an object the fallback is always appropriate toString() methods.</p> 
+	<div class="row columns columns2">
+		<div class="span6">
+			<h2 id="Mission">Mission</h2>
+<p>DescribeMe’s mission is to provide an easy to use and extensible way to describe your Java objects in log statements and especially in test assertions.</p>
+<p>DescribeMe is not verified against production use. At least currently it misses important internationalization requirements like for example number formats. Nevertheless you can easily extend DescribeMe in such a way, that it takes care of internationalization issues.</p>
+<div class="section">   
 </div>
-			</div>
 		</div>
+		<div class="span6">
+			<h2 id="Requirements">Requirements</h2>
+<p>DescribeMe requires Java 8 as it relies on Suppliers, Predicates, Consumers and Functions as well as the Java 8 Streaming API.</p>
+<div class="section">   
+</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6">
+			<h2 id="Terms">Terms</h2>
+<dl> 
+ <dt> 
+  <b>Describer</b> 
+ </dt> 
+ <dd> 
+  <p> The interfaces containing the strategies how to describe your Java objects. You will typically have a number of describers which will be able to describe one or more value types. </p> 
+ </dd> 
+ <dt> 
+  <b>SPI - Service Provider Interface</b> 
+ </dt> 
+ <dd> 
+  <p> The Java technology DescribeMe is based on. It mainly consists of files listing all available describer strategies and a service loader which is able to locate each available describer through any such file in the classpath. </p> 
+ </dd> 
+</dl>
+<div class="section">   
+ <!-- Links --> 
+</div>
+		</div>
+		<div class="span6">
+			<h2 id="Use_Cases">Use Cases</h2>
+<ol style="list-style-type: decimal"> 
+ <li>Add DescribeMe to your Maven project</li> 
+ <li>Use DescribeMe for assertion messages</li> 
+ <li>Use DescribeMe as subformat in <tt>MessageFormat</tt></li> 
+ <li>Extend DescribeMe by own describers</li> 
+ <li>Override existing describers</li> 
+ <li>Combine describers</li> 
+ <li>Using DescribeMe BOM POM</li> 
+ <li>Using DescribeMe Thirdparty BOM POM</li> 
+ <li>Combine describers with Guava</li> 
+ <li>Using describers in custom Hamcrest matchers</li> 
+</ol>
+		</div>
+	</div>
+	<div class="row">
 	</div>
 	</div>
 
@@ -158,6 +171,18 @@
 				<div class="span3 bottom-nav">
 					<ul class="nav nav-list">
 						<li class="nav-header">Modules</li>
+						<li >
+							<a href="../describeme-build-tools/index.html" title="Build Tools">Build Tools</a>
+						</li>
+						<li >
+							<a href="describeme-thirdparty-bom/index.html" title="Thirdparty BOM">Thirdparty BOM</a>
+						</li>
+						<li >
+							<a href="describeme-thirdparty-test-bom/index.html" title="Thirdparty Test BOM">Thirdparty Test BOM</a>
+						</li>
+						<li >
+							<a href="describeme-parent/index.html" title="Main Modules">Main Modules</a>
+						</li>
 					</ul>
 				</div>
 				<div class="span3 bottom-nav">
@@ -188,13 +213,16 @@
 							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-down"></i></a>
 							<ul class="nav nav-list">
 						<li >
-							<a href="dependencies.html" title="Dependencies">Dependencies</a>
+							<a href="dependency-convergence.html" title="Dependency Convergence">Dependency Convergence</a>
 						</li>
 						<li >
 							<a href="dependency-info.html" title="Dependency Information">Dependency Information</a>
 						</li>
 						<li >
 							<a href="dependency-management.html" title="Dependency Management">Dependency Management</a>
+						</li>
+						<li >
+							<a href="distribution-management.html" title="Distribution Management">Distribution Management</a>
 						</li>
 						<li class="active">
 							<a href="#" title="About">About</a>
@@ -204,6 +232,9 @@
 						</li>
 						<li >
 							<a href="license.html" title="Project License">Project License</a>
+						</li>
+						<li >
+							<a href="modules.html" title="Project Modules">Project Modules</a>
 						</li>
 						<li >
 							<a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
@@ -254,11 +285,11 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-	<script src="../../../desribeme/js/lightbox.min.js"></script>
-	<script src="../../../desribeme/js/reflow-scroll.js"></script>
+	<script src="../desribeme/js/lightbox.min.js"></script>
+	<script src="../desribeme/js/reflow-scroll.js"></script>
 	<script src="//yandex.st/highlightjs/7.5/highlight.min.js"></script>
 
-	<script src="../../../desribeme/js/reflow-skin.js"></script>
+	<script src="../desribeme/js/reflow-skin.js"></script>
 
 	</body>
 </html>
