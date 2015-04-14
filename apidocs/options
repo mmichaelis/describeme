@@ -1,0 +1,30 @@
+-classpath
+'C:/Users/Mark/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar;C:/Users/Mark/.m2/repository/org/slf4j/slf4j-api/1.7.10/slf4j-api-1.7.10.jar;C:/Users/Mark/.m2/repository/com/google/guava/guava/18.0/guava-18.0.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'D:/Documents/GitHub/describeme/describeme-parent/describeme-core/src/main/java;D:/Documents/GitHub/describeme/describeme-parent/describeme-core/target/generated-sources/annotations'
+-bottom
+'Copyright © 2015–2015.               Licensed under the Apache License, Version 2.0. Visit               <a href="http://mmichaelis.github.io/describeme/">DescribeMe at GitHub</a>.'
+-charset
+'UTF-8'
+-d
+'D:/Documents/GitHub/describeme/describeme-parent/describeme-core/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Core 1.0.0-SNAPSHOT API'
+-link
+'http://www.slf4j.org/apidocs'
+-link
+'http://logback.qos.ch/apidocs'
+-link
+'http://junit.org/apidocs'
+-linkoffline
+'http://docs.oracle.com/javase/8/docs/api' 'D:/Documents/GitHub/describeme/describeme-parent/describeme-core/target/javadoc-bundle-options'
+-linksource
+-use
+-version
+-windowtitle
+'Core 1.0.0-SNAPSHOT API'

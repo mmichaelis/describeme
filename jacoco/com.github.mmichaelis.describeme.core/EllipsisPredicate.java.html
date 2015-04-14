@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EllipsisPredicate.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">com.github.mmichaelis.describeme.core</a> &gt; <span class="el_source">EllipsisPredicate.java</span></div><h1>EllipsisPredicate.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2015 Mark Michaelis
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.mmichaelis.describeme.core;
+
+import static com.github.mmichaelis.describeme.core.AppendableUtil.silentAppend;
+
+import com.google.common.base.MoreObjects;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
+
+/**
+ * &lt;p&gt;
+ * Consumes objects to describe and appends an ellipsis once the maximum amount of
+ * elements is reached. Objects are resolved recursively.
+ * &lt;/p&gt;
+ * &lt;p&gt;
+ * As predicate it signals when there is nothing more to add. So if filtering through a stream
+ * you typically use {@link java.util.stream.Stream#allMatch(Predicate)} which will/might abort
+ * filtering once the limit is reached.
+ * &lt;/p&gt;
+ *
+ * @since 1.0.0
+ */
+class EllipsisPredicate implements Predicate&lt;Object&gt; {
+
+  @NotNull
+  private final Appendable appendable;
+  /**
+   * Parent object required to detect recursions.
+   */
+  @Nullable
+  private final Object parentObject;
+  /**
+   * Maximum count of elements.
+   */
+  private final int maxCount;
+  @NotNull
+  private final BiConsumer&lt;Object, Object&gt; recursiveConsumer;
+  /**
+   * String to separate elements.
+   */
+  private final String elementSeparator;
+  /**
+   * Current count of elements.
+   */
+  private int count;
+
+  EllipsisPredicate(@NotNull Appendable appendable,
+                    @Nullable Object parentObject,
+                    int maxCount,
+                    @NotNull BiConsumer&lt;Object, Object&gt; recursiveConsumer,
+<span class="fc" id="L70">                    String elementSeparator) {</span>
+<span class="fc" id="L71">    this.appendable = appendable;</span>
+<span class="fc" id="L72">    this.parentObject = parentObject;</span>
+<span class="fc" id="L73">    this.maxCount = maxCount;</span>
+<span class="fc" id="L74">    this.recursiveConsumer = recursiveConsumer;</span>
+<span class="fc" id="L75">    this.elementSeparator = elementSeparator;</span>
+<span class="fc" id="L76">    count = 0;</span>
+<span class="fc" id="L77">  }</span>
+
+  @Override
+  public boolean test(@Nullable Object obj) {
+<span class="pc bpc" id="L81" title="1 of 4 branches missed.">    if ((maxCount &gt;= 0) &amp;&amp; (count &gt; maxCount)) {</span>
+<span class="nc" id="L82">      return false;</span>
+    }
+<span class="fc bfc" id="L84" title="All 2 branches covered.">    if (count &gt; 0) {</span>
+<span class="fc" id="L85">      silentAppend(appendable, elementSeparator);</span>
+    }
+<span class="fc" id="L87">    boolean appended = false;</span>
+<span class="fc bfc" id="L88" title="All 4 branches covered.">    if ((maxCount &lt;= DescriberProperties.UNLIMITED) || (count &lt; maxCount)) {</span>
+<span class="fc" id="L89">      recursiveConsumer.accept(parentObject, obj);</span>
+<span class="fc" id="L90">      appended = true;</span>
+    } else {
+<span class="fc" id="L92">      silentAppend(appendable, DescriberProperties.ELLIPSIS);</span>
+    }
+<span class="fc" id="L94">    count++;</span>
+<span class="fc" id="L95">    return appended;</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L100">    return MoreObjects.toStringHelper(this)</span>
+<span class="nc" id="L101">        .add(&quot;appendable&quot;, appendable)</span>
+<span class="nc" id="L102">        .add(&quot;parentObject&quot;, parentObject)</span>
+<span class="nc" id="L103">        .add(&quot;count&quot;, count)</span>
+<span class="nc" id="L104">        .add(&quot;maxCount&quot;, maxCount)</span>
+<span class="nc" id="L105">        .add(&quot;elementSeparator&quot;, elementSeparator)</span>
+<span class="nc" id="L106">        .add(&quot;recursiveConsumer&quot;, recursiveConsumer)</span>
+<span class="nc" id="L107">        .toString();</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
