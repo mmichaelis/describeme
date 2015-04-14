@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Project Dependency Management | Thirdparty BOM</title>
+		<title>Project Dependency Management | Thirdparty Test BOM</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -55,7 +55,7 @@
 <link rel="author" href="https://about.me/michaelismark"/>
 	</head>
 
-	<body class="page-dependency-management project-describeme-thirdparty-bom" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-dependency-management project-describeme-thirdparty-test-bom" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -106,7 +106,7 @@
 			<ul class="breadcrumb">
 				<li><a href="./" title="DescribeMe">DescribeMe</a></li>
 				<li class="divider">/</li>
-				<li><a href="./" title="Thirdparty BOM">Thirdparty BOM</a></li>
+				<li><a href="./" title="Thirdparty Test BOM">Thirdparty Test BOM</a></li>
 				<li class="divider">/</li>
 				<li>Project Dependency Management</li>
 			</ul>
@@ -156,60 +156,67 @@
    </thead> 
    <tbody> 
     <tr class="b"> 
+     <td>ch.qos.logback</td> 
+     <td><a class="externalLink" href="http://logback.qos.ch">logback-classic</a></td> 
+     <td>1.1.2</td> 
+     <td>jar</td> 
+     <td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License - v 1.0</a>, <a class="externalLink" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License</a></td> 
+    </tr> 
+    <tr class="a"> 
      <td>com.github.mmichaelis.describeme</td> 
      <td><a class="externalLink" href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core/">describeme-core</a></td> 
      <td>1.0.0-SNAPSHOT</td> 
      <td>jar</td> 
      <td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td> 
     </tr> 
-    <tr class="a"> 
+    <tr class="b"> 
      <td>com.github.mmichaelis.describeme</td> 
      <td><a class="externalLink" href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-library/">describeme-library</a></td> 
      <td>1.0.0-SNAPSHOT</td> 
      <td>jar</td> 
      <td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td> 
     </tr> 
-    <tr class="b"> 
+    <tr class="a"> 
      <td>com.github.mmichaelis.describeme</td> 
      <td><a class="externalLink" href="http://mmichaelis.github.io/describeme/describeme-parent/">describeme-parent</a></td> 
      <td>1.0.0-SNAPSHOT</td> 
      <td>jar</td> 
      <td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td> 
     </tr> 
-    <tr class="a"> 
+    <tr class="b"> 
      <td>com.github.mmichaelis.describeme</td> 
      <td><a class="externalLink" href="http://mmichaelis.github.io/describeme/describeme-thirdparty-bom/">describeme-thirdparty-bom</a></td> 
      <td>1.0.0-SNAPSHOT</td> 
      <td>jar</td> 
      <td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td> 
     </tr> 
-    <tr class="b"> 
+    <tr class="a"> 
      <td>com.github.mmichaelis.describeme</td> 
      <td><a class="externalLink" href="http://mmichaelis.github.io/describeme/describeme-thirdparty-test-bom/">describeme-thirdparty-test-bom</a></td> 
      <td>1.0.0-SNAPSHOT</td> 
      <td>jar</td> 
      <td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td> 
     </tr> 
-    <tr class="a"> 
+    <tr class="b"> 
      <td>com.google.guava</td> 
-     <td><a class="externalLink" href="http://code.google.com/p/guava-libraries/guava">guava</a></td> 
+     <td><a class="externalLink" href="http://code.google.com/p/guava-libraries/guava-testlib">guava-testlib</a></td> 
      <td>18.0</td> 
      <td>jar</td> 
      <td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td> 
     </tr> 
-    <tr class="b"> 
-     <td>org.jetbrains</td> 
-     <td><a class="externalLink" href="http://www.jetbrains.org">annotations</a></td> 
-     <td>13.0</td> 
-     <td>jar</td> 
-     <td><a class="externalLink" href="http://www.apache.org/licenses/LICENSE-2.0.txt">The Apache Software License, Version 2.0</a></td> 
-    </tr> 
     <tr class="a"> 
-     <td>org.slf4j</td> 
-     <td><a class="externalLink" href="http://www.slf4j.org">slf4j-api</a></td> 
-     <td>1.7.10</td> 
+     <td>junit</td> 
+     <td><a class="externalLink" href="http://junit.org">junit</a></td> 
+     <td>4.12</td> 
      <td>jar</td> 
-     <td><a class="externalLink" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></td> 
+     <td><a class="externalLink" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License 1.0</a></td> 
+    </tr> 
+    <tr class="b"> 
+     <td>org.hamcrest</td> 
+     <td><a class="externalLink" href="https://github.com/hamcrest/JavaHamcrest/hamcrest-library">hamcrest-library</a></td> 
+     <td>1.3</td> 
+     <td>jar</td> 
+     <td><a class="externalLink" href="http://www.opensource.org/licenses/bsd-license.php">New BSD License</a></td> 
     </tr> 
    </tbody> 
   </table> 
