@@ -19,20 +19,20 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>DescribeMe - Checkstyle report</title>
-    <link>http://mmichaelis.github.io/describeme/</link>
-    <description>DescribeMe - Checkstyle report</description>
+    <title>Core - Checkstyle report</title>
+    <link>http://mmichaelis.github.io/describeme/describeme-parent/describeme-core/</link>
+    <description>Core - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2015</copyright>
     <item>
-      <title>File: 29,
+      <title>File: 17,
              Errors: 0,
-             Warnings: 9,
+             Warnings: 3,
              Infos: 0
       </title>
-            <link>http://mmichaelis.github.io/describeme//checkstyle.html</link>
+            <link>http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html</link>
       <description>
-        <p>Click <a href="http://mmichaelis.github.io/describeme//checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.AppendableUtil.java">com/github/mmichaelis/describeme/core/AppendableUtil.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.AppendableUtil.java">com/github/mmichaelis/describeme/core/AppendableUtil.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.package-info.java">com/github/mmichaelis/describeme/library/package-info.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.DefaultDescriber.java">com/github/mmichaelis/describeme/core/DefaultDescriber.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.DefaultDescriber.java">com/github/mmichaelis/describeme/core/DefaultDescriber.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.Describer.java">com/github/mmichaelis/describeme/core/Describer.java</a>
                 </td>
                 <td>
                   0
@@ -88,21 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.Describer.java">com/github/mmichaelis/describeme/core/Describer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.MapDescriber.java">com/github/mmichaelis/describeme/library/MapDescriber.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.RootDescriber.java">com/github/mmichaelis/describeme/core/RootDescriber.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.ThrowableDescriber.java">com/github/mmichaelis/describeme/library/ThrowableDescriber.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.config.DefaultStreamDescriberConfiguration.java">com/github/mmichaelis/describeme/core/config/DefaultStreamDescriberConfiguration.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.NumberDescriber.java">com/github/mmichaelis/describeme/library/NumberDescriber.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.EllipsisPredicate.java">com/github/mmichaelis/describeme/core/EllipsisPredicate.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.package-info.java">com/github/mmichaelis/describeme/core/package-info.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.config.StreamDescriberConfiguration.java">com/github/mmichaelis/describeme/core/config/StreamDescriberConfiguration.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.AbstractStreamDescriber.java">com/github/mmichaelis/describeme/core/AbstractStreamDescriber.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.package-info.java">com/github/mmichaelis/describeme/core/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.DescriberProperties.java">com/github/mmichaelis/describeme/core/DescriberProperties.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.AbstractStreamDescriber.java">com/github/mmichaelis/describeme/core/AbstractStreamDescriber.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +172,63 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.IterableDescriber.java">com/github/mmichaelis/describeme/library/IterableDescriber.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.DescriberProperties.java">com/github/mmichaelis/describeme/core/DescriberProperties.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.config.package-info.java">com/github/mmichaelis/describeme/core/config/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.DescriberIoException.java">com/github/mmichaelis/describeme/core/DescriberIoException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.RecursiveDescriber.java">com/github/mmichaelis/describeme/core/RecursiveDescriber.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.Describe.java">com/github/mmichaelis/describeme/core/Describe.java</a>
                 </td>
                 <td>
                   0
@@ -200,35 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.config.package-info.java">com/github/mmichaelis/describeme/core/config/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.DescriberIoException.java">com/github/mmichaelis/describeme/core/DescriberIoException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.Describe.java">com/github/mmichaelis/describeme/core/Describe.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.RecursiveDescriptionConsumer.java">com/github/mmichaelis/describeme/core/RecursiveDescriptionConsumer.java</a>
                 </td>
                 <td>
                   0
@@ -242,21 +256,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.RecursiveDescriptionConsumer.java">com/github/mmichaelis/describeme/core/RecursiveDescriptionConsumer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.DescriberException.java">com/github/mmichaelis/describeme/core/DescriberException.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.DescriberNotApplicableException.java">com/github/mmichaelis/describeme/core/DescriberNotApplicableException.java</a>
                 </td>
                 <td>
                   0
@@ -270,175 +270,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.IteratorDescriber.java">com/github/mmichaelis/describeme/library/IteratorDescriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.ArrayDescriber.java">com/github/mmichaelis/describeme/library/ArrayDescriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.RootDescriber.java">com/github/mmichaelis/describeme/core/RootDescriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.config.DefaultStreamDescriberConfiguration.java">com/github/mmichaelis/describeme/core/config/DefaultStreamDescriberConfiguration.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.EllipsisPredicate.java">com/github/mmichaelis/describeme/core/EllipsisPredicate.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.config.StreamDescriberConfiguration.java">com/github/mmichaelis/describeme/core/config/StreamDescriberConfiguration.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.CharacterDescriber.java">com/github/mmichaelis/describeme/library/CharacterDescriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.StreamDescriber.java">com/github/mmichaelis/describeme/library/StreamDescriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.StringDescriber.java">com/github/mmichaelis/describeme/library/StringDescriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.FormattableDescriber.java">com/github/mmichaelis/describeme/library/FormattableDescriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.RecursiveDescriber.java">com/github/mmichaelis/describeme/core/RecursiveDescriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.library.EntryDescriber.java">com/github/mmichaelis/describeme/library/EntryDescriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://mmichaelis.github.io/describeme//checkstyle.html#com.github.mmichaelis.describeme.core.DescriberNotApplicableException.java">com/github/mmichaelis/describeme/core/DescriberNotApplicableException.java</a>
+                  <a href="http://mmichaelis.github.io/describeme/describeme-parent/describeme-core//checkstyle.html#com.github.mmichaelis.describeme.core.DescriberException.java">com/github/mmichaelis/describeme/core/DescriberException.java</a>
                 </td>
                 <td>
                   0

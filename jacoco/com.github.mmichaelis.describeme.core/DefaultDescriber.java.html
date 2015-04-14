@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DefaultDescriber.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">com.github.mmichaelis.describeme.core</a> &gt; <span class="el_source">DefaultDescriber.java</span></div><h1>DefaultDescriber.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2015 Mark Michaelis
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.mmichaelis.describeme.core;
+
+import static java.lang.String.valueOf;
+import static java.util.Arrays.deepToString;
+import static java.util.Objects.requireNonNull;
+
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * &lt;p&gt;
+ * Default - and especially fallback describer if other describers are not available.
+ * It is a low effort implementation using Java standard abilities to transform values
+ * to strings.
+ * &lt;/p&gt;
+ *
+ * @since 1.0.0
+ */
+<span class="fc" id="L36">public final class DefaultDescriber implements Describer {</span>
+
+  /**
+   * Determine if a value is an array.
+   *
+   * @param value value to validate
+   * @return true iff. value is an array
+   */
+  @Contract(&quot;null -&gt; false&quot;)
+  private static boolean isArray(@Nullable Object value) {
+<span class="fc bfc" id="L46" title="All 4 branches covered.">    return (value != null) &amp;&amp; value.getClass().isArray();</span>
+  }
+
+  /**
+   * The DefaultDescriber accepts anything.
+   *
+   * @param value object to validate
+   * @return always {@code true}
+   */
+  @Override
+  @Contract(&quot;_ -&gt; true&quot;)
+  public boolean test(@Nullable Object value) {
+<span class="fc" id="L58">    return true;</span>
+  }
+
+  @Override
+  @Contract(&quot;null, _, _ -&gt; fail&quot;)
+  public void describeTo(@NotNull Appendable appendable, @Nullable Object value, int maxCount) {
+<span class="fc" id="L64">    requireNonNull(appendable, &quot;appendable must be defined.&quot;);</span>
+    // No truncation applied here. The idea is that for some values you do not want to have
+    // truncation at all. And the ideal solution of this default implementation is that you
+    // can just use the default rather than implementing your own Describer.
+<span class="fc" id="L68">    String stringValue =</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        isArray(value) ? deepToString((Object[]) value) : valueOf(value);</span>
+<span class="fc" id="L70">    AppendableUtil.silentAppend(appendable, stringValue);</span>
+<span class="fc" id="L71">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
