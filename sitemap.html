@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>DescribeMe - Extensible strategies for describing Java objects</title>
+		<title>Sitemap | DescribeMe</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -55,7 +55,7 @@
 <link rel="author" href="https://about.me/michaelismark"/>
 	</head>
 
-	<body class="page-index project-describeme" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-sitemap project-describeme" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -102,62 +102,143 @@
 			</div>
 		</div>
 	</div>
+		<div>
+			<ul class="breadcrumb">
+				<li><a href="./" title="DescribeMe">DescribeMe</a></li>
+				<li class="divider">/</li>
+				<li>Sitemap</li>
+			</ul>
+		</div>
+		<hr class="toc-separator" />
+		<div id="toc-bar" class="navbar" data-spy="affix" data-offset-top="250">
+			<div class="navbar-inner">
+				<div id="toc-scroll-target" class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target="#toc-nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse" id="toc-nav-collapse">
+						<ul id="toc" class="nav">
+						<li class="toplevel"><a href="#Sitemap" title="Sitemap">Sitemap</a></li>
+						<li class="toplevel"><a href="#About" title="About">About</a></li>
+						<li class="toplevel"><a href="#Parent" title="Parent">Parent</a></li>
+						<li class="toplevel"><a href="#Modules" title="Modules">Modules</a></li>
+						<li class="toplevel"><a href="#Documentation" title="Documentation">Documentation</a></li>
+						<li class="toplevel"><a href="#Development" title="Development">Development</a></li>
+		<li class="divider-vertical"></li>
+		<li class="dropdown">
+			<a href="#" title="More&hellip;" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">&hellip; <b class="caret"></b></a>
+			<ul class="dropdown-menu" role="menu">
+								<li><a href="#Contribute" title="Contribute">Contribute</a></li>
+								<li><a href="#Maven_Documentation" title="Maven Documentation">Maven Documentation</a></li>
+
+			</ul>
+		</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 	</header>
 
 	<div class="main-body">
-	<div class="row columns columns2">
-		<div class="span6">
-			<h2 id="Mission">Mission</h2>
-<p>DescribeMe’s mission is to provide an easy to use and extensible way to describe your Java objects in log statements and especially in test assertions.</p>
-<p>DescribeMe is not verified against production use. At least currently it misses important internationalization requirements like for example number formats. Nevertheless you can easily extend DescribeMe in such a way, that it takes care of internationalization issues.</p>
-<div class="section">   
-</div>
-		</div>
-		<div class="span6">
-			<h2 id="Requirements">Requirements</h2>
-<p>DescribeMe requires Java 8 as it relies on Suppliers, Predicates, Consumers and Functions as well as the Java 8 Streaming API.</p>
-<div class="section">   
-</div>
-		</div>
-	</div>
 	<div class="row">
-		<div class="span6">
-			<h2 id="Terms">Terms</h2>
-<dl> 
- <dt> 
-  <b>Describer</b> 
- </dt> 
- <dd> 
-  <p> The interfaces containing the strategies how to describe your Java objects. You will typically have a number of describers which will be able to describe one or more value types. </p> 
- </dd> 
- <dt> 
-  <b>SPI - Service Provider Interface</b> 
- </dt> 
- <dd> 
-  <p> The Java technology DescribeMe is based on. It mainly consists of files listing all available describer strategies and a service loader which is able to locate each available describer through any such file in the classpath. </p> 
- </dd> 
-</dl>
-<div class="section">   
- <!-- Links --> 
+		<div class="span12">
+			<div class="body-content">
+<div class="section"> 
+ <div class="page-header">
+  <h2 id="Sitemap">Sitemap</h2>
+ </div> 
+ <p>This page lists all entries of the navigation menu in expanded form.</p> 
+ <div class="section"> 
+  <div class="section"> 
+   <h4 id="About">About</h4> 
+   <hr /> 
+   <ul> 
+    <li><a href="license.html">License</a></li> 
+    <li><a class="externalLink" href="http://thragor.blogspot.de/">Blog</a></li> 
+    <li><a class="externalLink" href="https://about.me/michaelismark">About.me</a></li> 
+   </ul> 
+  </div> 
+  <div class="section"> 
+   <h4 id="Parent">Parent</h4> 
+   <hr /> 
+  </div> 
+  <div class="section"> 
+   <h4 id="Modules">Modules</h4> 
+   <hr /> 
+   <ul> 
+    <li><a href="describeme-build-tools/index.html">Build Tools</a></li> 
+    <li><a href="describeme-thirdparty-bom/index.html">Thirdparty BOM</a></li> 
+    <li><a href="describeme-thirdparty-test-bom/index.html">Thirdparty Test BOM</a></li> 
+    <li><a href="describeme-parent/index.html">Main Modules</a></li> 
+   </ul> 
+  </div> 
+  <div class="section"> 
+   <h4 id="Documentation">Documentation</h4> 
+   <hr /> 
+   <ul> 
+    <li><a href="development.html">Development</a></li> 
+    <li><a href="references.html">References</a></li> 
+    <li><a href="release-notes.html">Release notes</a></li> 
+   </ul> 
+  </div> 
+  <div class="section"> 
+   <h4 id="Development">Development</h4> 
+   <hr /> 
+   <ul> 
+    <li><a href="dev_howtos.html">Howtos</a></li> 
+    <li><a href="references.html">References</a></li> 
+    <li><a href="release-notes.html">Release notes</a></li> 
+   </ul> 
+  </div> 
+  <div class="section"> 
+   <h4 id="Contribute">Contribute</h4> 
+   <hr /> 
+   <ul> 
+    <li><a class="externalLink" href="https://github.com/mmichaelis/describeme/issues">Issues</a></li> 
+    <li><a class="externalLink" href="https://github.com/mmichaelis/describeme">Fork on GitHub</a></li> 
+   </ul> 
+  </div> 
+  <div class="section"> 
+   <h4 id="Maven_Documentation">Maven Documentation</h4> 
+   <hr /> 
+   <ul> 
+    <li><a href="./project-info.html">Project Information</a> 
+     <ul> 
+      <li><a href="dependency-convergence.html">Dependency Convergence</a></li> 
+      <li><a href="dependency-info.html">Dependency Information</a></li> 
+      <li><a href="dependency-management.html">Dependency Management</a></li> 
+      <li><a href="index.html">About</a></li> 
+      <li><a href="issue-tracking.html">Issue Tracking</a></li> 
+      <li><a href="license.html">Project License</a></li> 
+      <li><a href="modules.html">Project Modules</a></li> 
+      <li><a href="plugin-management.html">Plugin Management</a></li> 
+      <li><a href="plugins.html">Project Plugins</a></li> 
+      <li><a href="team-list.html">Project Team</a></li> 
+      <li><a href="source-repository.html">Source Repository</a></li> 
+      <li><a href="project-summary.html">Project Summary</a></li> 
+     </ul></li> 
+    <li><a href="./project-reports.html">Project Reports</a> 
+     <ul> 
+      <li><a href="surefire-report.html">Surefire Report</a></li> 
+      <li><a href="checkstyle-aggregate.html">Checkstyle</a></li> 
+      <li><a href="xref/index.html">Source Xref</a></li> 
+      <li><a href="xref-test/index.html">Test Source Xref</a></li> 
+      <li><a href="pmd.html">PMD</a></li> 
+      <li><a href="property-updates-report.html">Property Updates Report</a></li> 
+      <li><a href="plugin-updates-report.html">Plugin Updates Report</a></li> 
+      <li><a href="dependency-updates-report.html">Dependency Updates Report</a></li> 
+      <li><a href="github-report.html">GitHub Report</a></li> 
+      <li><a href="apidocs/index.html">JavaDocs</a></li> 
+     </ul></li> 
+   </ul> 
+  </div> 
+ </div> 
 </div>
+			</div>
 		</div>
-		<div class="span6">
-			<h2 id="Use_Cases">Use Cases</h2>
-<ol style="list-style-type: decimal"> 
- <li>Add DescribeMe to your Maven project</li> 
- <li>Use DescribeMe for assertion messages</li> 
- <li>Use DescribeMe as subformat in <tt>MessageFormat</tt></li> 
- <li>Extend DescribeMe by own describers</li> 
- <li>Override existing describers</li> 
- <li>Combine describers</li> 
- <li>Using DescribeMe BOM POM</li> 
- <li>Using DescribeMe Thirdparty BOM POM</li> 
- <li>Combine describers with Guava</li> 
- <li>Using describers in custom Hamcrest matchers</li> 
-</ol>
-		</div>
-	</div>
-	<div class="row">
 	</div>
 	</div>
 
@@ -210,45 +291,7 @@
 					<ul class="nav nav-list">
 						<li class="nav-header">Maven Documentation</li>
 						<li >
-							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-down"></i></a>
-							<ul class="nav nav-list">
-						<li >
-							<a href="dependency-convergence.html" title="Dependency Convergence">Dependency Convergence</a>
-						</li>
-						<li >
-							<a href="dependency-info.html" title="Dependency Information">Dependency Information</a>
-						</li>
-						<li >
-							<a href="dependency-management.html" title="Dependency Management">Dependency Management</a>
-						</li>
-						<li class="active">
-							<a href="#" title="About">About</a>
-						</li>
-						<li >
-							<a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a>
-						</li>
-						<li >
-							<a href="license.html" title="Project License">Project License</a>
-						</li>
-						<li >
-							<a href="modules.html" title="Project Modules">Project Modules</a>
-						</li>
-						<li >
-							<a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
-						</li>
-						<li >
-							<a href="plugins.html" title="Project Plugins">Project Plugins</a>
-						</li>
-						<li >
-							<a href="team-list.html" title="Project Team">Project Team</a>
-						</li>
-						<li >
-							<a href="source-repository.html" title="Source Repository">Source Repository</a>
-						</li>
-						<li >
-							<a href="project-summary.html" title="Project Summary">Project Summary</a>
-						</li>
-							</ul>
+							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-right"></i></a>
 						</li>
 						<li >
 							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-right"></i></a>

@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>DescribeMe - Extensible strategies for describing Java objects</title>
+		<title>Dependency Information | DescribeMe</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -55,7 +55,7 @@
 <link rel="author" href="https://about.me/michaelismark"/>
 	</head>
 
-	<body class="page-index project-describeme" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-dependency-info project-describeme" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -102,62 +102,116 @@
 			</div>
 		</div>
 	</div>
+		<div>
+			<ul class="breadcrumb">
+				<li><a href="./" title="DescribeMe">DescribeMe</a></li>
+				<li class="divider">/</li>
+				<li>Dependency Information</li>
+			</ul>
+		</div>
+		<hr class="toc-separator" />
+		<div id="toc-bar" class="navbar" data-spy="affix" data-offset-top="250">
+			<div class="navbar-inner">
+				<div id="toc-scroll-target" class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target="#toc-nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse" id="toc-nav-collapse">
+						<ul id="toc" class="nav">
+						<li class="toplevel"><a href="#Dependency_Information" title="Dependency Information">Dependency Information</a></li>
+						<li class="toplevel"><a href="#Apache_Maven" title="Apache Maven">Apache Maven</a></li>
+						<li class="toplevel"><a href="#Apache_Buildr" title="Apache Buildr">Apache Buildr</a></li>
+						<li class="toplevel"><a href="#Apache_Ivy" title="Apache Ivy">Apache Ivy</a></li>
+						<li class="toplevel"><a href="#Groovy_Grape" title="Groovy Grape">Groovy Grape</a></li>
+						<li class="toplevel"><a href="#Grails" title="Grails">Grails</a></li>
+		<li class="divider-vertical"></li>
+		<li class="dropdown">
+			<a href="#" title="More&hellip;" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#">&hellip; <b class="caret"></b></a>
+			<ul class="dropdown-menu" role="menu">
+								<li><a href="#Leiningen" title="Leiningen">Leiningen</a></li>
+								<li><a href="#SBT" title="SBT">SBT</a></li>
+
+			</ul>
+		</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 	</header>
 
 	<div class="main-body">
-	<div class="row columns columns2">
-		<div class="span6">
-			<h2 id="Mission">Mission</h2>
-<p>DescribeMe’s mission is to provide an easy to use and extensible way to describe your Java objects in log statements and especially in test assertions.</p>
-<p>DescribeMe is not verified against production use. At least currently it misses important internationalization requirements like for example number formats. Nevertheless you can easily extend DescribeMe in such a way, that it takes care of internationalization issues.</p>
-<div class="section">   
-</div>
-		</div>
-		<div class="span6">
-			<h2 id="Requirements">Requirements</h2>
-<p>DescribeMe requires Java 8 as it relies on Suppliers, Predicates, Consumers and Functions as well as the Java 8 Streaming API.</p>
-<div class="section">   
-</div>
-		</div>
-	</div>
 	<div class="row">
-		<div class="span6">
-			<h2 id="Terms">Terms</h2>
-<dl> 
- <dt> 
-  <b>Describer</b> 
- </dt> 
- <dd> 
-  <p> The interfaces containing the strategies how to describe your Java objects. You will typically have a number of describers which will be able to describe one or more value types. </p> 
- </dd> 
- <dt> 
-  <b>SPI - Service Provider Interface</b> 
- </dt> 
- <dd> 
-  <p> The Java technology DescribeMe is based on. It mainly consists of files listing all available describer strategies and a service loader which is able to locate each available describer through any such file in the classpath. </p> 
- </dd> 
-</dl>
-<div class="section">   
- <!-- Links --> 
+		<div class="span12">
+			<div class="body-content">
+<div class="section"> 
+ <div class="page-header">
+  <h2 id="Dependency_Information">Dependency Information</h2>
+ </div> 
+ <a name="Dependency_Information"></a> 
+ <div class="section"> 
+  <h3 id="Apache_Maven">Apache Maven</h3> 
+  <a name="Apache_Maven"></a> 
+  <div class="source"> 
+   <pre>&lt;dependency&gt;
+  &lt;groupId&gt;com.github.mmichaelis.describeme&lt;/groupId&gt;
+  &lt;artifactId&gt;describeme&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+  &lt;type&gt;pom&lt;/type&gt;
+&lt;/dependency&gt;</pre> 
+  </div> 
+ </div> 
+ <div class="section"> 
+  <h3 id="Apache_Buildr">Apache Buildr</h3> 
+  <a name="Apache_Buildr"></a> 
+  <div class="source"> 
+   <pre>'com.github.mmichaelis.describeme:describeme:pom:1.0.0-SNAPSHOT'</pre> 
+  </div> 
+ </div> 
+ <div class="section"> 
+  <h3 id="Apache_Ivy">Apache Ivy</h3> 
+  <a name="Apache_Ivy"></a> 
+  <div class="source"> 
+   <pre>&lt;dependency org=&quot;com.github.mmichaelis.describeme&quot; name=&quot;describeme&quot; rev=&quot;1.0.0-SNAPSHOT&quot;&gt;
+  &lt;artifact name=&quot;describeme&quot; type=&quot;pom&quot; /&gt;
+&lt;/dependency&gt;</pre> 
+  </div> 
+ </div> 
+ <div class="section"> 
+  <h3 id="Groovy_Grape">Groovy Grape</h3> 
+  <a name="Groovy_Grape"></a> 
+  <div class="source"> 
+   <pre>@Grapes(
+@Grab(group='com.github.mmichaelis.describeme', module='describeme', version='1.0.0-SNAPSHOT')
+)</pre> 
+  </div> 
+ </div> 
+ <div class="section"> 
+  <h3 id="Grails">Grails</h3> 
+  <a name="Grails"></a> 
+  <div class="source"> 
+   <pre>compile 'com.github.mmichaelis.describeme:describeme:1.0.0-SNAPSHOT'</pre> 
+  </div> 
+ </div> 
+ <div class="section"> 
+  <h3 id="Leiningen">Leiningen</h3> 
+  <a name="Leiningen"></a> 
+  <div class="source"> 
+   <pre>[com.github.mmichaelis.describeme/describeme &quot;1.0.0-SNAPSHOT&quot;]</pre> 
+  </div> 
+ </div> 
+ <div class="section"> 
+  <h3 id="SBT">SBT</h3> 
+  <a name="SBT"></a> 
+  <div class="source"> 
+   <pre>libraryDependencies += &quot;com.github.mmichaelis.describeme&quot; % &quot;describeme&quot; % &quot;1.0.0-SNAPSHOT&quot;</pre> 
+  </div> 
+ </div> 
 </div>
+			</div>
 		</div>
-		<div class="span6">
-			<h2 id="Use_Cases">Use Cases</h2>
-<ol style="list-style-type: decimal"> 
- <li>Add DescribeMe to your Maven project</li> 
- <li>Use DescribeMe for assertion messages</li> 
- <li>Use DescribeMe as subformat in <tt>MessageFormat</tt></li> 
- <li>Extend DescribeMe by own describers</li> 
- <li>Override existing describers</li> 
- <li>Combine describers</li> 
- <li>Using DescribeMe BOM POM</li> 
- <li>Using DescribeMe Thirdparty BOM POM</li> 
- <li>Combine describers with Guava</li> 
- <li>Using describers in custom Hamcrest matchers</li> 
-</ol>
-		</div>
-	</div>
-	<div class="row">
 	</div>
 	</div>
 
@@ -215,14 +269,14 @@
 						<li >
 							<a href="dependency-convergence.html" title="Dependency Convergence">Dependency Convergence</a>
 						</li>
-						<li >
-							<a href="dependency-info.html" title="Dependency Information">Dependency Information</a>
+						<li class="active">
+							<a href="#" title="Dependency Information">Dependency Information</a>
 						</li>
 						<li >
 							<a href="dependency-management.html" title="Dependency Management">Dependency Management</a>
 						</li>
-						<li class="active">
-							<a href="#" title="About">About</a>
+						<li >
+							<a href="index.html" title="About">About</a>
 						</li>
 						<li >
 							<a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a>

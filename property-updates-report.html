@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>DescribeMe - Extensible strategies for describing Java objects</title>
+		<title>Property Updates Report | DescribeMe</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta http-equiv="content-language" content="en" />
@@ -55,7 +55,7 @@
 <link rel="author" href="https://about.me/michaelismark"/>
 	</head>
 
-	<body class="page-index project-describeme" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
+	<body class="page-property-updates-report project-describeme" data-spy="scroll" data-offset="60" data-target="#toc-scroll-target">
 
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
@@ -102,62 +102,180 @@
 			</div>
 		</div>
 	</div>
+		<div>
+			<ul class="breadcrumb">
+				<li><a href="./" title="DescribeMe">DescribeMe</a></li>
+				<li class="divider">/</li>
+				<li>Property Updates Report</li>
+			</ul>
+		</div>
+		<hr class="toc-separator" />
+		<div id="toc-bar" class="navbar" data-spy="affix" data-offset-top="250">
+			<div class="navbar-inner">
+				<div id="toc-scroll-target" class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target="#toc-nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse" id="toc-nav-collapse">
+						<ul id="toc" class="nav">
+						<li class="toplevel"><a href="#Overview" title="Overview">Overview</a></li>
+						<li class="toplevel"><a href="#Summary_of_properties_associated_with_artifact_versions" title="Summary of properties associated with artifact versions">Summary of properties associated with artifact versions</a></li>
+						<li class="divider-vertical"></li>
+						<li class="toplevel"><a href="#Properties_associated_with_artifact_versions" title="Properties associated with artifact versions">Properties associated with artifact versions</a></li>
+						<li class="toplevel"><a href="#amavensurefirepluginversion" title="${maven.surefire.plugin.version}">${maven.surefire.plugin.version}</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 	</header>
 
 	<div class="main-body">
-	<div class="row columns columns2">
-		<div class="span6">
-			<h2 id="Mission">Mission</h2>
-<p>DescribeMe’s mission is to provide an easy to use and extensible way to describe your Java objects in log statements and especially in test assertions.</p>
-<p>DescribeMe is not verified against production use. At least currently it misses important internationalization requirements like for example number formats. Nevertheless you can easily extend DescribeMe in such a way, that it takes care of internationalization issues.</p>
-<div class="section">   
-</div>
-		</div>
-		<div class="span6">
-			<h2 id="Requirements">Requirements</h2>
-<p>DescribeMe requires Java 8 as it relies on Suppliers, Predicates, Consumers and Functions as well as the Java 8 Streaming API.</p>
-<div class="section">   
-</div>
-		</div>
-	</div>
 	<div class="row">
-		<div class="span6">
-			<h2 id="Terms">Terms</h2>
-<dl> 
- <dt> 
-  <b>Describer</b> 
- </dt> 
- <dd> 
-  <p> The interfaces containing the strategies how to describe your Java objects. You will typically have a number of describers which will be able to describe one or more value types. </p> 
- </dd> 
- <dt> 
-  <b>SPI - Service Provider Interface</b> 
- </dt> 
- <dd> 
-  <p> The Java technology DescribeMe is based on. It mainly consists of files listing all available describer strategies and a service loader which is able to locate each available describer through any such file in the classpath. </p> 
- </dd> 
-</dl>
-<div class="section">   
- <!-- Links --> 
+		<div class="span12">
+			<div class="body-content">
+<div class="section"> 
+ <div class="page-header">
+  <h2 id="Overview">Overview</h2>
+ </div> 
+ <p>This report summarizes newer versions that may be available for your project's various properties associated with artifacts.</p> 
+ <table border="0" class="bodyTable table table-striped table-hover"> 
+  <tbody> 
+   <tr class="a"> 
+    <td><i class="icon-ok"></i></td> 
+    <td># of properties using the latest version available</td> 
+    <td>1</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><i class="icon-warning-sign"></i></td> 
+    <td># of properties where the next version available is smaller than an incremental version update</td> 
+    <td>0</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><i class="icon-warning-sign"></i></td> 
+    <td># of properties where the next version available is an incremental version update</td> 
+    <td>0</td> 
+   </tr> 
+   <tr class="b"> 
+    <td><i class="icon-warning-sign"></i></td> 
+    <td># of properties where the next version available is a minor version update</td> 
+    <td>0</td> 
+   </tr> 
+   <tr class="a"> 
+    <td><i class="icon-warning-sign"></i></td> 
+    <td># of properties where the next version available is a major version update</td> 
+    <td>0</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <div class="section"> 
+  <h3 id="Summary_of_properties_associated_with_artifact_versions">Summary of properties associated with artifact versions</h3> 
+  <table border="0" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="b"> 
+     <th>Status</th> 
+     <th>Property</th> 
+     <th>Current Version</th> 
+     <th>Next Version</th> 
+     <th>Next Incremental</th> 
+     <th>Next Minor</th> 
+     <th>Next Major</th> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="b"> 
+     <th>Status</th> 
+     <th>Property</th> 
+     <th>Current Version</th> 
+     <th>Next Version</th> 
+     <th>Next Incremental</th> 
+     <th>Next Minor</th> 
+     <th>Next Major</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="a"> 
+     <td><i class="icon-ok"></i></td> 
+     <td>${maven.surefire.plugin.version}</td> 
+     <td>2.18.1</td> 
+     <td></td> 
+     <td></td> 
+     <td></td> 
+     <td></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+ </div> 
+</div> 
+<div class="section"> 
+ <h2 id="Properties_associated_with_artifact_versions">Properties associated with artifact versions</h2> 
+ <p></p> 
+ <div class="section"> 
+  <h3 id="amavensurefirepluginversion">${maven.surefire.plugin.version}</h3> 
+  <table border="0" class="bodyTable table table-striped table-hover"> 
+   <thead> 
+    <tr class="a"> 
+     <th width="80%">Always use reactor projects (even if older or -SNAPSHOT)</th> 
+     <td>Yes</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="b"> 
+     <th width="80%">Include projects from reactor</th> 
+     <td>Yes</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="a"> 
+     <th width="80%">Only use release versions</th> 
+     <td>No</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="b"> 
+     <th width="80%">Infer associations from project</th> 
+     <td>Yes</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="a"> 
+     <th width="80%">Allowed version range</th> 
+     <td>[,)</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="b"> 
+     <th width="80%">Current Version</th> 
+     <td>2.18.1</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="a"> 
+     <th width="80%">Associated artifacts</th> 
+     <td>org.apache.maven.plugins:maven-surefire-plugin<br />org.apache.maven.plugins:maven-surefire-report-plugin</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="b"> 
+     <th width="80%">Property</th> 
+     <td>${maven.surefire.plugin.version}</td> 
+    </tr> 
+   </thead> 
+   <thead> 
+    <tr class="a"> 
+     <th width="80%">Status</th> 
+     <td><i class="icon-ok"></i>&nbsp;No newer versions available.</td> 
+    </tr> 
+   </thead> 
+   <tbody> 
+   </tbody> 
+  </table> 
+ </div> 
 </div>
+			</div>
 		</div>
-		<div class="span6">
-			<h2 id="Use_Cases">Use Cases</h2>
-<ol style="list-style-type: decimal"> 
- <li>Add DescribeMe to your Maven project</li> 
- <li>Use DescribeMe for assertion messages</li> 
- <li>Use DescribeMe as subformat in <tt>MessageFormat</tt></li> 
- <li>Extend DescribeMe by own describers</li> 
- <li>Override existing describers</li> 
- <li>Combine describers</li> 
- <li>Using DescribeMe BOM POM</li> 
- <li>Using DescribeMe Thirdparty BOM POM</li> 
- <li>Combine describers with Guava</li> 
- <li>Using describers in custom Hamcrest matchers</li> 
-</ol>
-		</div>
-	</div>
-	<div class="row">
 	</div>
 	</div>
 
@@ -210,48 +328,42 @@
 					<ul class="nav nav-list">
 						<li class="nav-header">Maven Documentation</li>
 						<li >
-							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-down"></i></a>
+							<a href="project-info.html" title="Project Information">Project Information <i class="icon-chevron-right"></i></a>
+						</li>
+						<li >
+							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-down"></i></a>
 							<ul class="nav nav-list">
 						<li >
-							<a href="dependency-convergence.html" title="Dependency Convergence">Dependency Convergence</a>
+							<a href="surefire-report.html" title="Surefire Report">Surefire Report</a>
 						</li>
 						<li >
-							<a href="dependency-info.html" title="Dependency Information">Dependency Information</a>
+							<a href="checkstyle-aggregate.html" title="Checkstyle">Checkstyle</a>
 						</li>
 						<li >
-							<a href="dependency-management.html" title="Dependency Management">Dependency Management</a>
+							<a href="xref/index.html" title="Source Xref">Source Xref</a>
+						</li>
+						<li >
+							<a href="xref-test/index.html" title="Test Source Xref">Test Source Xref</a>
+						</li>
+						<li >
+							<a href="pmd.html" title="PMD">PMD</a>
 						</li>
 						<li class="active">
-							<a href="#" title="About">About</a>
+							<a href="#" title="Property Updates Report">Property Updates Report</a>
 						</li>
 						<li >
-							<a href="issue-tracking.html" title="Issue Tracking">Issue Tracking</a>
+							<a href="plugin-updates-report.html" title="Plugin Updates Report">Plugin Updates Report</a>
 						</li>
 						<li >
-							<a href="license.html" title="Project License">Project License</a>
+							<a href="dependency-updates-report.html" title="Dependency Updates Report">Dependency Updates Report</a>
 						</li>
 						<li >
-							<a href="modules.html" title="Project Modules">Project Modules</a>
+							<a href="github-report.html" title="GitHub Report">GitHub Report</a>
 						</li>
 						<li >
-							<a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
-						</li>
-						<li >
-							<a href="plugins.html" title="Project Plugins">Project Plugins</a>
-						</li>
-						<li >
-							<a href="team-list.html" title="Project Team">Project Team</a>
-						</li>
-						<li >
-							<a href="source-repository.html" title="Source Repository">Source Repository</a>
-						</li>
-						<li >
-							<a href="project-summary.html" title="Project Summary">Project Summary</a>
+							<a href="apidocs/index.html" title="JavaDocs">JavaDocs</a>
 						</li>
 							</ul>
-						</li>
-						<li >
-							<a href="project-reports.html" title="Project Reports">Project Reports <i class="icon-chevron-right"></i></a>
 						</li>
 					</ul>
 				</div>
